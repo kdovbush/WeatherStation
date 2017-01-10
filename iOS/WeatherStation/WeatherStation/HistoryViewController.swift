@@ -16,12 +16,7 @@ class HistoryViewController: UIViewController {
     
     // MARK: - Properties
     
-    var station: Station? {
-        if let mainTabBarController = tabBarController as? MainTabBarController {
-            return mainTabBarController.station
-        }
-        return nil
-    }
+    var station: Station?
     
     override func viewDidLoad() {
         super.viewDidLoad()

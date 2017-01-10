@@ -30,6 +30,8 @@ class NewStationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         configureTextFields()
     }
     
@@ -68,7 +70,7 @@ class NewStationViewController: UITableViewController {
         let station = Station()
         station.name = stationNameTextField.text
         station.address = stationAddressTextField.text
-        station.available = true
+        station.available = false
         station.createdAt = Date()
         
         return station

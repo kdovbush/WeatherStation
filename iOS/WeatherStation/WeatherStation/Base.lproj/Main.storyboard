@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dg2-19-MY2">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,25 +19,28 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qKd-2G-nAK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lqv-Sw-XkE">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lqv-Sw-XkE" id="fo0-ID-cSs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="maH-OY-4rR" kind="show" action="showDetailViewController:sender:" id="XwN-at-60M"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cL6-cr-E0S">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="refresh" id="M9S-nm-SHK">
                                         <connections>
@@ -59,7 +62,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Stations" id="Akg-jA-Aaq">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="uvL-vp-IUa">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Edit" id="uvL-vp-IUa">
                             <connections>
                                 <action selector="actionEditTableView:" destination="BYZ-38-t0r" id="dWY-jt-Yna"/>
                             </connections>
@@ -73,62 +76,32 @@
                     <connections>
                         <outlet property="editButton" destination="uvL-vp-IUa" id="hdp-ic-i56"/>
                         <outlet property="tableView" destination="qKd-2G-nAK" id="ECJ-vI-492"/>
-                        <segue destination="RzN-p0-E0g" kind="show" identifier="" id="8U5-GI-f5I"/>
-                        <segue destination="nr3-gX-P4F" kind="show" identifier="showStation" id="Eng-LY-QA8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="268" y="126.38680659670166"/>
         </scene>
-        <!--Station-->
-        <scene sceneID="P8h-IO-xy7">
-            <objects>
-                <viewController storyboardIdentifier="StationViewController" id="RzN-p0-E0g" customClass="StationViewController" customModule="WeatherStation" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cRt-H2-R3K"/>
-                        <viewControllerLayoutGuide type="bottom" id="ucH-lD-GKz"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9zA-5n-oKp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Station" id="Iak-1v-uda">
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="rvk-cC-aGf">
-                            <connections>
-                                <action selector="actionShowSettings:" destination="RzN-p0-E0g" id="E8G-if-D5l"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="settingsButton" destination="rvk-cC-aGf" id="4Or-vY-cx5"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3CT-lS-GEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1178" y="-196"/>
-        </scene>
-        <!--Settings Table View Controller-->
+        <!--Settings-->
         <scene sceneID="8ym-s4-WH4">
             <objects>
                 <tableViewController id="c15-ch-yrV" customClass="SettingsTableViewController" customModule="WeatherStation" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="DvY-WV-sUC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Name" id="BmS-lT-Aev">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Ipf-vV-B5j">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ipf-vV-B5j" id="fOQ-61-JcI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="My first weather station" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="U8m-Kz-IZE">
-                                                    <rect key="frame" x="16" y="6" width="343" height="31.5"/>
+                                                    <rect key="frame" x="16" y="6" width="288" height="31.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="next"/>
@@ -147,14 +120,14 @@
                             <tableViewSection headerTitle="IP Address" id="72F-eO-nKT">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="pnk-ou-sUj">
-                                        <rect key="frame" x="0.0" y="157" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="157" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pnk-ou-sUj" id="8K9-6W-IvZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="My first weather station" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8gN-Ap-3vp">
-                                                    <rect key="frame" x="16" y="6" width="343" height="31.5"/>
+                                                    <rect key="frame" x="16" y="6" width="288" height="31.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="next"/>
@@ -170,27 +143,38 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Name" id="OKX-wB-dTU">
+                            <tableViewSection headerTitle="Sensors" id="OKX-wB-dTU">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="LYt-af-XpY">
-                                        <rect key="frame" x="0.0" y="258" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="258" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LYt-af-XpY" id="XD1-q1-JFd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="My first weather station" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="v9L-mn-axW">
-                                                    <rect key="frame" x="16" y="6" width="343" height="31.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfe-25-aUk">
+                                                    <rect key="frame" x="16" y="11" width="156" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="next"/>
-                                                </textField>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BeI-wl-Z9Z">
+                                                    <rect key="frame" x="188" y="8" width="116" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="116" id="Xhe-XJ-Usq"/>
+                                                    </constraints>
+                                                    <segments>
+                                                        <segment title="°C"/>
+                                                        <segment title="°F"/>
+                                                    </segments>
+                                                </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="v9L-mn-axW" secondAttribute="bottom" constant="6" id="OHI-4Q-JRI"/>
-                                                <constraint firstItem="v9L-mn-axW" firstAttribute="top" secondItem="XD1-q1-JFd" secondAttribute="top" constant="6" id="VKU-0m-Qj0"/>
-                                                <constraint firstItem="v9L-mn-axW" firstAttribute="leading" secondItem="XD1-q1-JFd" secondAttribute="leading" constant="16" id="X3s-88-cz2"/>
-                                                <constraint firstAttribute="trailing" secondItem="v9L-mn-axW" secondAttribute="trailing" constant="16" id="k2f-Bi-Q5K"/>
+                                                <constraint firstItem="wfe-25-aUk" firstAttribute="centerY" secondItem="XD1-q1-JFd" secondAttribute="centerY" id="I6m-cN-rqZ"/>
+                                                <constraint firstItem="wfe-25-aUk" firstAttribute="leading" secondItem="XD1-q1-JFd" secondAttribute="leading" constant="16" id="Vfd-xT-S9f"/>
+                                                <constraint firstItem="BeI-wl-Z9Z" firstAttribute="leading" secondItem="wfe-25-aUk" secondAttribute="trailing" constant="16" id="iLw-dB-jl8"/>
+                                                <constraint firstItem="BeI-wl-Z9Z" firstAttribute="centerY" secondItem="XD1-q1-JFd" secondAttribute="centerY" id="uFp-i9-mGI"/>
+                                                <constraint firstAttribute="trailing" secondItem="BeI-wl-Z9Z" secondAttribute="trailing" constant="16" id="v9L-fp-guO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -202,11 +186,26 @@
                             <outlet property="delegate" destination="c15-ch-yrV" id="RRt-LY-CaI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="WC2-nW-fKD"/>
+                    <navigationItem key="navigationItem" title="Settings" id="WC2-nW-fKD">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fwQ-pE-tFS">
+                            <connections>
+                                <action selector="actionCancel:" destination="c15-ch-yrV" id="X8F-ly-pMK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="CY4-53-aOs">
+                            <connections>
+                                <action selector="actionSave:" destination="c15-ch-yrV" id="3Vi-2a-hmi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addressTextField" destination="8gN-Ap-3vp" id="fel-s7-UN0"/>
+                        <outlet property="nameTextField" destination="U8m-Kz-IZE" id="IZQ-K2-ghg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ym4-6M-cb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3926" y="1178"/>
+            <point key="canvasLocation" x="3032" y="-538"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="8Y9-vx-Su7">
@@ -217,11 +216,11 @@
                         <viewControllerLayoutGuide type="bottom" id="09q-5m-X2Y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="y9z-Rm-sYm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JGl-r7-fCB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -240,18 +239,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSu-Ok-aXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3925.5999999999999" y="419.64017991004499"/>
+            <point key="canvasLocation" x="2342" y="330"/>
         </scene>
-        <!--View Controller-->
+        <!--Station View Controller-->
         <scene sceneID="LFx-Ox-xj3">
             <objects>
-                <viewController id="maH-OY-4rR" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StationViewController" id="maH-OY-4rR" customClass="StationViewController" customModule="WeatherStation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VSY-8k-dCN"/>
                         <viewControllerLayoutGuide type="bottom" id="9cF-8u-BKh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Q2d-cu-DiK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZO-gR-rxf">
@@ -339,51 +338,41 @@
                             <constraint firstItem="MZO-gR-rxf" firstAttribute="leading" secondItem="0rk-BS-OUz" secondAttribute="leading" id="xYB-qy-0hl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PjF-7n-Y6f"/>
+                    <navigationItem key="navigationItem" id="PjF-7n-Y6f">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="KX6-NZ-XxC">
+                            <connections>
+                                <action selector="actionShowSettings:" destination="maH-OY-4rR" id="SMF-Rh-iqS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="settingsButton" destination="KX6-NZ-XxC" id="RBa-k2-23A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kq1-n0-WPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3926" y="-287"/>
-        </scene>
-        <!--Main Tab Bar Controller-->
-        <scene sceneID="lr9-eH-Tiw">
-            <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" id="nr3-gX-P4F" customClass="MainTabBarController" customModule="WeatherStation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="qIZ-bD-mdJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="pAy-wc-uiD" kind="relationship" relationship="viewControllers" id="i30-t2-hZ0"/>
-                        <segue destination="PNi-RU-0KG" kind="relationship" relationship="viewControllers" id="dQF-0J-c1p"/>
-                        <segue destination="NSk-7V-tjh" kind="relationship" relationship="viewControllers" id="bpJ-5C-G3r"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zoi-Za-mSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1948" y="423"/>
+            <point key="canvasLocation" x="1305" y="126"/>
         </scene>
         <!--New station-->
         <scene sceneID="tiC-Yi-sFm">
             <objects>
                 <tableViewController id="hb4-b4-7Bq" customClass="NewStationViewController" customModule="WeatherStation" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="toH-Cd-5bu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Name" id="7Ep-GP-Ej7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="XvI-Rp-oPg">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XvI-Rp-oPg" id="m1H-0t-csb">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="My first weather station" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nbU-9d-hyM">
-                                                    <rect key="frame" x="16" y="6" width="343" height="31.5"/>
+                                                    <rect key="frame" x="16" y="6" width="288" height="31.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="next"/>
@@ -402,14 +391,14 @@
                             <tableViewSection headerTitle="IP address" id="9Rl-a6-rN6">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="WQc-Go-VZe">
-                                        <rect key="frame" x="0.0" y="157" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="157" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQc-Go-VZe" id="one-rH-4bo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="192.168.1.1" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1EQ-9f-Lmp">
-                                                    <rect key="frame" x="16" y="6" width="343" height="32"/>
+                                                    <rect key="frame" x="16" y="6" width="288" height="32"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="light" returnKeyType="done"/>
@@ -488,29 +477,10 @@
             </objects>
             <point key="canvasLocation" x="-482" y="861"/>
         </scene>
-        <!--HIstory-->
-        <scene sceneID="CYP-OP-bta">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PNi-RU-0KG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="HIstory" image="history" selectedImage="historyFilled" id="mLE-Eo-cXk"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S24-CU-nlR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="CpM-gZ-YYv" kind="relationship" relationship="rootViewController" id="3NB-hX-ozJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ewe-tH-IRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3066" y="422"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="di7-jl-LCb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NSk-7V-tjh" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StationSettingsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NSk-7V-tjh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settingsFilled" id="mEV-WD-QkI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lsx-yk-dvm">
@@ -524,33 +494,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hO2-15-mhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3066" y="1178"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="a1y-F0-nbv">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pAy-wc-uiD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main" image="home" selectedImage="homeFilled" id="dPP-8G-YOl"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cmv-hF-aRe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="maH-OY-4rR" kind="relationship" relationship="rootViewController" id="BTm-re-PrL"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fzh-yL-Pl1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3064.8000000000002" y="-287.40629685157421"/>
+            <point key="canvasLocation" x="2173" y="-539"/>
         </scene>
     </scenes>
     <resources>
-        <image name="history" width="25" height="25"/>
-        <image name="historyFilled" width="25" height="25"/>
-        <image name="home" width="25" height="25"/>
-        <image name="homeFilled" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
         <image name="settingsFilled" width="25" height="25"/>
     </resources>

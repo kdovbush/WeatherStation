@@ -29,7 +29,12 @@ class StationViewController: UIViewController {
     // MARK: - User interactions
     
     @IBAction func actionShowSettings(_ sender: UIBarButtonItem) {
-        print("Show settings")
+        if let navigationController = UIStoryboard.stationSettingsNavigationController {
+            if let stationSettingsTableViewController = navigationController.topViewController as? SettingsTableViewController {
+                stationSettingsTableViewController.station = station
+                present(navigationController, animated: true, completion: nil)
+            }
+        }
     }
     
     // MARK: - Configuration methods

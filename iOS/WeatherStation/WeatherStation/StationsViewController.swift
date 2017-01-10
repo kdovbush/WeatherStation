@@ -165,9 +165,9 @@ extension StationsViewController: UITableViewDelegate {
             return
         }
         
-        if let mainTabBarController = UIStoryboard.mainTabBarController, let station = station {
-            mainTabBarController.station = station
-            navigationController?.pushViewController(mainTabBarController, animated: true)
+        if let stationViewController = UIStoryboard.stationViewController, let station = station {
+            stationViewController.station = station
+            navigationController?.pushViewController(stationViewController, animated: true)
         }
 
     }
@@ -175,18 +175,28 @@ extension StationsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            switch indexPath.section {
-            case Section.online.rawValue:
-                onlineStations.remove(at: indexPath.row)
-            case Section.offline.rawValue:
-                offlineStations.remove(at: indexPath.row)
-            default:
-                return
-            }
+            let alertView = UIAlertController(title: "Delete station", message: "Are you sure you want to permanently delete this station?", preferredStyle: .actionSheet)
             
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
+            alertView.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+                
+                switch indexPath.section {
+                case Section.online.rawValue:
+                    self.onlineStations.remove(at: indexPath.row)
+                case Section.offline.rawValue:
+                    self.offlineStations.remove(at: indexPath.row)
+                default:
+                    return
+                }
+                
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.endUpdates()
+            }))
+            alertView.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                tableView.setEditing(false, animated: true)
+            }))
+            
+            present(alertView, animated: true, completion: nil)
         }
     }
     
