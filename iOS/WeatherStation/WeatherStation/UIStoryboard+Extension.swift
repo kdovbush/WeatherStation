@@ -15,6 +15,10 @@ extension UIStoryboard {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
     
+    class var mainTabBarController: MainTabBarController? {
+        return main.instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarController
+    }
+    
     class var newStationNavigationController: UINavigationController? {
         return main.instantiateViewController(withIdentifier: "NewStationNavigationController") as? UINavigationController
     }

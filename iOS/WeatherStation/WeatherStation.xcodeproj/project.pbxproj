@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C6646561E251BE000D1F9F8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646551E251BE000D1F9F8 /* MainTabBarController.swift */; };
+		5C6646581E251D8000D1F9F8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */; };
+		5C66465B1E25202600D1F9F8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */; };
+		5C66465C1E25202600D1F9F8 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */; };
+		5C6646621E25271000D1F9F8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */; };
 		5C966AF51E1A4812000FA401 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C966AF41E1A4812000FA401 /* AppDelegate.swift */; };
 		5C966AFA1E1A4812000FA401 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C966AF81E1A4812000FA401 /* Main.storyboard */; };
 		5C966AFD1E1A4812000FA401 /* WeatherStation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C966AFB1E1A4812000FA401 /* WeatherStation.xcdatamodeld */; };
@@ -24,6 +29,11 @@
 
 /* Begin PBXFileReference section */
 		17DD199CB89E06F95CA47086 /* Pods-WeatherStation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherStation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherStation/Pods-WeatherStation.debug.xcconfig"; sourceTree = "<group>"; };
+		5C6646551E251BE000D1F9F8 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
+		5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		5C966AF11E1A4812000FA401 /* WeatherStation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherStation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C966AF41E1A4812000FA401 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C966AF91E1A4812000FA401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,6 +64,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C66465D1E25268B00D1F9F8 /* Station */ = {
+			isa = PBXGroup;
+			children = (
+				5C6646551E251BE000D1F9F8 /* MainTabBarController.swift */,
+				5CCCEEF41E1A7A1B00CB8F3D /* StationViewController.swift */,
+				5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */,
+				5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */,
+			);
+			name = Station;
+			sourceTree = "<group>";
+		};
+		5C66465E1E2526A200D1F9F8 /* Stations */ = {
+			isa = PBXGroup;
+			children = (
+				5C966B0A1E1A52A4000FA401 /* StationsViewController.swift */,
+				5CCCEEE91E1A5BFC00CB8F3D /* NewStationViewController.swift */,
+			);
+			name = Stations;
+			sourceTree = "<group>";
+		};
 		5C966AE81E1A4812000FA401 = {
 			isa = PBXGroup;
 			children = (
@@ -75,10 +105,10 @@
 		5C966AF31E1A4812000FA401 /* WeatherStation */ = {
 			isa = PBXGroup;
 			children = (
-				5CCCEEF01E1A70F800CB8F3D /* Helpers */,
 				5CCCEEEB1E1A601800CB8F3D /* Models */,
 				5CCCEEE41E1A573600CB8F3D /* Views */,
 				5C966B091E1A5289000FA401 /* Controllers */,
+				5CCCEEF01E1A70F800CB8F3D /* Helpers */,
 				5CCCEEEC1E1A603D00CB8F3D /* Resources */,
 				5C966AF41E1A4812000FA401 /* AppDelegate.swift */,
 			);
@@ -88,9 +118,8 @@
 		5C966B091E1A5289000FA401 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5C966B0A1E1A52A4000FA401 /* StationsViewController.swift */,
-				5CCCEEE91E1A5BFC00CB8F3D /* NewStationViewController.swift */,
-				5CCCEEF41E1A7A1B00CB8F3D /* StationViewController.swift */,
+				5C66465E1E2526A200D1F9F8 /* Stations */,
+				5C66465D1E25268B00D1F9F8 /* Station */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -100,6 +129,8 @@
 			children = (
 				5CCCEEE51E1A574E00CB8F3D /* StationTableViewCell.swift */,
 				5CCCEEE61E1A574E00CB8F3D /* StationTableViewCell.xib */,
+				5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */,
+				5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -221,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C966B021E1A4812000FA401 /* LaunchScreen.storyboard in Resources */,
+				5C66465C1E25202600D1F9F8 /* HistoryTableViewCell.xib in Resources */,
 				5C966AFF1E1A4812000FA401 /* Assets.xcassets in Resources */,
 				5CCCEEE81E1A574E00CB8F3D /* StationTableViewCell.xib in Resources */,
 				5C966AFA1E1A4812000FA401 /* Main.storyboard in Resources */,
@@ -284,10 +316,14 @@
 			files = (
 				5C966AFD1E1A4812000FA401 /* WeatherStation.xcdatamodeld in Sources */,
 				5CCCEEE71E1A574E00CB8F3D /* StationTableViewCell.swift in Sources */,
+				5C6646561E251BE000D1F9F8 /* MainTabBarController.swift in Sources */,
+				5C6646581E251D8000D1F9F8 /* HistoryViewController.swift in Sources */,
 				5CCCEEEA1E1A5BFC00CB8F3D /* NewStationViewController.swift in Sources */,
 				5C966AF51E1A4812000FA401 /* AppDelegate.swift in Sources */,
 				5CCCEEEE1E1A606400CB8F3D /* Station.swift in Sources */,
 				5C966B0B1E1A52A4000FA401 /* StationsViewController.swift in Sources */,
+				5C6646621E25271000D1F9F8 /* SettingsTableViewController.swift in Sources */,
+				5C66465B1E25202600D1F9F8 /* HistoryTableViewCell.swift in Sources */,
 				5CCCEEF31E1A713B00CB8F3D /* UIStoryboard+Extension.swift in Sources */,
 				5CCCEEF51E1A7A1B00CB8F3D /* StationViewController.swift in Sources */,
 			);

@@ -165,9 +165,9 @@ extension StationsViewController: UITableViewDelegate {
             return
         }
         
-        if let stationViewController = UIStoryboard.stationViewController, let station = station {
-            stationViewController.station = station
-            navigationController?.pushViewController(stationViewController, animated: true)
+        if let mainTabBarController = UIStoryboard.mainTabBarController, let station = station {
+            mainTabBarController.station = station
+            navigationController?.pushViewController(mainTabBarController, animated: true)
         }
 
     }
