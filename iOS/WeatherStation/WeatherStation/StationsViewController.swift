@@ -195,7 +195,8 @@ extension StationsViewController: UITableViewDelegate {
 extension StationsViewController: NewStationDelegate {
     
     func stationAdded(station: Station) {
-        onlineStations.append(station)
+        allStation.append(station)
+        separateDummyData()
         tableView.reloadData()
     }
     
