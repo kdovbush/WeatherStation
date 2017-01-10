@@ -6,6 +6,8 @@ use_frameworks!
 target 'WeatherStation' do
 
     pod 'Alamofire', '~> 4.0'
-    pod 'SwiftyJSON'
+    pod 'SwiftyJSON', '~> 3.1'
+    pod 'Charts', '~> 3.0'
+    pod 'MagicalRecord', '~> 2.3'
 
 end
