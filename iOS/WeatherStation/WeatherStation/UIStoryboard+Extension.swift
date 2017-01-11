@@ -15,12 +15,28 @@ extension UIStoryboard {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
     
+    // MARK: - Stations
+    
     class var newStationNavigationController: UINavigationController? {
         return main.instantiateViewController(withIdentifier: "NewStationNavigationController") as? UINavigationController
     }
     
+    // MARK: - Station
+    
+    class var wrapperViewController: WrapperViewController? {
+        return main.instantiateViewController(withIdentifier: "WrapperViewController") as? WrapperViewController
+    }
+    
     class var stationViewController: StationViewController? {
         return main.instantiateViewController(withIdentifier: "StationViewController") as? StationViewController
+    }
+    
+    class var chartsViewController: ChartsViewController? {
+        return main.instantiateViewController(withIdentifier: "ChartsViewController") as? ChartsViewController
+    }
+    
+    class var historyViewController: HistoryViewController? {
+        return main.instantiateViewController(withIdentifier: "HistoryViewController") as? HistoryViewController
     }
     
     class var stationSettingsNavigationController: UINavigationController? {

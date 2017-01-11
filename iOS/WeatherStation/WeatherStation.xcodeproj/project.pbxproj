@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C4D26C61E26C5C700471605 /* WrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D26C51E26C5C700471605 /* WrapperViewController.swift */; };
+		5C4D396B1E26CB1C0040826A /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D396A1E26CB1C0040826A /* ChartsViewController.swift */; };
+		5C4D396D1E26CCBD0040826A /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D396C1E26CCBD0040826A /* CAPSPageMenu.swift */; };
 		5C6646581E251D8000D1F9F8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */; };
 		5C66465B1E25202600D1F9F8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */; };
 		5C66465C1E25202600D1F9F8 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		17DD199CB89E06F95CA47086 /* Pods-WeatherStation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherStation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherStation/Pods-WeatherStation.debug.xcconfig"; sourceTree = "<group>"; };
+		5C4D26C51E26C5C700471605 /* WrapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapperViewController.swift; sourceTree = "<group>"; };
+		5C4D396A1E26CB1C0040826A /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		5C4D396C1E26CCBD0040826A /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -65,9 +71,11 @@
 		5C66465D1E25268B00D1F9F8 /* Station */ = {
 			isa = PBXGroup;
 			children = (
+				5C4D26C51E26C5C700471605 /* WrapperViewController.swift */,
 				5CCCEEF41E1A7A1B00CB8F3D /* StationViewController.swift */,
 				5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */,
 				5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */,
+				5C4D396A1E26CB1C0040826A /* ChartsViewController.swift */,
 			);
 			name = Station;
 			sourceTree = "<group>";
@@ -108,6 +116,7 @@
 				5CCCEEF01E1A70F800CB8F3D /* Helpers */,
 				5CCCEEEC1E1A603D00CB8F3D /* Resources */,
 				5C966AF41E1A4812000FA401 /* AppDelegate.swift */,
+				5C4D396C1E26CCBD0040826A /* CAPSPageMenu.swift */,
 			);
 			path = WeatherStation;
 			sourceTree = "<group>";
@@ -311,8 +320,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C4D396B1E26CB1C0040826A /* ChartsViewController.swift in Sources */,
 				5C966AFD1E1A4812000FA401 /* WeatherStation.xcdatamodeld in Sources */,
+				5C4D396D1E26CCBD0040826A /* CAPSPageMenu.swift in Sources */,
 				5CCCEEE71E1A574E00CB8F3D /* StationTableViewCell.swift in Sources */,
+				5C4D26C61E26C5C700471605 /* WrapperViewController.swift in Sources */,
 				5C6646581E251D8000D1F9F8 /* HistoryViewController.swift in Sources */,
 				5CCCEEEA1E1A5BFC00CB8F3D /* NewStationViewController.swift in Sources */,
 				5C966AF51E1A4812000FA401 /* AppDelegate.swift in Sources */,
@@ -444,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 17DD199CB89E06F95CA47086 /* Pods-WeatherStation.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PJ2EL6Q7LR;
 				INFOPLIST_FILE = WeatherStation/Info.plist;
@@ -458,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 75E92D76134BE3D312D2B8B6 /* Pods-WeatherStation.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PJ2EL6Q7LR;
 				INFOPLIST_FILE = WeatherStation/Info.plist;
