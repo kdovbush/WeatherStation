@@ -18,6 +18,7 @@
 		5C4D26C61E26C5C700471605 /* WrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D26C51E26C5C700471605 /* WrapperViewController.swift */; };
 		5C4D396B1E26CB1C0040826A /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D396A1E26CB1C0040826A /* ChartsViewController.swift */; };
 		5C4D396D1E26CCBD0040826A /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D396C1E26CCBD0040826A /* CAPSPageMenu.swift */; };
+		5C4D396F1E2802060040826A /* HeatIndexInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D396E1E2802060040826A /* HeatIndexInfoViewController.swift */; };
 		5C6646581E251D8000D1F9F8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */; };
 		5C66465B1E25202600D1F9F8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */; };
 		5C66465C1E25202600D1F9F8 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */; };
@@ -49,6 +50,7 @@
 		5C4D26C51E26C5C700471605 /* WrapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapperViewController.swift; sourceTree = "<group>"; };
 		5C4D396A1E26CB1C0040826A /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		5C4D396C1E26CCBD0040826A /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
+		5C4D396E1E2802060040826A /* HeatIndexInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatIndexInfoViewController.swift; sourceTree = "<group>"; };
 		5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */,
 				5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */,
 				5C4D396A1E26CB1C0040826A /* ChartsViewController.swift */,
+				5C4D396E1E2802060040826A /* HeatIndexInfoViewController.swift */,
 			);
 			name = Station;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				5C4D396B1E26CB1C0040826A /* ChartsViewController.swift in Sources */,
 				5C4227E01E279FF000E45B37 /* Measurements+CoreDataClass.swift in Sources */,
 				5C966AFD1E1A4812000FA401 /* WeatherStation.xcdatamodeld in Sources */,
+				5C4D396F1E2802060040826A /* HeatIndexInfoViewController.swift in Sources */,
 				5C4D396D1E26CCBD0040826A /* CAPSPageMenu.swift in Sources */,
 				5C4227E91E27DA0D00E45B37 /* Enums.swift in Sources */,
 				5C4227E11E279FF000E45B37 /* Measurements+CoreDataProperties.swift in Sources */,
@@ -486,6 +490,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = PJ2EL6Q7LR;
 				INFOPLIST_FILE = WeatherStation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -501,6 +506,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = PJ2EL6Q7LR;
 				INFOPLIST_FILE = WeatherStation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

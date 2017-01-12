@@ -103,7 +103,7 @@
                             <tableViewSection headerTitle="IP Address" id="72F-eO-nKT">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="pnk-ou-sUj">
-                                        <rect key="frame" x="0.0" y="156" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="157" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pnk-ou-sUj" id="8K9-6W-IvZ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -129,7 +129,7 @@
                             <tableViewSection headerTitle="Sensors" id="OKX-wB-dTU">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="LYt-af-XpY">
-                                        <rect key="frame" x="0.0" y="256" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="258" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LYt-af-XpY" id="XD1-q1-JFd">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -188,7 +188,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ym4-6M-cb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1798" y="-593"/>
+            <point key="canvasLocation" x="1650" y="-582"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="8Y9-vx-Su7">
@@ -222,25 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSu-Ok-aXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2071" y="824"/>
-        </scene>
-        <!--Charts View Controller-->
-        <scene sceneID="HLP-qY-o3F">
-            <objects>
-                <viewController storyboardIdentifier="ChartsViewController" id="VIO-ku-ooS" customClass="ChartsViewController" customModule="WeatherStation" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RW7-de-km2"/>
-                        <viewControllerLayoutGuide type="bottom" id="o1o-oV-1sH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LTb-TB-Qhm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.86666666670000003" green="0.29411764709999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H2o-7G-VWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1921" y="1457"/>
+            <point key="canvasLocation" x="1870" y="1469"/>
         </scene>
         <!--Wrapper View Controller-->
         <scene sceneID="LFx-Ox-xj3">
@@ -321,7 +303,7 @@
                             <tableViewSection headerTitle="IP address" id="9Rl-a6-rN6">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="WQc-Go-VZe">
-                                        <rect key="frame" x="0.0" y="156" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="157" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQc-Go-VZe" id="one-rH-4bo">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -424,7 +406,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hO2-15-mhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="938" y="-594"/>
+            <point key="canvasLocation" x="938" y="-582"/>
         </scene>
         <!--Title-->
         <scene sceneID="NeL-rZ-Eug">
@@ -560,13 +542,13 @@
                                                     <rect key="frame" x="114" y="0.0" width="221" height="79"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moisture Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Au-Nb-7gP">
-                                                            <rect key="frame" x="61" y="15" width="100" height="18"/>
+                                                            <rect key="frame" x="61" y="18" width="100" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="700" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEz-4H-NOb">
-                                                            <rect key="frame" x="93" y="37" width="35.5" height="24"/>
+                                                            <rect key="frame" x="93" y="40" width="35.5" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -574,7 +556,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="0Au-Nb-7gP" firstAttribute="top" secondItem="51K-Ht-49N" secondAttribute="top" constant="15" id="hGf-4H-z4J"/>
+                                                        <constraint firstItem="0Au-Nb-7gP" firstAttribute="top" secondItem="51K-Ht-49N" secondAttribute="top" constant="18" id="hGf-4H-z4J"/>
                                                         <constraint firstItem="0Au-Nb-7gP" firstAttribute="centerX" secondItem="51K-Ht-49N" secondAttribute="centerX" id="nvN-IR-3OM"/>
                                                         <constraint firstItem="wEz-4H-NOb" firstAttribute="top" secondItem="0Au-Nb-7gP" secondAttribute="bottom" constant="4" id="ocB-1Y-QqT"/>
                                                         <constraint firstItem="wEz-4H-NOb" firstAttribute="centerX" secondItem="51K-Ht-49N" secondAttribute="centerX" id="qNH-Tu-sPd"/>
@@ -684,7 +666,116 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVl-Tw-79r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2020" y="126"/>
+            <point key="canvasLocation" x="1870" y="126"/>
+        </scene>
+        <!--Charts View Controller-->
+        <scene sceneID="7ii-Hi-D6Q">
+            <objects>
+                <tableViewController id="fJd-D2-paG" customClass="ChartsViewController" customModule="WeatherStation" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="HIa-bC-Qwl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Temperature" id="kwC-HJ-YXr">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="WW8-Mf-ZEG">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WW8-Mf-ZEG" id="6Vr-Hy-gu9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Humidity" id="1Y2-wI-5kG">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="Gvh-Qi-uxN">
+                                        <rect key="frame" x="0.0" y="273" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvh-Qi-uxN" id="Mqj-fl-49i">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Rain" id="B94-Vy-uW7">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="6DA-iK-u7m">
+                                        <rect key="frame" x="0.0" y="490" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6DA-iK-u7m" id="hmD-Wc-WGw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Heat index" id="E9N-LA-aU1">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="ESg-wz-wOv">
+                                        <rect key="frame" x="0.0" y="707" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ESg-wz-wOv" id="SH0-C3-6oq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="fJd-D2-paG" id="jXF-GY-w3U"/>
+                            <outlet property="delegate" destination="fJd-D2-paG" id="bCJ-xk-RvJ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KI1-RB-DgC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1873" y="795"/>
+        </scene>
+        <!--Heat Index Info View Controller-->
+        <scene sceneID="h1F-bG-2SQ">
+            <objects>
+                <viewController storyboardIdentifier="HeatIndexInfoViewController" id="sr8-LS-UJ7" customClass="HeatIndexInfoViewController" customModule="WeatherStation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OmI-jD-uvo"/>
+                        <viewControllerLayoutGuide type="bottom" id="acj-l1-LkR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kMu-jY-qTF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRM-H3-WZU">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Pxs-YI-K4N">
+                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="acj-l1-LkR" firstAttribute="top" secondItem="CRM-H3-WZU" secondAttribute="bottom" id="3nP-e6-YjZ"/>
+                            <constraint firstItem="Pxs-YI-K4N" firstAttribute="centerX" secondItem="kMu-jY-qTF" secondAttribute="centerX" id="ELb-Oq-kx5"/>
+                            <constraint firstAttribute="trailing" secondItem="CRM-H3-WZU" secondAttribute="trailing" id="Fqh-LC-ECw"/>
+                            <constraint firstItem="Pxs-YI-K4N" firstAttribute="centerY" secondItem="kMu-jY-qTF" secondAttribute="centerY" id="V1U-ed-4fj"/>
+                            <constraint firstItem="CRM-H3-WZU" firstAttribute="leading" secondItem="kMu-jY-qTF" secondAttribute="leading" id="e8D-aF-fyD"/>
+                            <constraint firstItem="CRM-H3-WZU" firstAttribute="top" secondItem="OmI-jD-uvo" secondAttribute="bottom" id="sgG-kf-83O"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Pxs-YI-K4N" id="sSt-aI-u0Z"/>
+                        <outlet property="webView" destination="CRM-H3-WZU" id="cel-y9-sVa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lks-Qg-5iT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2673" y="126"/>
         </scene>
     </scenes>
     <resources>

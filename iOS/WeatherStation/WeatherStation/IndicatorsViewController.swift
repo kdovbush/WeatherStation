@@ -60,23 +60,12 @@ class IndicatorsViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationItem.backBarButtonItem?.title = "History"
-        navigationController?.navigationBar.backItem?.title = "History"
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-
-    }
-    
     // MARK: - User interactions
 
     @IBAction func actionHeatIndexInfo(_ sender: UIButton) {
-        print("ℹ️ heat index info")
+        if let heatIndexInfoViewController = UIStoryboard.heatIndexInfoViewController {
+            navigationController?.pushViewController(heatIndexInfoViewController, animated: true)
+        }
     }
     
     // MARK: - Configuration methods

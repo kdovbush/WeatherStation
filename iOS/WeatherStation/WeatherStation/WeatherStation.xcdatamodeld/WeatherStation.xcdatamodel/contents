@@ -7,7 +7,7 @@
         <attribute name="rainAnalog" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rainDigital" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="temperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="station" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Station" syncable="YES"/>
+        <relationship name="station" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Station" inverseName="measurements" inverseEntity="Station" syncable="YES"/>
     </entity>
     <entity name="Station" representedClassName=".Station" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,7 +15,7 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="temperatureUnits" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="measurements" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Measurements" syncable="YES"/>
+        <relationship name="measurements" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Measurements" inverseName="station" inverseEntity="Measurements" syncable="YES"/>
     </entity>
     <elements>
         <element name="Measurements" positionX="-45" positionY="0" width="128" height="150"/>

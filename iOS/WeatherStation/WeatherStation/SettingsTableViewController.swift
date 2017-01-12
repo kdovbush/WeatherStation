@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum TemperatureUnits {
-    case celsius
-    case fahrenheit
-}
-
 class SettingsTableViewController: UITableViewController {
 
     // MARK: - Public properties

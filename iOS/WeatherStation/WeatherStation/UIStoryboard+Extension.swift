@@ -43,5 +43,9 @@ extension UIStoryboard {
         return main.instantiateViewController(withIdentifier: "StationSettingsNavigationController") as? UINavigationController
     }
     
+    class var heatIndexInfoViewController: HeatIndexInfoViewController? {
+        return main.instantiateViewController(withIdentifier: "HeatIndexInfoViewController") as? HeatIndexInfoViewController
+    }
+    
 }
 
