@@ -27,8 +27,8 @@ extension UIStoryboard {
         return main.instantiateViewController(withIdentifier: "WrapperViewController") as? WrapperViewController
     }
     
-    class var stationViewController: StationViewController? {
-        return main.instantiateViewController(withIdentifier: "StationViewController") as? StationViewController
+    class var indicatorsViewController: IndicatorsViewController? {
+        return main.instantiateViewController(withIdentifier: "IndicatorsViewController") as? IndicatorsViewController
     }
     
     class var chartsViewController: ChartsViewController? {

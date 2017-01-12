@@ -10,15 +10,41 @@ import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: - Outlets
+    
+    @IBOutlet public weak var hourLabel: UILabel!
+    @IBOutlet public weak var dateLabel: UILabel!
+    @IBOutlet public weak var yearLabel: UILabel!
+    
+    @IBOutlet public weak var temperatureLabel: UILabel!
+    @IBOutlet public weak var humidityLabel: UILabel!
+    @IBOutlet public weak var heatIndexLabel: UILabel!
+    @IBOutlet public weak var rainLabel: UILabel!
+    
+    // MARK: - Public properties
+    
+    var measurement: Measurements? {
+        didSet {
+            if let measurement = measurement {
+                temperatureLabel.text = String(describing: measurement.temperature)
+                humidityLabel.text = String(describing: measurement.humidity)
+                heatIndexLabel.text = String(describing: measurement.heatIndex)
+                rainLabel.text = String(describing: measurement.rainAnalog)
+                configureDateLabels(date: measurement.createdAt as Date)
+            }
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    // MARK: - Configuration methods
+    
+    func configureDateLabels(date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        hourLabel.text = formatter.string(from: date)
+        formatter.dateFormat = "MM.dd"
+        dateLabel.text = formatter.string(from: date)
+        formatter.dateFormat = "yyyy"
+        yearLabel.text = formatter.string(from: date)
     }
     
 }

@@ -14,9 +14,27 @@ class HistoryViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: - Properties
+    // MARK: - Public properties
     
     var station: Station?
+    
+    // MARK: - Private properties
+    
+    var measurements: [Measurements]? {
+        let dateSortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        var measurements = station?.measurements?.sortedArray(using: [dateSortDescriptor]) as? [Measurements]
+        
+        let meas = Measurements.mr_createEntity()!
+        meas.temperature = 15
+        meas.humidity = 40
+        meas.heatIndex = 137
+        meas.rainAnalog = 90
+        meas.createdAt = NSDate()
+        
+        measurements?.append(meas)
+        
+        return measurements
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +45,7 @@ class HistoryViewController: UIViewController {
     // MARK: - Configuration methods
     
     func configureTableView() {
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 65, right: 0)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "HistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "HistoryTableViewCell")
@@ -41,18 +60,24 @@ extension HistoryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if let measurementsCount = measurements?.count {
+            return measurementsCount
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell", for: indexPath) as? HistoryTableViewCell {
-            cell.textLabel?.text = "Test"
+            cell.measurement = measurements?[indexPath.row]
             return cell
         }
         
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 }
 
 extension HistoryViewController: UITableViewDelegate {
@@ -60,6 +85,10 @@ extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if let indicatorsViewController = UIStoryboard.indicatorsViewController {
+            indicatorsViewController.measurement = measurements?[indexPath.row]
+            navigationController?.pushViewController(indicatorsViewController, animated: true)
+        }
     }
     
 }

@@ -9,9 +9,7 @@
 import UIKit
 
 protocol NewStationDelegate {
-    
     func stationAdded(station: Station)
-    
 }
 
 class NewStationViewController: UITableViewController {
@@ -30,8 +28,6 @@ class NewStationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         configureTextFields()
     }
     
@@ -45,7 +41,9 @@ class NewStationViewController: UITableViewController {
     
     @IBAction func actionSave(_ sender: UIBarButtonItem) {
         if isEmptyFields() {
-            print("Empty fields")
+            let alertView = UIAlertController(title: "Required Fields Missing", message: "Name and Address can't be empty", preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            present(alertView, animated: true, completion: nil)
         } else {
             let station = createStation()
             delegate?.stationAdded(station: station)
@@ -67,12 +65,13 @@ class NewStationViewController: UITableViewController {
     // MARK: - Helper methods
     
     func createStation() -> Station {
-        let station = Station()
+        let station = Station.mr_createEntity()!
         station.name = stationNameTextField.text
         station.address = stationAddressTextField.text
         station.available = false
-        station.createdAt = Date()
-        
+        station.createdAt = NSDate()
+        station.save()
+            
         return station
     }
     

@@ -20,28 +20,11 @@ class StationTableViewCell: UITableViewCell {
     
     var station: Station? {
         didSet {
-            configureCell()
-        }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    // MARK: - Configuration methods
-    
-    func configureCell() {
-        if let station = station {
-            stationNameLabel.text = station.name
-            stationAddressLabel.text = station.address
-            onlineIconImageView.image = station.available ? UIImage(named: "online") : UIImage(named: "offline")
+            if let station = station {
+                stationNameLabel.text = station.name
+                stationAddressLabel.text = station.address
+                onlineIconImageView.image = station.available ? UIImage(named: "online") : UIImage(named: "offline")
+            }
         }
     }
     

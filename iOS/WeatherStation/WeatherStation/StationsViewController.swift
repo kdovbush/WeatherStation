@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MagicalRecord
 
 enum Section: Int {
     case online
@@ -18,7 +19,6 @@ class StationsViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var editButton: UIBarButtonItem!
     
     // MARK: - Public properties
     
@@ -34,10 +34,7 @@ class StationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Only for tests
-        createDummyData()
-        separateDummyData()
-        
+        reloadStations()
         configureTableView()
     }
 
@@ -49,18 +46,10 @@ class StationsViewController: UIViewController {
         tableView.register(UINib(nibName: "StationTableViewCell", bundle: nil), forCellReuseIdentifier: "StationTableViewCell")
     }
     
-    func createDummyData() {
-        for index in (0...8) {
-            let station = Station()
-            station.name = "Station \(index)"
-            station.address = "IP Address"
-            station.available = (index % 2 == 0) ? true : false
-            station.createdAt = Date()
-            allStation.append(station)
-        }
-    }
-    
-    func separateDummyData() {
+    func reloadStations() {
+        allStation = Station.getAll()
+        
+        // Separate all stations to online/offline sections
         onlineStations = []
         offlineStations = []
         
@@ -84,13 +73,8 @@ class StationsViewController: UIViewController {
         }
     }
     
-    @IBAction func actionEditTableView(_ sender: UIBarButtonItem) {
-        tableView.isEditing = !tableView.isEditing
-        editButton.title = tableView.isEditing ? "Done" : "Edit"
-    }
-    
     @IBAction func actionRefreshStations(_ sender: UIBarButtonItem) {
-        separateDummyData()
+        reloadStations()
         tableView.reloadData()
     }
 }
@@ -174,15 +158,17 @@ extension StationsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
             let alertView = UIAlertController(title: "Delete station", message: "Are you sure you want to permanently delete this station?", preferredStyle: .actionSheet)
-            
             alertView.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
                 
                 switch indexPath.section {
                 case Section.online.rawValue:
+                    let station = self.onlineStations[indexPath.row]
+                    station.remove()
                     self.onlineStations.remove(at: indexPath.row)
                 case Section.offline.rawValue:
+                    let station = self.offlineStations[indexPath.row]
+                    station.remove()
                     self.offlineStations.remove(at: indexPath.row)
                 default:
                     return
@@ -205,8 +191,7 @@ extension StationsViewController: UITableViewDelegate {
 extension StationsViewController: NewStationDelegate {
     
     func stationAdded(station: Station) {
-        allStation.append(station)
-        separateDummyData()
+        reloadStations()
         tableView.reloadData()
     }
     

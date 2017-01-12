@@ -17,8 +17,11 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: - Public properties
     
-    var delegate: NewStationDelegate?
     var station: Station?
+    
+    // MARK: - Private properties
+    
+    var delegate: NewStationDelegate?
     
     // MARK: - Outlets
     

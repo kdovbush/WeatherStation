@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Measurements" representedClassName=".Measurements" syncable="YES">
+    <entity name="Measurements" representedClassName="Measurements" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="heatIndex" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="humidity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rainAnalog" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rainDigital" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="temperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="station" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Station" syncable="YES"/>
+        <relationship name="station" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Station" syncable="YES"/>
     </entity>
-    <entity name="Station" representedClassName=".Station" syncable="YES">
+    <entity name="Station" representedClassName="Station" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="available" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="temperatureUnits" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="measurements" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Measurements" syncable="YES"/>
+        <relationship name="measurements" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Measurements" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Measurements" positionX="-45" positionY="0" width="128" height="150"/>
-        <element name="Station" positionX="-18" positionY="27" width="128" height="135"/>
+        <element name="Station" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Measurements" positionX="-54" positionY="27" width="128" height="150"/>
     </elements>
 </model>

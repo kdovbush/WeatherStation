@@ -8,8 +8,7 @@
 
 import UIKit
 import CoreData
-import Alamofire
-import SwiftyJSON
+import MagicalRecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,10 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         window?.backgroundColor = UIColor.white
         
+        configureDataStorage()
+        
         return true
+    }
+    
+    func configureDataStorage() {
+        MagicalRecord.setupCoreDataStack(withStoreNamed: "WeatherStation")
+        MagicalRecord.setupAutoMigratingCoreDataStack()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

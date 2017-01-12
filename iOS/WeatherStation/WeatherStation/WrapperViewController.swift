@@ -39,10 +39,10 @@ class WrapperViewController: UIViewController {
         
         var controllerArray : [UIViewController] = []
         
-        if let stationViewController = UIStoryboard.stationViewController {
-            stationViewController.title = "INDICATORS"
-            stationViewController.station = station
-            controllerArray.append(stationViewController)
+        if let indicatorsViewController = UIStoryboard.indicatorsViewController {
+            indicatorsViewController.title = "INDICATORS"
+            indicatorsViewController.station = station
+            controllerArray.append(indicatorsViewController)
         }
         
         if let chartsViewController = UIStoryboard.chartsViewController {
