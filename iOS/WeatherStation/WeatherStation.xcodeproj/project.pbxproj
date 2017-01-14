@@ -19,6 +19,10 @@
 		5C4D396B1E26CB1C0040826A /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D396A1E26CB1C0040826A /* ChartsViewController.swift */; };
 		5C4D396D1E26CCBD0040826A /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D396C1E26CCBD0040826A /* CAPSPageMenu.swift */; };
 		5C4D396F1E2802060040826A /* HeatIndexInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D396E1E2802060040826A /* HeatIndexInfoViewController.swift */; };
+		5C4D39931E2978CA0040826A /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D39921E2978CA0040826A /* LineChart.swift */; };
+		5C4D39961E297C600040826A /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D39941E297C600040826A /* ChartTableViewCell.swift */; };
+		5C4D39971E297C600040826A /* ChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4D39951E297C600040826A /* ChartTableViewCell.xib */; };
+		5C4D39991E2993DE0040826A /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D39981E2993DE0040826A /* BarChart.swift */; };
 		5C6646581E251D8000D1F9F8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */; };
 		5C66465B1E25202600D1F9F8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */; };
 		5C66465C1E25202600D1F9F8 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */; };
@@ -51,6 +55,10 @@
 		5C4D396A1E26CB1C0040826A /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		5C4D396C1E26CCBD0040826A /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		5C4D396E1E2802060040826A /* HeatIndexInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatIndexInfoViewController.swift; sourceTree = "<group>"; };
+		5C4D39921E2978CA0040826A /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		5C4D39941E297C600040826A /* ChartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
+		5C4D39951E297C600040826A /* ChartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartTableViewCell.xib; sourceTree = "<group>"; };
+		5C4D39981E2993DE0040826A /* BarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -84,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C4D399A1E29AF6F0040826A /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				5C4D39921E2978CA0040826A /* LineChart.swift */,
+				5C4D39981E2993DE0040826A /* BarChart.swift */,
+			);
+			name = Charts;
+			sourceTree = "<group>";
+		};
 		5C66465D1E25268B00D1F9F8 /* Station */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,10 +167,13 @@
 		5CCCEEE41E1A573600CB8F3D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5C4D399A1E29AF6F0040826A /* Charts */,
 				5CCCEEE51E1A574E00CB8F3D /* StationTableViewCell.swift */,
 				5CCCEEE61E1A574E00CB8F3D /* StationTableViewCell.xib */,
 				5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */,
 				5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */,
+				5C4D39941E297C600040826A /* ChartTableViewCell.swift */,
+				5C4D39951E297C600040826A /* ChartTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -283,6 +303,7 @@
 			files = (
 				5C966B021E1A4812000FA401 /* LaunchScreen.storyboard in Resources */,
 				5C66465C1E25202600D1F9F8 /* HistoryTableViewCell.xib in Resources */,
+				5C4D39971E297C600040826A /* ChartTableViewCell.xib in Resources */,
 				5C966AFF1E1A4812000FA401 /* Assets.xcassets in Resources */,
 				5CCCEEE81E1A574E00CB8F3D /* StationTableViewCell.xib in Resources */,
 				5C966AFA1E1A4812000FA401 /* Main.storyboard in Resources */,
@@ -344,12 +365,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C4D39961E297C600040826A /* ChartTableViewCell.swift in Sources */,
 				5C4D396B1E26CB1C0040826A /* ChartsViewController.swift in Sources */,
 				5C4227E01E279FF000E45B37 /* Measurements+CoreDataClass.swift in Sources */,
 				5C966AFD1E1A4812000FA401 /* WeatherStation.xcdatamodeld in Sources */,
+				5C4D39931E2978CA0040826A /* LineChart.swift in Sources */,
 				5C4D396F1E2802060040826A /* HeatIndexInfoViewController.swift in Sources */,
 				5C4D396D1E26CCBD0040826A /* CAPSPageMenu.swift in Sources */,
 				5C4227E91E27DA0D00E45B37 /* Enums.swift in Sources */,
+				5C4D39991E2993DE0040826A /* BarChart.swift in Sources */,
 				5C4227E11E279FF000E45B37 /* Measurements+CoreDataProperties.swift in Sources */,
 				5C4227E51E27A8C500E45B37 /* Station+Extension.swift in Sources */,
 				5CCCEEE71E1A574E00CB8F3D /* StationTableViewCell.swift in Sources */,

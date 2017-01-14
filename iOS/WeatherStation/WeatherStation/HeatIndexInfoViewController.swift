@@ -20,7 +20,7 @@ class HeatIndexInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Heat Index Info"
+        navigationItem.title = "Info"
         
         automaticallyAdjustsScrollViewInsets = false
         

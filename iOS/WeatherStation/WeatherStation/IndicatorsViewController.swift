@@ -54,7 +54,7 @@ class IndicatorsViewController: UITableViewController {
             tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
             configureView(for: measurement)
         } else {
-            tableView.contentInset = UIEdgeInsets(top: -10, left: 0, bottom: 60, right: 0)
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
             configureView(for: station)
         }
         
