@@ -68,8 +68,27 @@ class NewStationViewController: UITableViewController {
         let station = Station.mr_createEntity()!
         station.name = stationNameTextField.text
         station.address = stationAddressTextField.text
-        station.available = false
+        station.available = Bool(arc4random_uniform(1))
         station.createdAt = NSDate()
+        
+        // Should be replaced with real data
+        for _ in 0...20 {
+            let measurement = Measurements.mr_createEntity()!
+            measurement.createdAt = NSDate()
+            
+            let lowerValue = -20
+            let upperValue = 25
+            let result = Int(arc4random_uniform(UInt32(upperValue - lowerValue + 1))) + lowerValue
+            
+            measurement.temperature = Double(result)
+            measurement.humidity = Double(arc4random_uniform(100))
+            measurement.heatIndex = Double(arc4random_uniform(140))
+            measurement.rainAnalog = Double(arc4random_uniform(1000))
+            measurement.rainDigital = Bool(arc4random_uniform(1))
+            
+            station.addToMeasurements(measurement)
+        }
+        
         station.save()
             
         return station

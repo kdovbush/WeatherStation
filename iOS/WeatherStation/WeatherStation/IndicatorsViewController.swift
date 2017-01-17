@@ -73,22 +73,37 @@ class IndicatorsViewController: UITableViewController {
     func configureView(for object: NSManagedObject?) {
         switch object {
         case let object as Station:
-            configureHeatIndexLabels(for: 100)
+            navigationItem.title = station?.name
+            
+            temperatureLabel.text = String(object.lastMeasurement!.temperature)
+            temperatureMinLabel.text = String(describing: object.temperatures.min()!)
+            temperatureMaxLabel.text = String(describing: object.temperatures.max()!)
+            
+            humidityLabel.text = String(object.lastMeasurement!.humidity)
+            humidityMinLabel.text = String(describing: object.humidities.min()!)
+            humidityMaxLabel.text = String(describing: object.humidities.max()!)
+            
+            moistureLevelLabel.text = String(object.rainAnalogs.last!)
+            
+            heatIndexLabel.text = String(object.heatIndexes.last!)
+            configureHeatIndexLabels(for: object.heatIndexes.last!)
         case let object as Measurements:
             
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm dd.MM.yyy"
             navigationItem.title = formatter.string(from: object.createdAt as Date)
             
+            temperatureLabel.text = String(object.temperature)
+            temperatureMinLabel.text = String(station!.temperatures.min()!)
+            temperatureMaxLabel.text = String(station!.temperatures.max()!)
             
-            temperatureLabel.text = String(describing: object.temperature)
+            humidityLabel.text = String(object.humidity)
+            humidityMinLabel.text = String(station!.humidities.min()!)
+            humidityMaxLabel.text = String(station!.humidities.max()!)
             
-            humidityLabel.text = String(describing: object.humidity)
+            moistureLevelLabel.text = String(object.rainAnalog)
             
-            heatIndexLabel.text = String(describing: object.heatIndex)
-            
-            moistureLevelLabel.text = String(describing: object.rainAnalog)
-            
+            heatIndexLabel.text = String(object.heatIndex)
             configureHeatIndexLabels(for: object.heatIndex)
         default:
             break
@@ -97,7 +112,11 @@ class IndicatorsViewController: UITableViewController {
     
     func configureHeatIndexLabels(for index: Double) {
         switch index {
-        case 0...90:
+        case 0 ... 79:
+            heatIndexAlertLabel.textColor = UIColor(hex: "#2ecc71")
+            heatIndexAlertLabel.text = "Normal"
+            heatIndexInfoLabel.text = "Normal heat index"
+        case 80...90:
             heatIndexAlertLabel.textColor = UIColor(hex: "#f1c40f")
             heatIndexAlertLabel.text = "Caution"
             heatIndexInfoLabel.text = "Fatigue possible with prolonged exposure and/or physical activity."

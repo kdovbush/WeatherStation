@@ -21,19 +21,7 @@ class HistoryViewController: UIViewController {
     // MARK: - Private properties
     
     var measurements: [Measurements]? {
-        let dateSortDescriptor = NSSortDescriptor(key: "date", ascending: true)
-        var measurements = station?.measurements?.sortedArray(using: [dateSortDescriptor]) as? [Measurements]
-        
-        let meas = Measurements.mr_createEntity()!
-        meas.temperature = 15
-        meas.humidity = 40
-        meas.heatIndex = 137
-        meas.rainAnalog = 90
-        meas.createdAt = NSDate()
-        
-        measurements?.append(meas)
-        
-        return measurements
+        return station?.getAllMeasurements()
     }
     
     override func viewDidLoad() {
@@ -86,6 +74,7 @@ extension HistoryViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let indicatorsViewController = UIStoryboard.indicatorsViewController {
+            indicatorsViewController.station = station
             indicatorsViewController.measurement = measurements?[indexPath.row]
             navigationController?.pushViewController(indicatorsViewController, animated: true)
         }

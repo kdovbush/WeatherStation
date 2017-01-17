@@ -21,8 +21,9 @@ class ChartsViewController: UITableViewController {
     
     var station: Station?
     
-    var labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
-    var values = [12.0, 22.0, 15.0, 9.0, 25.0, 23.0, 19.0, 0.0, -4.0, -5.0, -7.0, -12.0, 18.0, -20.0, -22.0]
+    var labels: [String] {
+        return station?.getDateStrings() ?? []
+    }
     
     // MARK: - ViewController lifecycle
     
@@ -46,7 +47,7 @@ class ChartsViewController: UITableViewController {
         let temperatureChartFrame = CGRect(x: 2, y: 2, width: UIScreen.main.bounds.width - 8, height: temperatureCell.bounds.height - 12)
         let temperatureChart = LineChart(frame: temperatureChartFrame)
         temperatureChart.xAxisLabels = labels
-        temperatureChart.values = values
+        temperatureChart.values = station?.temperatures ?? []
         temperatureChart.maxVisibleItems = 5
         temperatureChart.zeroLineEnabled = true
         temperatureChart.gradientColors = [UIColor.red, UIColor(hex: "007AFF")]
@@ -60,7 +61,7 @@ class ChartsViewController: UITableViewController {
         let humidityChartFrame = CGRect(x: 2, y: 2, width: UIScreen.main.bounds.width - 8, height: temperatureCell.bounds.height - 12)
         let humidityChart = LineChart(frame: humidityChartFrame)
         humidityChart.xAxisLabels = labels
-        humidityChart.values = [30.0, 56.0, 70.0, 100.0, 100.0, 90.0, 80.0, 69.0, 40.0, 20.0, 50.0, 77.0, 93.0, 57.0, 62.0]
+        humidityChart.values = station?.humidities ?? []
         humidityChart.maxVisibleItems = 5
         humidityChart.gradientColors = [UIColor(hex: "#19B5FE"), UIColor(hex: "#E4F1FE")]
         humidityChart.configure()
@@ -73,7 +74,7 @@ class ChartsViewController: UITableViewController {
         let rainChartFrame = CGRect(x: 4, y: 2, width: UIScreen.main.bounds.width - 10, height: temperatureCell.bounds.height - 12)
         let rainChart = BarChart(frame: rainChartFrame)
         rainChart.xAxisLabels = labels
-        rainChart.values = [809.0, 469.0, 209.0, 509.0, 609.0, 920.0, 950, 970, 100.0, 102, 104, 115, 124.0, 126.0, 130.0]
+        rainChart.values = station?.rainAnalogs ?? []
         rainChart.maxVisibleItems = 7
         rainChart.barColor = UIColor(hex: "#22A7F0")
         rainChart.limitLine = 500
@@ -89,7 +90,7 @@ class ChartsViewController: UITableViewController {
         let heatIndexChartFrame = CGRect(x: 4, y: 2, width: UIScreen.main.bounds.width - 10, height: temperatureCell.bounds.height - 12)
         let heatIndexChart = BarChart(frame: heatIndexChartFrame)
         heatIndexChart.xAxisLabels = labels
-        heatIndexChart.values = [80.0, 46.0, 20.0, 50.0, 60.0, 92, 95, 97, 100.0, 102, 104, 115, 124.0, 126.0, 130.0]
+        heatIndexChart.values = station?.heatIndexes ?? []
         heatIndexChart.maxVisibleItems = 7
         heatIndexChart.barColor = UIColor(hex: "#6BB9F0")
         heatIndexChart.barColorDependingOnValue = true

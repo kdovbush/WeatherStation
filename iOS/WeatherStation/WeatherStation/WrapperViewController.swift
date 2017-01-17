@@ -15,7 +15,6 @@ class WrapperViewController: UIViewController {
     var station: Station?
     var pageMenu: CAPSPageMenu?
     
-    
     // MARK: - Outlets
     
     @IBOutlet weak var contentView: UIView!
@@ -47,6 +46,7 @@ class WrapperViewController: UIViewController {
         
         if let chartsViewController = UIStoryboard.chartsViewController {
             chartsViewController.title = "CHARTS"
+            chartsViewController.station = station
             controllerArray.append(chartsViewController)
         }
         
