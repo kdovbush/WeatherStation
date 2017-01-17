@@ -74,16 +74,19 @@ class LineChart: UIView {
         // X Axis
         chartView.xAxis.drawGridLinesEnabled = true
         chartView.xAxis.labelPosition = .bottom
-        let xAxisFormatter = XAxis()
-        xAxisFormatter.valueFormatter = self
-        chartView.xAxis.valueFormatter = xAxisFormatter.valueFormatter
+        
+        if !xAxisLabels.isEmpty {
+            let xAxisFormatter = XAxis()
+            xAxisFormatter.valueFormatter = self
+            chartView.xAxis.valueFormatter = xAxisFormatter.valueFormatter
+        }
         
         chartView.animate(yAxisDuration: 1.0, easingOption: .linear)
         
         // Limit visible items and scoll to end
         chartView.setVisibleXRangeMaximum(maxVisibleItems)
         // TODO: Should be fixed
-        chartView.moveViewToX(Double(values.count + 1) - (maxVisibleItems))
+        chartView.moveViewToX(Double(values.count) - (maxVisibleItems))
     }
     
     func prepareData() {

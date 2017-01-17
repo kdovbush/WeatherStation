@@ -52,7 +52,7 @@ class BarChart: UIView {
         chartView.noDataText = "Data is not available now"
         chartView.chartDescription?.enabled = false
         chartView.legend.enabled = false
-        
+                
         chartView.gridBackgroundColor = UIColor.white
         chartView.drawGridBackgroundEnabled = false
         chartView.drawBordersEnabled = true
@@ -76,15 +76,18 @@ class BarChart: UIView {
         // Right Axis
         chartView.rightAxis.enabled = false
         if let limitLine = limitLine {
-            chartView.rightAxis.addLimitLine(ChartLimitLine(limit: limitLine, label: "Rain"))
+            chartView.rightAxis.addLimitLine(ChartLimitLine(limit: limitLine, label: "Wet"))
         }
         
         // X Axis
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawGridLinesEnabled = false
-        let xAxisFormatter = XAxis()
-        xAxisFormatter.valueFormatter = self
-        chartView.xAxis.valueFormatter = xAxisFormatter.valueFormatter
+        
+        if !xAxisLabels.isEmpty {
+            let xAxisFormatter = XAxis()
+            xAxisFormatter.valueFormatter = self
+            chartView.xAxis.valueFormatter = xAxisFormatter.valueFormatter
+        }
         
         chartView.animate(yAxisDuration: 2.0, easingOption: .linear)
         
@@ -114,14 +117,16 @@ class BarChart: UIView {
         var colors: [UIColor] = []
         for value in values {
             switch value {
-            case 0...90:
-                colors.append(UIColor(hex: "#f1c40f"))
+            case 0 ... 79:
+                colors.append(UIColor(hex: "#2ecc71"))
+            case 80...90:
+                colors.append(UIColor(hex: "#FDD835"))
             case 91...103:
-                colors.append(UIColor(hex: "#e67e22"))
+                colors.append(UIColor(hex: "#FF8F00"))
             case 104...124:
                 colors.append(UIColor(hex: "#d35400"))
             case 125...140:
-                colors.append(UIColor(hex: "#c0392b"))
+                colors.append(UIColor(hex: "#a20025"))
             default:
                 break
             }
