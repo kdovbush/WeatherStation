@@ -59,7 +59,6 @@ extension HistoryViewController: UITableViewDataSource {
             cell.measurement = measurements?[indexPath.row]
             return cell
         }
-        
         return UITableViewCell()
     }
     
