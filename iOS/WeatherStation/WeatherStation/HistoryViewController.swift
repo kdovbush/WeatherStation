@@ -21,7 +21,7 @@ class HistoryViewController: UIViewController {
     // MARK: - Private properties
     
     var measurements: [Measurements]? {
-        return station?.getAllMeasurements()
+        return station?.getAllMeasurements().reversed()
     }
     
     override func viewDidLoad() {
