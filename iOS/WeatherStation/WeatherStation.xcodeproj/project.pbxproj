@@ -27,6 +27,7 @@
 		5C66465B1E25202600D1F9F8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */; };
 		5C66465C1E25202600D1F9F8 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */; };
 		5C6646621E25271000D1F9F8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */; };
+		5C9072B11E2F8F7200410F11 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9072B01E2F8F7200410F11 /* Double+Extension.swift */; };
 		5C91635E1E2EBB22008FA0B3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91635D1E2EBB22008FA0B3 /* NetworkManager.swift */; };
 		5C9163601E2EBEDE008FA0B3 /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91635F1E2EBEDE008FA0B3 /* Bool+Extension.swift */; };
 		5C9163641E2ED72D008FA0B3 /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9163631E2ED72D008FA0B3 /* NSDate+Extension.swift */; };
@@ -67,6 +68,7 @@
 		5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		5C9072B01E2F8F7200410F11 /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		5C91635D1E2EBB22008FA0B3 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5C91635F1E2EBEDE008FA0B3 /* Bool+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
 		5C9163631E2ED72D008FA0B3 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				5C4227E61E27AF5900E45B37 /* NSManagedObject+Extension.swift */,
 				5C91635F1E2EBEDE008FA0B3 /* Bool+Extension.swift */,
 				5C9163631E2ED72D008FA0B3 /* NSDate+Extension.swift */,
+				5C9072B01E2F8F7200410F11 /* Double+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				5C966AFD1E1A4812000FA401 /* WeatherStation.xcdatamodeld in Sources */,
 				5C9163661E2ED866008FA0B3 /* Measurements+Extension.swift in Sources */,
 				5C4D39931E2978CA0040826A /* LineChart.swift in Sources */,
+				5C9072B11E2F8F7200410F11 /* Double+Extension.swift in Sources */,
 				5C4D396F1E2802060040826A /* HeatIndexInfoViewController.swift in Sources */,
 				5C4D396D1E26CCBD0040826A /* CAPSPageMenu.swift in Sources */,
 				5C4227E91E27DA0D00E45B37 /* Enums.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum TemperatureUnits {
-    case celsius
-    case fahrenheit
+enum TemperatureUnits: Int {
+    case celsius = 0
+    case fahrenheit = 1
 }

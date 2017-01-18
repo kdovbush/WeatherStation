@@ -11,11 +11,11 @@ import Foundation
 extension Double {
     
     var celsius: Double {
-        return 0.0
+        return 5.0 / 9.0 * (self - 32.0)
     }
     
     var fahrenheit: Double {
-        return 0.0
+        return self * (9/5) + 32.0
     }
     
     /// Rounds the double to decimal places value

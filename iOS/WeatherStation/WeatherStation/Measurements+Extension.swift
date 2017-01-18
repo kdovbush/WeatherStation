@@ -11,5 +11,5 @@ import CoreData
 import MagicalRecord
 
 extension Measurements {
-
+    
 }
