@@ -25,9 +25,23 @@ class WrapperViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(stationSettingsDidChange(_:)), name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil)
+        
         navigationItem.title = station?.name
         configurePageMenu()
         automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - Notifications
+    
+    func stationSettingsDidChange(_ notification: Notification) {
+        if let station = notification.userInfo?["station"] as? Station {
+            navigationItem.title = station.name
+        }
     }
    
     // MARK: - Helper methods

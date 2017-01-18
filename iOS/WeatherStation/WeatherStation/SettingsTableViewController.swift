@@ -33,14 +33,43 @@ class SettingsTableViewController: UITableViewController {
         addressTextField.text = station?.address
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
+    }
+    
     // MARK: - User interactions
     
     @IBAction func actionSave(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        if isEmptyFields() {
+            let alertView = UIAlertController(title: "Required Fields Missing", message: "Name and Address can't be empty", preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            present(alertView, animated: true, completion: nil)
+        } else {
+            editStation()
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func actionCancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Helper methods
+    
+    func editStation() {
+        if let station = station {
+            station.name = nameTextField.text
+            station.address = addressTextField.text
+            station.temperatureUnits = Int16(temperatureUnitsSegmentedControl.selectedSegmentIndex)
+            station.save()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil, userInfo: ["station":station])
+        }
+    }
+    
+    func isEmptyFields() -> Bool {
+        return nameTextField.text == "" || addressTextField.text == ""
     }
     
 }

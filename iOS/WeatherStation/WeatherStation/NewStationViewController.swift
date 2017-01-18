@@ -68,7 +68,7 @@ class NewStationViewController: UITableViewController {
         let station = Station.mr_createEntity()!
         station.name = stationNameTextField.text
         station.address = stationAddressTextField.text
-        station.available = Bool(arc4random_uniform(1))
+        station.available = Bool(arc4random_uniform(2)) // Change to false and use response of request
         station.createdAt = NSDate()
         
         // Should be replaced with real data

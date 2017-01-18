@@ -34,8 +34,21 @@ class StationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(stationSettingsDidChange(_:)), name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil)
+        
         reloadStations()
         configureTableView()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - Notifications
+    
+    func stationSettingsDidChange(_ notification: Notification) {
+        reloadStations()
+        tableView.reloadData()
     }
 
     // MARK: - Configuration methods
@@ -60,6 +73,7 @@ class StationsViewController: UIViewController {
                 offlineStations.append(station)
             }
         }
+        
     }
     
     // MARK: - User interactions
