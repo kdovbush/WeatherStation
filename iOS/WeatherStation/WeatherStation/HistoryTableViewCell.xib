@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="418" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGt-6J-dzf">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGt-6J-dzf" userLabel="Time">
                         <rect key="frame" x="0.0" y="0.0" width="65" height="60"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LKs-KI-sLI">
@@ -56,12 +56,12 @@
                             <constraint firstItem="LKs-KI-sLI" firstAttribute="centerX" secondItem="bGt-6J-dzf" secondAttribute="centerX" id="otJ-ap-o9S"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rn5-B6-vSe">
-                        <rect key="frame" x="65" y="25" width="1" height="10"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rn5-B6-vSe" userLabel="Separator">
+                        <rect key="frame" x="65" y="0.0" width="1" height="60"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="aoc-Bl-PMW"/>
-                            <constraint firstAttribute="height" constant="10" id="yVO-kh-rs5"/>
+                            <constraint firstAttribute="height" constant="60" id="yVO-kh-rs5"/>
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="WwS-Lb-x5V">

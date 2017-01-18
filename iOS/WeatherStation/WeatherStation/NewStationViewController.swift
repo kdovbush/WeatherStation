@@ -31,6 +31,12 @@ class NewStationViewController: UITableViewController {
         configureTextFields()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        stationNameTextField.becomeFirstResponder()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -73,9 +79,9 @@ class NewStationViewController: UITableViewController {
         station.temperatureUnits = 0
         
         // Should be replaced with real data
-        for _ in 0...20 {
+        for _ in 0...200 {
             let measurement = Measurements.mr_createEntity()!
-            measurement.createdAt = NSDate()
+            measurement.createdAt = NSDate().random
             
             let lowerValue = -20
             let upperValue = 25
@@ -85,7 +91,7 @@ class NewStationViewController: UITableViewController {
             measurement.humidity = Double(arc4random_uniform(100))
             measurement.heatIndex = Double(arc4random_uniform(140))
             measurement.rainAnalog = Double(arc4random_uniform(1000))
-            measurement.rainDigital = Bool(arc4random_uniform(1))
+            measurement.rainDigital = measurement.rainAnalog > 500
             
             station.addToMeasurements(measurement)
         }

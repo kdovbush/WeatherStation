@@ -30,18 +30,18 @@ class HistoryTableViewCell: UITableViewCell {
                 humidityLabel.text = String(describing: measurement.humidity)
                 heatIndexLabel.text = String(describing: measurement.heatIndex)
                 rainLabel.text = String(describing: measurement.rainAnalog)
-                configureDateLabels(date: measurement.createdAt as Date)
+                configureDateLabels(for: measurement.createdAt as Date)
             }
         }
     }
     
     // MARK: - Configuration methods
     
-    func configureDateLabels(date: Date) {
+    func configureDateLabels(for date: Date) {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         hourLabel.text = formatter.string(from: date)
-        formatter.dateFormat = "MM.dd"
+        formatter.dateFormat = "dd.MM"
         dateLabel.text = formatter.string(from: date)
         formatter.dateFormat = "yyyy"
         yearLabel.text = formatter.string(from: date)
