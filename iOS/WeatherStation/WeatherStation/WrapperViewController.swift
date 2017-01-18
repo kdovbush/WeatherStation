@@ -94,7 +94,7 @@ class WrapperViewController: UIViewController {
         // Disabled changing view controller by left/right scrolling
         pageMenu?.controllerScrollView.isScrollEnabled = false
         
-        pageMenu?.moveToPage(1)
+        pageMenu?.moveToPage(1, animated: false)
         
         addChildViewController(pageMenu!)
         view.addSubview(pageMenu!.view)

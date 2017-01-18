@@ -19,10 +19,15 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PageMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
 		<key>Pods-WeatherStation.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
@@ -32,12 +37,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>63F28DC84557324FA8EF9AD0D399193A</key>
+		<key>221814D78FA77C632C2BAC305DA4AC8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>83E24A1F3EF223D5B06AFE13F633A29E</key>
+		<key>6C16BEDD503F9100C2FBFD75736897A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>748D6F942CE2FCBF404F5C2E476BEC4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

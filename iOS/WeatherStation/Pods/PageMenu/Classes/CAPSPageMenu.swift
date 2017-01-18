@@ -58,7 +58,6 @@ class MenuItemView: UIView {
 }
 
 public enum CAPSPageMenuOption {
-    case selectionIndicatorBottomOffset(CGFloat)
     case selectionIndicatorHeight(CGFloat)
     case menuItemSeparatorWidth(CGFloat)
     case scrollMenuBackgroundColor(UIColor)
@@ -83,14 +82,6 @@ public enum CAPSPageMenuOption {
     case scrollAnimationDurationOnMenuItemTap(Int)
     case centerMenuItems(Bool)
     case hideTopMenuBar(Bool)
-    case menuShadowRadius(CGFloat)
-    case menuShadowOpacity(Float)
-    case menuShadowColor(UIColor)
-    case menuShadowOffset(CGFloat)
-    case addBottomMenuShadow(Bool)
-    case iconIndicator(Bool)
-    case iconIndicatorView(UIView)
-    case showStepperView(Bool)
 }
 
 open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
@@ -98,7 +89,7 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
     // MARK: - Properties
     
     let menuScrollView = UIScrollView()
-    open let controllerScrollView = UIScrollView()
+    let controllerScrollView = UIScrollView()
     var controllerArray : [UIViewController] = []
     var menuItems : [MenuItemView] = []
     var menuItemWidths : [CGFloat] = []
@@ -106,17 +97,13 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
     open var menuHeight : CGFloat = 34.0
     open var menuMargin : CGFloat = 15.0
     open var menuItemWidth : CGFloat = 111.0
-    open var selectionIndicatorBottomOffset : CGFloat = 0.0
     open var selectionIndicatorHeight : CGFloat = 3.0
     var totalMenuItemWidthIfDifferentWidths : CGFloat = 0.0
     open var scrollAnimationDurationOnMenuItemTap : Int = 500 // Millisecons
     var startingMenuMargin : CGFloat = 0.0
     var menuItemMargin : CGFloat = 0.0
     
-    var iconIndicator:Bool = false
-    var selectionIndicatorCustomView: UIView?
     var selectionIndicatorView : UIView = UIView()
-    var stepperView : UIView = UIView()
     
     var currentPageIndex : Int = 0
     var lastPageIndex : Int = 0
@@ -141,13 +128,6 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
     open var centerMenuItems : Bool = false
     open var enableHorizontalBounce : Bool = true
     open var hideTopMenuBar : Bool = false
-    open var showStepperView : Bool = false
-    
-    public var menuShadowRadius : CGFloat = 0
-    public var menuShadowOpacity : Float = 0
-    public var menuShadowColor : UIColor = UIColor.white
-    public var menuShadowOffset : CGFloat = 0
-    public var addBottomMenuShadow : Bool = false
     
     var currentOrientationIsPortrait : Bool = true
     var pageIndexForOrientationChange : Int = 0
@@ -175,12 +155,12 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
     // MARK: - View life cycle
     
     /**
-     Initialize PageMenu with view controllers
-     
-     :parameter viewControllers: List of view controllers that must be subclasses of UIViewController
-     :parameter frame: Frame for page menu view
-     :parameter options: Dictionary holding any customization options user might want to set
-     */
+    Initialize PageMenu with view controllers
+    
+    :param: viewControllers List of view controllers that must be subclasses of UIViewController
+    :param: frame Frame for page menu view
+    :param: options Dictionary holding any customization options user might want to set
+    */
     public init(viewControllers: [UIViewController], frame: CGRect, options: [String: AnyObject]?) {
         super.init(nibName: nil, bundle: nil)
         
@@ -195,8 +175,6 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
         if let options = pageMenuOptions {
             for option in options {
                 switch (option) {
-                case let .selectionIndicatorBottomOffset(value):
-                    selectionIndicatorBottomOffset = value
                 case let .selectionIndicatorHeight(value):
                     selectionIndicatorHeight = value
                 case let .menuItemSeparatorWidth(value):
@@ -245,29 +223,12 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
                     centerMenuItems = value
                 case let .hideTopMenuBar(value):
                     hideTopMenuBar = value
-                case let .menuShadowRadius(value):
-                    menuShadowRadius = value
-                case let .menuShadowOpacity(value):
-                    menuShadowOpacity = value
-                case let .menuShadowColor(value):
-                    menuShadowColor = value
-                case let .menuShadowOffset(value):
-                    menuShadowOffset = value
-                case let .addBottomMenuShadow(value):
-                    addBottomMenuShadow = value
-                case let .iconIndicator(value):
-                    iconIndicator = value
-                case let .iconIndicatorView(value):
-                    selectionIndicatorCustomView = value
-                case let .showStepperView(value):
-                    showStepperView = value
                 }
             }
             
             if hideTopMenuBar {
                 addBottomMenuHairline = false
                 menuHeight = 0.0
-                addBottomMenuShadow = false
             }
         }
         
@@ -276,25 +237,21 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
         if menuScrollView.subviews.count == 0 {
             configureUserInterface()
         }
-        
-        if iconIndicator {
-            moveSelectionIndicator(currentPageIndex)
-        }
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    // MARK: - Container View Controller
-    open override var shouldAutomaticallyForwardAppearanceMethods : Bool {
-        return true
-    }
-    
-    open override func shouldAutomaticallyForwardRotationMethods() -> Bool {
-        return true
-    }
-    
+	
+	// MARK: - Container View Controller
+	open override var shouldAutomaticallyForwardAppearanceMethods : Bool {
+		return true
+	}
+	
+	open override func shouldAutomaticallyForwardRotationMethods() -> Bool {
+		return true
+	}
+	
     // MARK: - UI Setup
     
     func setUpUserInterface() {
@@ -344,14 +301,6 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
             self.view.addConstraints(menuBottomHairline_constraint_V)
             
             menuBottomHairline.backgroundColor = bottomMenuHairlineColor
-        }
-        
-        if addBottomMenuShadow {
-            menuScrollView.layer.shadowColor = menuShadowColor.cgColor
-            menuScrollView.layer.shadowRadius = menuShadowRadius
-            menuScrollView.layer.shadowOpacity = menuShadowOpacity
-            menuScrollView.layer.shadowOffset = CGSize(width:0, height:menuShadowOffset)
-            menuScrollView.layer.masksToBounds = true
         }
         
         // Disable scroll bars
@@ -505,38 +454,20 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
         var selectionIndicatorFrame : CGRect = CGRect()
         
         if useMenuLikeSegmentedControl {
-            selectionIndicatorFrame = CGRect(x: 0.0, y: menuHeight - selectionIndicatorHeight - selectionIndicatorBottomOffset, width: self.view.frame.width / CGFloat(controllerArray.count), height: selectionIndicatorHeight)
+            selectionIndicatorFrame = CGRect(x: 0.0, y: menuHeight - selectionIndicatorHeight, width: self.view.frame.width / CGFloat(controllerArray.count), height: selectionIndicatorHeight)
         } else if menuItemWidthBasedOnTitleTextWidth {
-            selectionIndicatorFrame = CGRect(x: menuMargin, y: menuHeight - selectionIndicatorHeight - selectionIndicatorBottomOffset, width: menuItemWidths[0], height: selectionIndicatorHeight)
+            selectionIndicatorFrame = CGRect(x: menuMargin, y: menuHeight - selectionIndicatorHeight, width: menuItemWidths[0], height: selectionIndicatorHeight)
         } else {
             if centerMenuItems  {
-                selectionIndicatorFrame = CGRect(x: startingMenuMargin + menuMargin, y: menuHeight - selectionIndicatorHeight - selectionIndicatorBottomOffset, width: menuItemWidth, height: selectionIndicatorHeight)
+                selectionIndicatorFrame = CGRect(x: startingMenuMargin + menuMargin, y: menuHeight - selectionIndicatorHeight, width: menuItemWidth, height: selectionIndicatorHeight)
             } else {
-                selectionIndicatorFrame = CGRect(x: menuMargin, y: menuHeight - selectionIndicatorHeight - selectionIndicatorBottomOffset, width: menuItemWidth, height: selectionIndicatorHeight)
+                selectionIndicatorFrame = CGRect(x: menuMargin, y: menuHeight - selectionIndicatorHeight, width: menuItemWidth, height: selectionIndicatorHeight)
             }
         }
         
         selectionIndicatorView = UIView(frame: selectionIndicatorFrame)
         selectionIndicatorView.backgroundColor = selectionIndicatorColor
         menuScrollView.addSubview(selectionIndicatorView)
-        
-        //Stepper view
-        if showStepperView {
-            selectionIndicatorFrame = CGRect(x: 0.0, y: menuHeight - selectionIndicatorHeight, width: menuScrollView.frame.width, height: selectionIndicatorHeight)
-            stepperView = UIView(frame: selectionIndicatorFrame)
-            menuScrollView.addSubview(self.stepperView)
-        }
-        
-        //Check if icon indicator is active and has a valid icon indicator view
-        if let indicatorView = self.selectionIndicatorCustomView, self.iconIndicator {
-            //modify bounds of icon indicator
-            indicatorView.frame.origin.x = selectionIndicatorFrame.size.width/2-selectionIndicatorFrame.size.height/2
-            //add icon indicator to selection view container
-            selectionIndicatorView.addSubview(indicatorView)
-        }
-        
-        //Hide background of selectionIndicatorView if icon indicator was setter
-        selectionIndicatorView.backgroundColor = self.iconIndicator ? UIColor.clear : selectionIndicatorColor
         
         if menuItemWidthBasedOnTitleTextWidth && centerMenuItems {
             self.configureMenuItemWidthBasedOnTitleTextWidthAndCenterMenuItems()
@@ -801,12 +732,6 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
                 
                 self.selectionIndicatorView.frame = CGRect(x: selectionIndicatorX, y: self.selectionIndicatorView.frame.origin.y, width: selectionIndicatorWidth, height: self.selectionIndicatorView.frame.height)
                 
-                //If icon indicator was setted and has a valid icon indicator
-                if let indicatorView = self.selectionIndicatorCustomView, self.iconIndicator{
-                    //Modify the frame position
-                    indicatorView.frame = CGRect(x: self.selectionIndicatorView.frame.size.width/2-self.selectionIndicatorView.frame.size.height/2, y: 0, width: self.selectionIndicatorView.frame.size.height, height: self.selectionIndicatorView.frame.size.height)
-                }
-                
                 // Switch newly selected menu item title label to selected color and old one to unselected color
                 if self.menuItems.count > 0 {
                     if self.menuItems[self.lastPageIndex].titleLabel != nil && self.menuItems[self.currentPageIndex].titleLabel != nil {
@@ -971,6 +896,7 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
                 let selectionIndicatorX : CGFloat = CGFloat(currentPageIndex) * (self.view.frame.width / CGFloat(self.controllerArray.count))
                 let selectionIndicatorWidth : CGFloat = self.view.frame.width / CGFloat(self.controllerArray.count)
                 selectionIndicatorView.frame =  CGRect(x: selectionIndicatorX, y: self.selectionIndicatorView.frame.origin.y, width: selectionIndicatorWidth, height: self.selectionIndicatorView.frame.height)
+                
                 // Resize menu items
                 var index : Int = 0
                 
@@ -1039,10 +965,10 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
     // MARK: - Move to page index
     
     /**
-     Move to page at index
-     
-     :parameter index: Index of the page to move to
-     */
+    Move to page at index
+    
+    :param: index Index of the page to move to
+    */
     open func moveToPage(_ index: Int, animated: Bool) {
         if index >= 0 && index < controllerArray.count {
             // Update page if changed
@@ -1083,7 +1009,6 @@ open class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecogn
                 let xOffset : CGFloat = CGFloat(index) * self.controllerScrollView.frame.width
                 self.controllerScrollView.setContentOffset(CGPoint(x: xOffset, y: self.controllerScrollView.contentOffset.y), animated: false)
             }
-
         }
     }
 }
