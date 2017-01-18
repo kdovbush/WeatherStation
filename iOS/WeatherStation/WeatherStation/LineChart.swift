@@ -37,12 +37,20 @@ class LineChart: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = UIColor.white
+        
         chartView = LineChartView(frame: frame)
         addSubview(chartView)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        chartView.moveViewToX(Double(values.count))
     }
     
     // MARK: - Configuration methods
@@ -83,10 +91,8 @@ class LineChart: UIView {
         
         chartView.animate(yAxisDuration: 1.0, easingOption: .linear)
         
-        // Limit visible items and scoll to end
+        // Limit visible items
         chartView.setVisibleXRangeMaximum(maxVisibleItems)
-        // TODO: Should be fixed
-        chartView.moveViewToX(Double(values.count) - (maxVisibleItems))
     }
     
     func prepareData() {

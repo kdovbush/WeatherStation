@@ -44,11 +44,11 @@ class ChartsViewController: UITableViewController {
         
         // Temperature
         
-        let temperatureChartFrame = CGRect(x: 2, y: 2, width: UIScreen.main.bounds.width - 8, height: temperatureCell.bounds.height - 12)
+        let temperatureChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 7, height: temperatureCell.bounds.height - 12)
         let temperatureChart = LineChart(frame: temperatureChartFrame)
         temperatureChart.xAxisLabels = labels
         temperatureChart.values = station?.temperatures ?? []
-        temperatureChart.maxVisibleItems = 5
+        temperatureChart.maxVisibleItems = 6
         temperatureChart.zeroLineEnabled = true
         temperatureChart.gradientColors = [UIColor.red, UIColor(hex: "007AFF")]
         temperatureChart.configure()
@@ -58,11 +58,11 @@ class ChartsViewController: UITableViewController {
         
         // Humidity
         
-        let humidityChartFrame = CGRect(x: 2, y: 2, width: UIScreen.main.bounds.width - 8, height: temperatureCell.bounds.height - 12)
+        let humidityChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 8, height: temperatureCell.bounds.height - 12)
         let humidityChart = LineChart(frame: humidityChartFrame)
         humidityChart.xAxisLabels = labels
         humidityChart.values = station?.humidities ?? []
-        humidityChart.maxVisibleItems = 5
+        humidityChart.maxVisibleItems = 6
         humidityChart.gradientColors = [UIColor(hex: "#19B5FE"), UIColor(hex: "#E4F1FE")]
         humidityChart.configure()
         humidityChart.prepareData()
@@ -71,7 +71,7 @@ class ChartsViewController: UITableViewController {
         
         // Rain
         
-        let rainChartFrame = CGRect(x: 4, y: 2, width: UIScreen.main.bounds.width - 10, height: temperatureCell.bounds.height - 12)
+        let rainChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 10, height: temperatureCell.bounds.height - 12)
         let rainChart = BarChart(frame: rainChartFrame)
         rainChart.xAxisLabels = labels
         rainChart.values = station?.rainAnalogs ?? []
@@ -87,7 +87,7 @@ class ChartsViewController: UITableViewController {
 
         // Heat index
         
-        let heatIndexChartFrame = CGRect(x: 4, y: 2, width: UIScreen.main.bounds.width - 10, height: temperatureCell.bounds.height - 12)
+        let heatIndexChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 10, height: temperatureCell.bounds.height - 12)
         let heatIndexChart = BarChart(frame: heatIndexChartFrame)
         heatIndexChart.xAxisLabels = labels
         heatIndexChart.values = station?.heatIndexes ?? []

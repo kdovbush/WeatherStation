@@ -38,12 +38,20 @@ class BarChart: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = UIColor.white
+        
         chartView = BarChartView(frame: frame)
         addSubview(chartView)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        chartView.moveViewToX(Double(values.count))
     }
     
     // MARK: - Configuration methods
@@ -93,8 +101,6 @@ class BarChart: UIView {
         
         // Limit visible items and scoll to end
         chartView.setVisibleXRangeMaximum(maxVisibleItems)
-        // TODO: Should be fixed
-        chartView.moveViewToX(Double(values.count + 1) - (maxVisibleItems))
     }
     
     func prepareData() {
