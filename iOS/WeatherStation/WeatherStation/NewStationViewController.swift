@@ -70,6 +70,7 @@ class NewStationViewController: UITableViewController {
         station.address = stationAddressTextField.text
         station.available = Bool(arc4random_uniform(2)) // Change to false and use response of request
         station.createdAt = NSDate()
+        station.temperatureUnits = 0
         
         // Should be replaced with real data
         for _ in 0...20 {

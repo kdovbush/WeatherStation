@@ -15,23 +15,31 @@ extension Station {
     // MARK: - Properties
     
     var temperatures: [Double] {
-        return getAllMeasurements().flatMap({ return $0.temperature })
+        return allMeasurements.flatMap({ return $0.temperature })
     }
     
     var humidities: [Double] {
-        return getAllMeasurements().flatMap({ return $0.humidity })
+        return allMeasurements.flatMap({ return $0.humidity })
     }
     
     var heatIndexes: [Double] {
-        return getAllMeasurements().flatMap({ return $0.heatIndex })
+        return allMeasurements.flatMap({ return $0.heatIndex })
     }
     
     var rainAnalogs: [Double] {
-        return getAllMeasurements().flatMap({ return $0.rainAnalog })
+        return allMeasurements.flatMap({ return $0.rainAnalog })
+    }
+    
+    var allMeasurements: [Measurements] {
+        if let measurements = measurements?.allObjects as? [Measurements] {
+            return measurements.sorted{ $0.createdAt < $1.createdAt }
+        }
+        
+        return []
     }
     
     var lastMeasurement: Measurements? {
-        return getAllMeasurements().last
+        return allMeasurements.last
     }
 
     // MARK: - Class methods
@@ -42,15 +50,8 @@ extension Station {
     
     // MARK: - Methods
     
-    func getAllMeasurements() -> [Measurements] {
-        if let measurements = measurements?.allObjects as? [Measurements] {
-            return measurements.sorted{ $0.createdAt < $1.createdAt }
-        }
-        return []
-    }
-    
     func getDateStrings() -> [String] {
-        return getAllMeasurements().flatMap({
+        return allMeasurements.flatMap({
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"
             return formatter.string(from: $0.createdAt as Date)

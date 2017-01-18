@@ -75,11 +75,11 @@ class IndicatorsViewController: UITableViewController {
         case let object as Station:
             navigationItem.title = station?.name
             
-            temperatureLabel.text = String(object.lastMeasurement!.temperature)
+            temperatureLabel.text = String(object.allMeasurements.last!.temperature)
             temperatureMinLabel.text = String(describing: object.temperatures.min()!)
             temperatureMaxLabel.text = String(describing: object.temperatures.max()!)
             
-            humidityLabel.text = String(object.lastMeasurement!.humidity)
+            humidityLabel.text = String(object.allMeasurements.last!.humidity)
             humidityMinLabel.text = String(describing: object.humidities.min()!)
             humidityMaxLabel.text = String(describing: object.humidities.max()!)
             

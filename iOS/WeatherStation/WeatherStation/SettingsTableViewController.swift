@@ -29,8 +29,12 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameTextField.text = station?.name
-        addressTextField.text = station?.address
+        if let station = station {
+            nameTextField.text = station.name
+            addressTextField.text = station.address
+            temperatureUnitsSegmentedControl.selectedSegmentIndex = Int(station.temperatureUnits)
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

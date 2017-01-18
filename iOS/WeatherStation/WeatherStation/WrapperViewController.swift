@@ -52,16 +52,16 @@ class WrapperViewController: UIViewController {
         
         var controllerArray : [UIViewController] = []
         
-        if let indicatorsViewController = UIStoryboard.indicatorsViewController {
-            indicatorsViewController.title = "INDICATORS"
-            indicatorsViewController.station = station
-            controllerArray.append(indicatorsViewController)
-        }
-        
         if let chartsViewController = UIStoryboard.chartsViewController {
             chartsViewController.title = "CHARTS"
             chartsViewController.station = station
             controllerArray.append(chartsViewController)
+        }
+        
+        if let indicatorsViewController = UIStoryboard.indicatorsViewController {
+            indicatorsViewController.title = "INDICATORS"
+            indicatorsViewController.station = station
+            controllerArray.append(indicatorsViewController)
         }
         
         if let historyViewController = UIStoryboard.historyViewController {
@@ -93,6 +93,8 @@ class WrapperViewController: UIViewController {
         
         // Disabled changing view controller by left/right scrolling
         pageMenu?.controllerScrollView.isScrollEnabled = false
+        
+        pageMenu?.moveToPage(1)
         
         addChildViewController(pageMenu!)
         view.addSubview(pageMenu!.view)
