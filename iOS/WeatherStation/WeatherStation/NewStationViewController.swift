@@ -59,10 +59,10 @@ class NewStationViewController: UITableViewController {
                 self.dismiss(animated: true, completion: nil)
             }
             
-            LoadingIndicatorManager.shared.present()
+            LoadingIndicator.present()
             
             NetworkManager.shared.check(adress: stationAddress, completion: { (connected) in
-                LoadingIndicatorManager.shared.hide()
+                LoadingIndicator.hide()
                 
                 if let station = self.createStation() {
                     if connected {

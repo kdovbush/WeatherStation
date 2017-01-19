@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C1A645B1E312A72002BCC0B /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A645A1E312A72002BCC0B /* LoadingIndicator.swift */; };
 		5C1A645D1E3130B9002BCC0B /* LoadingIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A645C1E3130B9002BCC0B /* LoadingIndicatorManager.swift */; };
 		5C1A645F1E31336A002BCC0B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A645E1E31336A002BCC0B /* UIView+Extension.swift */; };
 		5C4227C01E2791D800E45B37 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4227BF1E2791D800E45B37 /* UIColor+Extension.swift */; };
@@ -54,7 +53,6 @@
 
 /* Begin PBXFileReference section */
 		17DD199CB89E06F95CA47086 /* Pods-WeatherStation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherStation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherStation/Pods-WeatherStation.debug.xcconfig"; sourceTree = "<group>"; };
-		5C1A645A1E312A72002BCC0B /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		5C1A645C1E3130B9002BCC0B /* LoadingIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorManager.swift; sourceTree = "<group>"; };
 		5C1A645E1E31336A002BCC0B /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		5C4227BF1E2791D800E45B37 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 		5CCCEEE41E1A573600CB8F3D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5C1A645A1E312A72002BCC0B /* LoadingIndicator.swift */,
 				5C4D399A1E29AF6F0040826A /* Charts */,
 				5CCCEEE51E1A574E00CB8F3D /* StationTableViewCell.swift */,
 				5CCCEEE61E1A574E00CB8F3D /* StationTableViewCell.xib */,
@@ -423,7 +420,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C1A645B1E312A72002BCC0B /* LoadingIndicator.swift in Sources */,
 				5C4D39961E297C600040826A /* ChartTableViewCell.swift in Sources */,
 				5C4D396B1E26CB1C0040826A /* ChartsViewController.swift in Sources */,
 				5C4227E01E279FF000E45B37 /* Measurements+CoreDataClass.swift in Sources */,

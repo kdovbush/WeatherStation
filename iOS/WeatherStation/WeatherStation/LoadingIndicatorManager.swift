@@ -7,32 +7,18 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class LoadingIndicatorManager: NSObject {
-
-    // MARK: - Static properties
+class LoadingIndicator: NSObject {
     
-    static let shared = LoadingIndicatorManager()
+    // MARK: - Static methods
     
-    // MARK: - Properties
-    
-    var loadingIndicator: LoadingIndicator?
-    
-    // MARK: - Methods
-    
-    func present() {
-        if let window = UIApplication.shared.keyWindow {
-            loadingIndicator = LoadingIndicator(frame: window.frame)
-            if let loadingIndicator = loadingIndicator {
-                window.addSubview(loadingIndicator)
-                loadingIndicator.fadeIn(duration: 0.3, alpha: 0.4)
-            }
-        }
+    static func present() {
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(size: CGSize(width: 35, height: 35), message: "Connecting", type: .ballSpinFadeLoader, color: UIColor(hex: "#ecf0f1"), padding: nil, displayTimeThreshold: nil, minimumDisplayTime: 1))
     }
     
-    func hide() {
-        loadingIndicator?.fadeOut()
-        loadingIndicator?.removeFromSuperview()
+    static func hide() {
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
     }
     
 }
