@@ -26,6 +26,7 @@
 		5C66465B1E25202600D1F9F8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */; };
 		5C66465C1E25202600D1F9F8 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */; };
 		5C6646621E25271000D1F9F8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */; };
+		5C6F9E441E3115FC005C4F2E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6F9E431E3115FC005C4F2E /* UIViewController+Extension.swift */; };
 		5C9072B11E2F8F7200410F11 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9072B01E2F8F7200410F11 /* Double+Extension.swift */; };
 		5C91635E1E2EBB22008FA0B3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91635D1E2EBB22008FA0B3 /* NetworkManager.swift */; };
 		5C9163601E2EBEDE008FA0B3 /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91635F1E2EBEDE008FA0B3 /* Bool+Extension.swift */; };
@@ -69,6 +70,7 @@
 		5C6646591E25202600D1F9F8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		5C6F9E431E3115FC005C4F2E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		5C9072B01E2F8F7200410F11 /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		5C91635D1E2EBB22008FA0B3 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5C91635F1E2EBEDE008FA0B3 /* Bool+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 		5CCCEEF11E1A70FD00CB8F3D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5C6F9E431E3115FC005C4F2E /* UIViewController+Extension.swift */,
 				5CCCEEF21E1A713B00CB8F3D /* UIStoryboard+Extension.swift */,
 				5C4227BF1E2791D800E45B37 /* UIColor+Extension.swift */,
 				5C4227E61E27AF5900E45B37 /* NSManagedObject+Extension.swift */,
@@ -416,6 +419,7 @@
 				5C4227E01E279FF000E45B37 /* Measurements+CoreDataClass.swift in Sources */,
 				5C91636E1E30194D008FA0B3 /* CAPSPageMenu.swift in Sources */,
 				5C966AFD1E1A4812000FA401 /* WeatherStation.xcdatamodeld in Sources */,
+				5C6F9E441E3115FC005C4F2E /* UIViewController+Extension.swift in Sources */,
 				5C9163661E2ED866008FA0B3 /* Measurements+Extension.swift in Sources */,
 				5C4D39931E2978CA0040826A /* LineChart.swift in Sources */,
 				5C9072B11E2F8F7200410F11 /* Double+Extension.swift in Sources */,

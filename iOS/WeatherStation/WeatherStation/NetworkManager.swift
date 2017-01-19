@@ -15,9 +15,11 @@ class NetworkManager: NSObject {
 
     static let shared = NetworkManager()
     
-    func check(station: Station, completion: () -> Void) {
+    func check(adress: String, completion: (Bool) -> Void) {
        
         // If station online - return true
+        
+        completion(false)
         
     }
     

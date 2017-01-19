@@ -47,13 +47,35 @@ class NewStationViewController: UITableViewController {
     
     @IBAction func actionSave(_ sender: UIBarButtonItem) {
         if isEmptyFields() {
-            let alertView = UIAlertController(title: "Required Fields Missing", message: "Name and Address can't be empty", preferredStyle: .alert)
-            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            present(alertView, animated: true, completion: nil)
+            presentRequiredFieldsAlert()
         } else {
-            let station = createStation()
-            delegate?.stationAdded(station: station)
-            dismiss(animated: true, completion: nil)
+            view.endEditing(true)
+            
+            guard let stationAddress = stationAddressTextField.text else { return }
+            
+            let save: (Station) -> Void = { station in
+                station.save()
+                self.delegate?.stationAdded(station: station)
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            NetworkManager.shared.check(adress: stationAddress, completion: { (connected) in
+                if let station = createStation() {
+                    if connected {
+                        save(station)
+                    } else {
+                        presentConnectionErrorAlert({
+                            save(station)
+                        }, cancelAction: {
+                            station.remove()
+                            self.stationAddressTextField.becomeFirstResponder()
+                        })
+                    }
+                } else {
+                    presentCantCreateStation()
+                    return
+                }
+            })
         }
     }
     
@@ -70,35 +92,36 @@ class NewStationViewController: UITableViewController {
     
     // MARK: - Helper methods
     
-    func createStation() -> Station {
-        let station = Station.mr_createEntity()!
-        station.name = stationNameTextField.text
-        station.address = stationAddressTextField.text
-        station.available = Bool(arc4random_uniform(2)) // Change to false and use response of request
-        station.createdAt = NSDate()
-        station.temperatureUnits = 0
-        
-        // Should be replaced with real data
-        for _ in 0...200 {
-            let measurement = Measurements.mr_createEntity()!
-            measurement.createdAt = NSDate().random
+    func createStation() -> Station? {
+        if let station = Station.mr_createEntity() {
+            station.name = stationNameTextField.text
+            station.address = stationAddressTextField.text
+            station.available = Bool(arc4random_uniform(2)) // Change to false and use response of request
+            station.createdAt = NSDate()
+            station.temperatureUnits = 0
             
-            let lowerValue = -20
-            let upperValue = 25
-            let result = Int(arc4random_uniform(UInt32(upperValue - lowerValue + 1))) + lowerValue
+            // Should be replaced with real data
+            for _ in 0...200 {
+                let measurement = Measurements.mr_createEntity()!
+                measurement.createdAt = NSDate().random
+                
+                let lowerValue = -20
+                let upperValue = 25
+                let result = Int(arc4random_uniform(UInt32(upperValue - lowerValue + 1))) + lowerValue
+                
+                measurement.temperature = Double(result)
+                measurement.humidity = Double(arc4random_uniform(100))
+                measurement.heatIndex = Double(arc4random_uniform(140))
+                measurement.rainAnalog = Double(arc4random_uniform(1000))
+                measurement.rainDigital = measurement.rainAnalog > 500
+                
+                station.addToMeasurements(measurement)
+            }
             
-            measurement.temperature = Double(result)
-            measurement.humidity = Double(arc4random_uniform(100))
-            measurement.heatIndex = Double(arc4random_uniform(140))
-            measurement.rainAnalog = Double(arc4random_uniform(1000))
-            measurement.rainDigital = measurement.rainAnalog > 500
-            
-            station.addToMeasurements(measurement)
+            return station
         }
         
-        station.save()
-            
-        return station
+        return nil
     }
     
     func isEmptyFields() -> Bool {
