@@ -17,7 +17,7 @@ extension UIViewController {
         presentAlert(with: "Required Fields Missing", message: "Name and Address can't be empty", style: .alert, actions: [okAction])
     }
     
-    func presentConnectionErrorAlert(_ addAnywayAction: @escaping ActionClosure, cancelAction: @escaping ActionClosure) {
+    func presentConnectionErrorAlert(addAnywayAction: @escaping ActionClosure, cancelAction: @escaping ActionClosure) {
         let addAnywayAction = UIAlertAction(title: "Add anyway", style: .default, handler: { action in
             addAnywayAction()
         })

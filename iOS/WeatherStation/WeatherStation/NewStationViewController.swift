@@ -59,12 +59,16 @@ class NewStationViewController: UITableViewController {
                 self.dismiss(animated: true, completion: nil)
             }
             
+            LoadingIndicatorManager.shared.present()
+            
             NetworkManager.shared.check(adress: stationAddress, completion: { (connected) in
-                if let station = createStation() {
+                LoadingIndicatorManager.shared.hide()
+                
+                if let station = self.createStation() {
                     if connected {
                         save(station)
                     } else {
-                        presentConnectionErrorAlert({
+                        self.presentConnectionErrorAlert(addAnywayAction: {
                             save(station)
                         }, cancelAction: {
                             station.remove()
@@ -72,8 +76,7 @@ class NewStationViewController: UITableViewController {
                         })
                     }
                 } else {
-                    presentCantCreateStation()
-                    return
+                    self.presentCantCreateStation()
                 }
             })
         }

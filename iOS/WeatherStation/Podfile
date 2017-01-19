@@ -4,10 +4,10 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'WeatherStation' do
-
     pod 'Alamofire', '~> 4.0'
     pod 'SwiftyJSON', '~> 3.1'
     pod 'Charts', '~> 3.0'
     pod 'MagicalRecord', '~> 2.3'
     #pod 'PageMenu', :git => 'https://github.com/kdovbush/PageMenu'
+    pod 'NVActivityIndicatorView'
 end

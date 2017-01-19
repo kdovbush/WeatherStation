@@ -15,12 +15,13 @@ class NetworkManager: NSObject {
 
     static let shared = NetworkManager()
     
-    func check(adress: String, completion: (Bool) -> Void) {
+    func check(adress: String, completion: @escaping (Bool) -> Void) {
        
         // If station online - return true
         
-        completion(false)
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            completion(false)
+        }
     }
     
     func getMeasurements(for station: Station, completion: (_ measurements: [Measurements]?) -> Void) {
