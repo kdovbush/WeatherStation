@@ -25,7 +25,7 @@ extension UIViewController {
             cancelAction()
         })
         
-        presentAlert(with: "Can not connect to station", message: "Please check address", style: .actionSheet, actions: [addAnywayAction, cancelAction])
+        presentAlert(with: "This station is offline", message: "Please check address and try again", style: .actionSheet, actions: [addAnywayAction, cancelAction])
     }
     
     func presentCantCreateStation() {

@@ -9,7 +9,52 @@
 import UIKit
 import CoreData
 import MagicalRecord
+import SwiftyJSON
 
 extension Measurements {
+    
+    class func parseMeasurements(data: Data, for station: Station) -> [Measurements] {
+        let json = JSON(data: data)
+        
+        var result: [Measurements] = []
+        
+        if let measurements = json["measurements"].array {
+            for measurement in measurements {
+                if let measurement = parseMeasurement(json: measurement, for: station) {
+                    result.append(measurement)
+                }
+            }
+        }
+        return result
+    }
+    
+    class func parseMeasurement(json: JSON, for station: Station) -> Measurements? {
+        if let timestamp = json["createdAt"].double, let temperature = json["temperature"].double,
+            let humidity = json["humidity"].double, let rainAnalog = json["rainAnalog"].double,
+            let rainDigital = json["rainDigital"].int, let heatIndex = json["heatIndex"].double {
+            
+            let createdAt = NSDate(timeIntervalSince1970: timestamp)
+            
+            var measurement = Measurements.mr_findFirst(byAttribute: "createdAt", withValue: createdAt, in: NSManagedObject.context)
+            
+            if measurement == nil {
+                measurement = Measurements.mr_createEntity()
+            }
+            
+            measurement?.createdAt = createdAt
+            measurement?.temperature = temperature.roundTo(places: 1)
+            measurement?.humidity = Int32(humidity)
+            measurement?.heatIndex = heatIndex > 0 ? heatIndex.roundTo(places: 1) : 0.0
+            measurement?.rainAnalog = Int32(rainAnalog)
+            measurement?.rainDigital = Bool(rainDigital)
+            measurement?.station = station
+            
+            measurement?.save()
+            
+            return measurement
+        }
+        
+        return nil
+    }
     
 }

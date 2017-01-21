@@ -34,7 +34,7 @@ class StationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(stationSettingsDidChange(_:)), name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stationDidChange(_:)), name: NSNotification.Name(rawValue: "StationDidChangeNotification"), object: nil)
         
         reloadStations()
         configureTableView()
@@ -46,7 +46,7 @@ class StationsViewController: UIViewController {
     
     // MARK: - Notifications
     
-    func stationSettingsDidChange(_ notification: Notification) {
+    func stationDidChange(_ notification: Notification) {
         reloadStations()
         tableView.reloadData()
     }

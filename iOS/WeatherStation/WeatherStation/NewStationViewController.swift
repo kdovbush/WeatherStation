@@ -28,6 +28,10 @@ class NewStationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Should be removed
+        stationNameTextField.text = "Home"
+        stationAddressTextField.text = "192.168.1.109"
+        
         configureTextFields()
     }
     
@@ -52,31 +56,20 @@ class NewStationViewController: UITableViewController {
             view.endEditing(true)
             
             guard let stationAddress = stationAddressTextField.text else { return }
-            
-            let save: (Station) -> Void = { station in
-                station.save()
-                self.delegate?.stationAdded(station: station)
-                self.dismiss(animated: true, completion: nil)
-            }
-            
+
             LoadingIndicator.present()
             
-            NetworkManager.shared.check(adress: stationAddress, completion: { (connected) in
+            NetworkManager.shared.check(address: stationAddress, completion: { (connected) in
                 LoadingIndicator.hide()
                 
-                if let station = self.createStation() {
-                    if connected {
-                        save(station)
-                    } else {
-                        self.presentConnectionErrorAlert(addAnywayAction: {
-                            save(station)
-                        }, cancelAction: {
-                            station.remove()
-                            self.stationAddressTextField.becomeFirstResponder()
-                        })
-                    }
+                if connected {
+                    self.saveStation(available: true)
                 } else {
-                    self.presentCantCreateStation()
+                    self.presentConnectionErrorAlert(addAnywayAction: {
+                        self.saveStation(available: false)
+                    }, cancelAction: {
+                        self.stationAddressTextField.becomeFirstResponder()
+                    })
                 }
             })
         }
@@ -95,11 +88,23 @@ class NewStationViewController: UITableViewController {
     
     // MARK: - Helper methods
     
+    func saveStation(available: Bool) {
+        if let station = self.createStation() {
+            station.available = available
+            station.save()
+            
+            //NetworkManager.shared.getMeasurements(for: station, completion: { result in })
+            
+            self.delegate?.stationAdded(station: station)
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func createStation() -> Station? {
         if let station = Station.mr_createEntity() {
             station.name = stationNameTextField.text
             station.address = stationAddressTextField.text
-            station.available = Bool(arc4random_uniform(2)) // Change to false and use response of request
+            station.available = false
             station.createdAt = NSDate()
             station.temperatureUnits = 0
             
@@ -113,9 +118,9 @@ class NewStationViewController: UITableViewController {
                 let result = Int(arc4random_uniform(UInt32(upperValue - lowerValue + 1))) + lowerValue
                 
                 measurement.temperature = Double(result)
-                measurement.humidity = Double(arc4random_uniform(100))
+                measurement.humidity = Int32(arc4random_uniform(100))
                 measurement.heatIndex = Double(arc4random_uniform(140))
-                measurement.rainAnalog = Double(arc4random_uniform(1000))
+                measurement.rainAnalog = Int32(arc4random_uniform(1000))
                 measurement.rainDigital = measurement.rainAnalog > 500
                 
                 station.addToMeasurements(measurement)

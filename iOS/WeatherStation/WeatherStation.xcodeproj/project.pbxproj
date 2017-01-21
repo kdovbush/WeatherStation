@@ -43,6 +43,7 @@
 		5C966AFF1E1A4812000FA401 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C966AFE1E1A4812000FA401 /* Assets.xcassets */; };
 		5C966B021E1A4812000FA401 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C966B001E1A4812000FA401 /* LaunchScreen.storyboard */; };
 		5C966B0B1E1A52A4000FA401 /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C966B0A1E1A52A4000FA401 /* StationsViewController.swift */; };
+		5CB8D4B21E33D7EC003EC7DA /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8D4B11E33D7EC003EC7DA /* StationsManager.swift */; };
 		5CCCEEE71E1A574E00CB8F3D /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCCEEE51E1A574E00CB8F3D /* StationTableViewCell.swift */; };
 		5CCCEEE81E1A574E00CB8F3D /* StationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CCCEEE61E1A574E00CB8F3D /* StationTableViewCell.xib */; };
 		5CCCEEEA1E1A5BFC00CB8F3D /* NewStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCCEEE91E1A5BFC00CB8F3D /* NewStationViewController.swift */; };
@@ -91,6 +92,7 @@
 		5C966B011E1A4812000FA401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C966B031E1A4812000FA401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C966B0A1E1A52A4000FA401 /* StationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsViewController.swift; sourceTree = "<group>"; };
+		5CB8D4B11E33D7EC003EC7DA /* StationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsManager.swift; sourceTree = "<group>"; };
 		5CCCEEE51E1A574E00CB8F3D /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		5CCCEEE61E1A574E00CB8F3D /* StationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationTableViewCell.xib; sourceTree = "<group>"; };
 		5CCCEEE91E1A5BFC00CB8F3D /* NewStationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewStationViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				5C91635D1E2EBB22008FA0B3 /* NetworkManager.swift */,
+				5CB8D4B11E33D7EC003EC7DA /* StationsManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				5C9163701E301A0A008FA0B3 /* SelectedHistoryNavigationTitleView.swift in Sources */,
 				5C4D39991E2993DE0040826A /* BarChart.swift in Sources */,
 				5C4227E11E279FF000E45B37 /* Measurements+CoreDataProperties.swift in Sources */,
+				5CB8D4B21E33D7EC003EC7DA /* StationsManager.swift in Sources */,
 				5C4227E51E27A8C500E45B37 /* Station+Extension.swift in Sources */,
 				5CCCEEE71E1A574E00CB8F3D /* StationTableViewCell.swift in Sources */,
 				5C9163601E2EBEDE008FA0B3 /* Bool+Extension.swift in Sources */,

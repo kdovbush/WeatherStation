@@ -19,7 +19,7 @@ extension NSManagedObject {
     }
     
     func remove() {
-        mr_deleteEntity()
+        mr_deleteEntity(in: NSManagedObject.context)
         save()
     }
     

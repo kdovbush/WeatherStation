@@ -22,7 +22,6 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var temperatureUnitsSegmentedControl: UISegmentedControl!
     
     // MARK: - ViewController lifecycle
     
@@ -32,7 +31,6 @@ class SettingsTableViewController: UITableViewController {
         if let station = station {
             nameTextField.text = station.name
             addressTextField.text = station.address
-            temperatureUnitsSegmentedControl.selectedSegmentIndex = Int(station.temperatureUnits)
         }
         
     }
@@ -47,9 +45,7 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func actionSave(_ sender: UIBarButtonItem) {
         if isEmptyFields() {
-            let alertView = UIAlertController(title: "Required Fields Missing", message: "Name and Address can't be empty", preferredStyle: .alert)
-            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            present(alertView, animated: true, completion: nil)
+            presentRequiredFieldsAlert()
         } else {
             editStation()
             dismiss(animated: true, completion: nil)
@@ -60,13 +56,22 @@ class SettingsTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func actionClearData(_ sender: UIBarButtonItem) {
+        if let station = station {
+            NetworkManager.shared.clean(for: station, completion: { (completed) in
+                if completed {
+                    station.measurements = nil
+                }
+            })
+        }
+    }
+    
     // MARK: - Helper methods
     
     func editStation() {
         if let station = station {
             station.name = nameTextField.text
             station.address = addressTextField.text
-            station.temperatureUnits = Int16(temperatureUnitsSegmentedControl.selectedSegmentIndex)
             station.save()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil, userInfo: ["station":station])
         }

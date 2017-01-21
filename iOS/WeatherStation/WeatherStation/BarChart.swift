@@ -108,7 +108,7 @@ class BarChart: UIView {
         
         var index = 0.0
         for value in values {
-            dataEntries.append(BarChartDataEntry(x: index, y: value))
+            dataEntries.append(BarChartDataEntry(x: index, y: Double(value)))
             index += 1.0
         }
 

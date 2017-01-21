@@ -79,8 +79,8 @@ class IndicatorsViewController: UITableViewController {
             }
             
             if let minHumidity = object.humidities.min(), let maxHumidity = object.humidities.max() {
-                humidityMinLabel.text = String(minHumidity) + "%"
-                humidityMaxLabel.text = String(maxHumidity) + "%"
+                humidityMinLabel.text = String(Int(minHumidity)) + "%"
+                humidityMaxLabel.text = String(Int(maxHumidity)) + "%"
             }
             
         case let object as Measurements:
@@ -100,7 +100,7 @@ class IndicatorsViewController: UITableViewController {
                 temperatureLabel.text = String(object.temperature)
                 humidityLabel.text = String(object.humidity)
                 moistureLevelLabel.text = String(object.rainAnalog)
-                rainImageView.image = object.rainDigital ? UIImage(named: "rain") : UIImage(named: "noRain")
+                rainImageView.image = object.rainDigital ? UIImage(named: "noRain") : UIImage(named: "rain")
                 configureHeatIndexLabels(for: object.heatIndex)
                 
                 if let minTemperature = station.temperatures.min(), let maxTemperature = station.temperatures.max() {
@@ -109,8 +109,8 @@ class IndicatorsViewController: UITableViewController {
                 }
                 
                 if let minHumidity = station.humidities.min(), let maxHumidity = station.humidities.max() {
-                    humidityMinLabel.text = String(minHumidity)
-                    humidityMaxLabel.text = String(maxHumidity)
+                    humidityMinLabel.text = String(Int(minHumidity))
+                    humidityMaxLabel.text = String(Int(maxHumidity))
                 }
             }
         default:

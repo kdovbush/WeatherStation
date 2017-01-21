@@ -25,7 +25,7 @@ class WrapperViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(stationSettingsDidChange(_:)), name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stationDidChange(_:)), name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil)
         
         navigationItem.title = station?.name
         configurePageMenu()
@@ -38,7 +38,7 @@ class WrapperViewController: UIViewController {
     
     // MARK: - Notifications
     
-    func stationSettingsDidChange(_ notification: Notification) {
+    func stationDidChange(_ notification: Notification) {
         if let station = notification.userInfo?["station"] as? Station {
             navigationItem.title = station.name
         }

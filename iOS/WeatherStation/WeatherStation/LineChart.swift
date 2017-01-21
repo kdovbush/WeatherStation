@@ -100,7 +100,7 @@ class LineChart: UIView {
         
         var index = 0.0
         for value in values {
-            dataEntries.append(ChartDataEntry(x: index, y: value))
+            dataEntries.append(ChartDataEntry(x: index, y: Double(value)))
             index += 1.0
         }
         
@@ -112,6 +112,8 @@ class LineChart: UIView {
         lineChartDataSet.setCircleColor(lineColor)
         lineChartDataSet.circleRadius = 3.0
         lineChartDataSet.highlightEnabled = false
+        
+        lineChartDataSet.valueFormatter
         
         // Gradient
         if gradientColors.count == 2 {

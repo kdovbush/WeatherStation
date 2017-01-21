@@ -19,7 +19,7 @@ extension Station {
     }
     
     var humidities: [Double] {
-        return allMeasurements.flatMap({ return $0.humidity })
+        return allMeasurements.flatMap({ return Double($0.humidity) })
     }
     
     var heatIndexes: [Double] {
@@ -27,7 +27,7 @@ extension Station {
     }
     
     var rainAnalogs: [Double] {
-        return allMeasurements.flatMap({ return $0.rainAnalog })
+        return allMeasurements.flatMap({ return Double($0.rainAnalog) })
     }
     
     var allMeasurements: [Measurements] {
