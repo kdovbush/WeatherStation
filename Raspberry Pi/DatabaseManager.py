@@ -37,14 +37,20 @@ class DatabaseManager:
 
       def getAllAfter(self, timestamp):
             self.cursor.execute("SELECT * FROM Measurement WHERE timestamp > %s", (timestamp))
-            return self.cursor.fetchall()
+
+            measurements = []
+            for item in self.cursor.fetchall():
+                  measurement = Measurement(item[1], item[2], item[4], item[5], item[3], item[0])
+                  measurements.append(measurement)
+            
+            return measurements
 
       def clean(self):
             try:
                   self.cursor.execute("TRUNCATE TABLE Measurement")
-                  return "Success"
+                  return "true"
             except:
-                  return "Failed"
+                  return "false"
             
 
 

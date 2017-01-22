@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import datetime
 from DatabaseManager import DatabaseManager
 from JSONParser import JSONParser
@@ -7,25 +7,22 @@ import json
 
 app = Flask(__name__)
 
-tasks = [
-	{
-		'id': 1,
-		'title': u'Create API',
-		'description': u'Create API for iOS Application',
-		'done': True
-	},
-	{
-		'id': 2,
-		'title': u'Create iOS Application',
-		'description': u'Need to create Weather Station iOS Application',
-		'done': False
-	}
-]
+@app.route('/api/v1.0/check', methods=['GET'])
+def check():
+    data = {}
+    data["status"] = "true"
+    return json.dumps(data)
 
-
-@app.route('/api/v1.0/weather', methods=['GET'])
+@app.route('/api/v1.0/measurements', methods=['GET'])
 def get_measurements():
     measurements = DatabaseManager().getAll()
+    data = {}
+    data["measurements"] = JSONParser.encodeArray(measurements)
+    return json.dumps(data)
+
+@app.route('/api/v1.0/measurementsAfter/<timestamp>', methods=['GET'])
+def get_measurementsAfter(timestamp):
+    measurements = DatabaseManager().getAllAfter(timestamp)
     data = {}
     data["measurements"] = JSONParser.encodeArray(measurements)
     return json.dumps(data)

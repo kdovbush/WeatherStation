@@ -28,8 +28,7 @@ data = ""
 
 while 1:
     try:
-        #time.sleep(0.3)
-        data = recvAll(sock, 93)
+        data = recvAll(sock, 71)
     except Exception as e:
         error = e.args[0]
         print(error)

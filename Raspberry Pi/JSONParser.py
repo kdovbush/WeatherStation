@@ -28,7 +28,7 @@ class JSONParser:
       @staticmethod
       def encode(measurement):
             data = {}
-            data["createdAt"] = measurement.createdAt
+            data["createdAt"] = measurement.createdAt if not None else 0.0
             data["temperature"] = measurement.temperature
             data["humidity"] = measurement.humidity
             data["heatIndex"] = measurement.heatIndex
