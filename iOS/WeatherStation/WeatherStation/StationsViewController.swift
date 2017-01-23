@@ -73,7 +73,6 @@ class StationsViewController: UIViewController {
                 offlineStations.append(station)
             }
         }
-        
     }
     
     // MARK: - User interactions
@@ -163,11 +162,10 @@ extension StationsViewController: UITableViewDelegate {
             return
         }
         
-        if let wrapperViewController = UIStoryboard.wrapperViewController, let station = station {
-            wrapperViewController.station = station
-            navigationController?.pushViewController(wrapperViewController, animated: true)
+        if let detectorsViewController = UIStoryboard.detectorsViewController, let station = station {
+            detectorsViewController.station = station
+            navigationController?.pushViewController(detectorsViewController, animated: true)
         }
-
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

@@ -29,9 +29,13 @@
 		5C66465C1E25202600D1F9F8 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */; };
 		5C6646621E25271000D1F9F8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */; };
 		5C6F9E441E3115FC005C4F2E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6F9E431E3115FC005C4F2E /* UIViewController+Extension.swift */; };
-		5C85D8F81E361BF800AF5A0A /* Detector+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85D8F61E361BF800AF5A0A /* Detector+CoreDataClass.swift */; };
-		5C85D8F91E361BF800AF5A0A /* Detector+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85D8F71E361BF800AF5A0A /* Detector+CoreDataProperties.swift */; };
 		5C85D8FB1E361C2800AF5A0A /* Detector+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85D8FA1E361C2800AF5A0A /* Detector+Extension.swift */; };
+		5C85D8FE1E361E0700AF5A0A /* DetectorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85D8FD1E361E0700AF5A0A /* DetectorsViewController.swift */; };
+		5C85D9021E361F2700AF5A0A /* DetectorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C85D9011E361F2700AF5A0A /* DetectorTableViewCell.xib */; };
+		5C85D9041E361F4500AF5A0A /* DetectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85D9031E361F4500AF5A0A /* DetectorTableViewCell.swift */; };
+		5C85D90C1E362C3A00AF5A0A /* Detector+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85D90A1E362C3A00AF5A0A /* Detector+CoreDataClass.swift */; };
+		5C85D90D1E362C3A00AF5A0A /* Detector+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85D90B1E362C3A00AF5A0A /* Detector+CoreDataProperties.swift */; };
+		5C85D90F1E36446200AF5A0A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85D90E1E36446200AF5A0A /* String+Extension.swift */; };
 		5C9072B11E2F8F7200410F11 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9072B01E2F8F7200410F11 /* Double+Extension.swift */; };
 		5C91635E1E2EBB22008FA0B3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91635D1E2EBB22008FA0B3 /* NetworkManager.swift */; };
 		5C9163601E2EBEDE008FA0B3 /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91635F1E2EBEDE008FA0B3 /* Bool+Extension.swift */; };
@@ -79,9 +83,13 @@
 		5C66465A1E25202600D1F9F8 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		5C6F9E431E3115FC005C4F2E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		5C85D8F61E361BF800AF5A0A /* Detector+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Detector+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5C85D8F71E361BF800AF5A0A /* Detector+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Detector+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5C85D8FA1E361C2800AF5A0A /* Detector+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Detector+Extension.swift"; sourceTree = "<group>"; };
+		5C85D8FD1E361E0700AF5A0A /* DetectorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectorsViewController.swift; sourceTree = "<group>"; };
+		5C85D9011E361F2700AF5A0A /* DetectorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetectorTableViewCell.xib; sourceTree = "<group>"; };
+		5C85D9031E361F4500AF5A0A /* DetectorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectorTableViewCell.swift; sourceTree = "<group>"; };
+		5C85D90A1E362C3A00AF5A0A /* Detector+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Detector+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5C85D90B1E362C3A00AF5A0A /* Detector+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Detector+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C85D90E1E36446200AF5A0A /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		5C9072B01E2F8F7200410F11 /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		5C91635D1E2EBB22008FA0B3 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5C91635F1E2EBEDE008FA0B3 /* Bool+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
@@ -129,17 +137,16 @@
 			name = Charts;
 			sourceTree = "<group>";
 		};
-		5C66465D1E25268B00D1F9F8 /* Station */ = {
+		5C66465D1E25268B00D1F9F8 /* Detector */ = {
 			isa = PBXGroup;
 			children = (
 				5C4D26C51E26C5C700471605 /* WrapperViewController.swift */,
 				5CCCEEF41E1A7A1B00CB8F3D /* IndicatorsViewController.swift */,
 				5C6646571E251D8000D1F9F8 /* HistoryViewController.swift */,
-				5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */,
 				5C4D396A1E26CB1C0040826A /* ChartsViewController.swift */,
 				5C4D396E1E2802060040826A /* HeatIndexInfoViewController.swift */,
 			);
-			name = Station;
+			name = Detector;
 			sourceTree = "<group>";
 		};
 		5C66465E1E2526A200D1F9F8 /* Stations */ = {
@@ -154,11 +161,20 @@
 		5C85D8F51E361BB300AF5A0A /* Detector */ = {
 			isa = PBXGroup;
 			children = (
-				5C85D8F61E361BF800AF5A0A /* Detector+CoreDataClass.swift */,
-				5C85D8F71E361BF800AF5A0A /* Detector+CoreDataProperties.swift */,
+				5C85D90A1E362C3A00AF5A0A /* Detector+CoreDataClass.swift */,
+				5C85D90B1E362C3A00AF5A0A /* Detector+CoreDataProperties.swift */,
 				5C85D8FA1E361C2800AF5A0A /* Detector+Extension.swift */,
 			);
 			name = Detector;
+			sourceTree = "<group>";
+		};
+		5C85D8FC1E361DE900AF5A0A /* Detectors */ = {
+			isa = PBXGroup;
+			children = (
+				5C85D8FD1E361E0700AF5A0A /* DetectorsViewController.swift */,
+				5C6646611E25271000D1F9F8 /* SettingsTableViewController.swift */,
+			);
+			name = Detectors;
 			sourceTree = "<group>";
 		};
 		5C91635C1E2EBB0D008FA0B3 /* Managers */ = {
@@ -184,8 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				5C4227DE1E279FF000E45B37 /* Station+CoreDataClass.swift */,
-				5C4227E41E27A8C500E45B37 /* Station+Extension.swift */,
 				5C4227DF1E279FF000E45B37 /* Station+CoreDataProperties.swift */,
+				5C4227E41E27A8C500E45B37 /* Station+Extension.swift */,
 			);
 			name = Station;
 			sourceTree = "<group>";
@@ -226,7 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				5C66465E1E2526A200D1F9F8 /* Stations */,
-				5C66465D1E25268B00D1F9F8 /* Station */,
+				5C85D8FC1E361DE900AF5A0A /* Detectors */,
+				5C66465D1E25268B00D1F9F8 /* Detector */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -243,6 +260,8 @@
 				5C4D39951E297C600040826A /* ChartTableViewCell.xib */,
 				5C91636F1E301A0A008FA0B3 /* SelectedHistoryNavigationTitleView.swift */,
 				5C9163711E301A1B008FA0B3 /* SelectedHistoryNavigationTitleView.xib */,
+				5C85D9011E361F2700AF5A0A /* DetectorTableViewCell.xib */,
+				5C85D9031E361F4500AF5A0A /* DetectorTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -283,14 +302,15 @@
 		5CCCEEF11E1A70FD00CB8F3D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5C6F9E431E3115FC005C4F2E /* UIViewController+Extension.swift */,
-				5CCCEEF21E1A713B00CB8F3D /* UIStoryboard+Extension.swift */,
-				5C4227BF1E2791D800E45B37 /* UIColor+Extension.swift */,
 				5C4227E61E27AF5900E45B37 /* NSManagedObject+Extension.swift */,
-				5C91635F1E2EBEDE008FA0B3 /* Bool+Extension.swift */,
+				5CCCEEF21E1A713B00CB8F3D /* UIStoryboard+Extension.swift */,
+				5C6F9E431E3115FC005C4F2E /* UIViewController+Extension.swift */,
+				5C1A645E1E31336A002BCC0B /* UIView+Extension.swift */,
+				5C4227BF1E2791D800E45B37 /* UIColor+Extension.swift */,
+				5C85D90E1E36446200AF5A0A /* String+Extension.swift */,
 				5C9163631E2ED72D008FA0B3 /* NSDate+Extension.swift */,
 				5C9072B01E2F8F7200410F11 /* Double+Extension.swift */,
-				5C1A645E1E31336A002BCC0B /* UIView+Extension.swift */,
+				5C91635F1E2EBEDE008FA0B3 /* Bool+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -382,6 +402,7 @@
 				5CCCEEE81E1A574E00CB8F3D /* StationTableViewCell.xib in Resources */,
 				5C966AFA1E1A4812000FA401 /* Main.storyboard in Resources */,
 				5C9163721E301A1B008FA0B3 /* SelectedHistoryNavigationTitleView.xib in Resources */,
+				5C85D9021E361F2700AF5A0A /* DetectorTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,20 +472,22 @@
 				5C9163661E2ED866008FA0B3 /* Measurements+Extension.swift in Sources */,
 				5C4D39931E2978CA0040826A /* LineChart.swift in Sources */,
 				5C9072B11E2F8F7200410F11 /* Double+Extension.swift in Sources */,
+				5C85D90D1E362C3A00AF5A0A /* Detector+CoreDataProperties.swift in Sources */,
 				5C4D396F1E2802060040826A /* HeatIndexInfoViewController.swift in Sources */,
 				5C4227E91E27DA0D00E45B37 /* Enums.swift in Sources */,
 				5C9163701E301A0A008FA0B3 /* SelectedHistoryNavigationTitleView.swift in Sources */,
 				5C4D39991E2993DE0040826A /* BarChart.swift in Sources */,
+				5C85D8FE1E361E0700AF5A0A /* DetectorsViewController.swift in Sources */,
 				5C4227E11E279FF000E45B37 /* Measurements+CoreDataProperties.swift in Sources */,
 				5CB8D4B21E33D7EC003EC7DA /* StationsManager.swift in Sources */,
 				5C4227E51E27A8C500E45B37 /* Station+Extension.swift in Sources */,
+				5C85D9041E361F4500AF5A0A /* DetectorTableViewCell.swift in Sources */,
 				5CCCEEE71E1A574E00CB8F3D /* StationTableViewCell.swift in Sources */,
 				5C9163601E2EBEDE008FA0B3 /* Bool+Extension.swift in Sources */,
 				5C4227E71E27AF5900E45B37 /* NSManagedObject+Extension.swift in Sources */,
 				5C4D26C61E26C5C700471605 /* WrapperViewController.swift in Sources */,
 				5C6646581E251D8000D1F9F8 /* HistoryViewController.swift in Sources */,
 				5C85D8FB1E361C2800AF5A0A /* Detector+Extension.swift in Sources */,
-				5C85D8F91E361BF800AF5A0A /* Detector+CoreDataProperties.swift in Sources */,
 				5CCCEEEA1E1A5BFC00CB8F3D /* NewStationViewController.swift in Sources */,
 				5C91635E1E2EBB22008FA0B3 /* NetworkManager.swift in Sources */,
 				5C4227E21E279FF000E45B37 /* Station+CoreDataClass.swift in Sources */,
@@ -475,9 +498,10 @@
 				5C6646621E25271000D1F9F8 /* SettingsTableViewController.swift in Sources */,
 				5C4227E31E279FF000E45B37 /* Station+CoreDataProperties.swift in Sources */,
 				5C66465B1E25202600D1F9F8 /* HistoryTableViewCell.swift in Sources */,
-				5C85D8F81E361BF800AF5A0A /* Detector+CoreDataClass.swift in Sources */,
+				5C85D90C1E362C3A00AF5A0A /* Detector+CoreDataClass.swift in Sources */,
 				5CCCEEF31E1A713B00CB8F3D /* UIStoryboard+Extension.swift in Sources */,
 				5CCCEEF51E1A7A1B00CB8F3D /* IndicatorsViewController.swift in Sources */,
+				5C85D90F1E36446200AF5A0A /* String+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

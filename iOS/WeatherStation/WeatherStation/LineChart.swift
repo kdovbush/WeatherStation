@@ -113,7 +113,6 @@ class LineChart: UIView {
         lineChartDataSet.circleRadius = 3.0
         lineChartDataSet.highlightEnabled = false
         
-        lineChartDataSet.valueFormatter
         
         // Gradient
         if gradientColors.count == 2 {

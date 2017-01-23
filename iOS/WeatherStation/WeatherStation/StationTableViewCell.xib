@@ -51,9 +51,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addressLabel" destination="UED-zv-vs3" id="SWa-oA-aD0"/>
+                <outlet property="nameLabel" destination="E5o-zO-f4u" id="jtQ-95-iFb"/>
                 <outlet property="onlineIconImageView" destination="2I6-1q-ief" id="uKU-tZ-NdY"/>
-                <outlet property="stationAddressLabel" destination="UED-zv-vs3" id="gL7-TN-dqG"/>
-                <outlet property="stationNameLabel" destination="E5o-zO-f4u" id="vX5-0Q-1j1"/>
             </connections>
         </tableViewCell>
     </objects>

@@ -13,7 +13,7 @@ import CoreData
 extension Measurements {
 
     @NSManaged public var id: Int16
-    @NSManaged public var createdAt: NSDate?
+    @NSManaged public var createdAt: NSDate
     @NSManaged public var humidity: Int16
     @NSManaged public var temperature: Double
     @NSManaged public var heatIndex: Double

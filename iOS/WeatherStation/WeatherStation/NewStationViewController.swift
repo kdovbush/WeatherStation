@@ -106,29 +106,36 @@ class NewStationViewController: UITableViewController {
             station.address = stationAddressTextField.text
             station.available = false
             station.createdAt = NSDate()
-            station.temperatureUnits = 0
             
-            // Should be replaced with real data
-            for _ in 0...200 {
-                let measurement = Measurements.mr_createEntity()!
-                measurement.createdAt = NSDate().random
+            // TODO: REMOVE
+            for _ in 0...5 {
+                let detector = Detector.mr_createEntity()!
+                detector.name = "Home \(Int16(arc4random_uniform(100)))"
+                detector.address = "00-00-00-00-00"
+                detector.detectorId = Int16(arc4random_uniform(6))
                 
-                let lowerValue = -20
-                let upperValue = 25
-                let result = Int(arc4random_uniform(UInt32(upperValue - lowerValue + 1))) + lowerValue
+                // Should be replaced with real data
+                for _ in 0...50 {
+                    let measurement = Measurements.mr_createEntity()!
+                    measurement.createdAt = NSDate().random
+    
+                    let lowerValue = -20
+                    let upperValue = 25
+                    let result = Int(arc4random_uniform(UInt32(upperValue - lowerValue + 1))) + lowerValue
+    
+                    measurement.temperature = Double(result)
+                    measurement.humidity = Int16(arc4random_uniform(100))
+                    measurement.heatIndex = Double(arc4random_uniform(140))
+                    measurement.rainAnalog = Int16(arc4random_uniform(1000))
+                    measurement.rainDigital = measurement.rainAnalog > 500
+                    
+                    detector.addToMeasurements(measurement)
+                }
                 
-                measurement.temperature = Double(result)
-                measurement.humidity = Int32(arc4random_uniform(100))
-                measurement.heatIndex = Double(arc4random_uniform(140))
-                measurement.rainAnalog = Int32(arc4random_uniform(1000))
-                measurement.rainDigital = measurement.rainAnalog > 500
-                
-                station.addToMeasurements(measurement)
+                station.addToDetectors(detector)
             }
-            
             return station
         }
-        
         return nil
     }
     

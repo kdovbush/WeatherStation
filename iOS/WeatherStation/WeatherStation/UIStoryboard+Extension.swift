@@ -21,7 +21,13 @@ extension UIStoryboard {
         return main.instantiateViewController(withIdentifier: "NewStationNavigationController") as? UINavigationController
     }
     
-    // MARK: - Station
+    // MARK: - Detectors
+    
+    class var detectorsViewController: DetectorsViewController? {
+        return main.instantiateViewController(withIdentifier: "DetectorsViewController") as? DetectorsViewController
+    }
+    
+    // MARK: - Detector
     
     class var wrapperViewController: WrapperViewController? {
         return main.instantiateViewController(withIdentifier: "WrapperViewController") as? WrapperViewController
@@ -39,8 +45,8 @@ extension UIStoryboard {
         return main.instantiateViewController(withIdentifier: "HistoryViewController") as? HistoryViewController
     }
     
-    class var stationSettingsNavigationController: UINavigationController? {
-        return main.instantiateViewController(withIdentifier: "StationSettingsNavigationController") as? UINavigationController
+    class var settingsNavigationController: UINavigationController? {
+        return main.instantiateViewController(withIdentifier: "SettingsNavigationController") as? UINavigationController
     }
     
     class var heatIndexInfoViewController: HeatIndexInfoViewController? {

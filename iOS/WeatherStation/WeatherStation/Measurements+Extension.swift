@@ -13,14 +13,14 @@ import SwiftyJSON
 
 extension Measurements {
     
-    class func parseMeasurements(data: Data, for station: Station) -> [Measurements] {
+    class func parseMeasurements(data: Data, for detector: Detector) -> [Measurements] {
         let json = JSON(data: data)
         
         var result: [Measurements] = []
         
         if let measurements = json["measurements"].array {
             for measurement in measurements {
-                if let measurement = parseMeasurement(json: measurement, for: station) {
+                if let measurement = parseMeasurement(json: measurement, for: detector) {
                     result.append(measurement)
                 }
             }
@@ -28,7 +28,7 @@ extension Measurements {
         return result
     }
     
-    class func parseMeasurement(json: JSON, for station: Station) -> Measurements? {
+    class func parseMeasurement(json: JSON, for detector: Detector) -> Measurements? {
         if let timestamp = json["createdAt"].double, let temperature = json["temperature"].double,
             let humidity = json["humidity"].double, let rainAnalog = json["rainAnalog"].double,
             let rainDigital = json["rainDigital"].int, let heatIndex = json["heatIndex"].double {
@@ -43,11 +43,11 @@ extension Measurements {
             
             measurement?.createdAt = createdAt
             measurement?.temperature = temperature.roundTo(places: 1)
-            measurement?.humidity = Int32(humidity)
+            measurement?.humidity = Int16(humidity)
             measurement?.heatIndex = heatIndex > 0 ? heatIndex.roundTo(places: 1) : 0.0
-            measurement?.rainAnalog = Int32(rainAnalog)
+            measurement?.rainAnalog = Int16(rainAnalog)
             measurement?.rainDigital = Bool(rainDigital)
-            measurement?.station = station
+            measurement?.detector = detector
             
             measurement?.save()
             

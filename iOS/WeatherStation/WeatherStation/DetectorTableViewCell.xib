@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="60" id="hT7-Jz-gd9" customClass="DetectorTableViewCell" customModule="WeatherStation" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hT7-Jz-gd9" id="JqR-qC-EfX">
+                <rect key="frame" x="0.0" y="0.0" width="342" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="se3-Yo-zzi">
+                        <rect key="frame" x="16" y="11" width="318" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1t-yw-Kvk">
+                        <rect key="frame" x="16" y="33" width="318" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="E1t-yw-Kvk" secondAttribute="trailing" constant="8" id="0mK-tv-g1L"/>
+                    <constraint firstItem="E1t-yw-Kvk" firstAttribute="top" secondItem="JqR-qC-EfX" secondAttribute="topMargin" constant="25" id="Nys-QG-x0Y"/>
+                    <constraint firstItem="se3-Yo-zzi" firstAttribute="top" secondItem="JqR-qC-EfX" secondAttribute="top" constant="11" id="bFb-On-SJA"/>
+                    <constraint firstItem="E1t-yw-Kvk" firstAttribute="leading" secondItem="JqR-qC-EfX" secondAttribute="leading" constant="16" id="bow-wP-lBt"/>
+                    <constraint firstItem="se3-Yo-zzi" firstAttribute="leading" secondItem="JqR-qC-EfX" secondAttribute="leading" constant="16" id="uoa-xr-Koi"/>
+                    <constraint firstAttribute="trailing" secondItem="se3-Yo-zzi" secondAttribute="trailing" constant="8" id="xMl-0L-imt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addressLabel" destination="E1t-yw-Kvk" id="7Cc-ur-JgO"/>
+                <outlet property="nameLabel" destination="se3-Yo-zzi" id="fYv-ha-yJk"/>
+            </connections>
+            <point key="canvasLocation" x="21.5" y="5"/>
+        </tableViewCell>
+    </objects>
+</document>

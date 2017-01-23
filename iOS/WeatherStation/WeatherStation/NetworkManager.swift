@@ -64,8 +64,9 @@ class NetworkManager: NSObject {
                 switch response.result {
                 case .success:
                     if let data = response.data {
-                        let measurements = Measurements.parseMeasurements(data: data, for: station)
-                        completion(measurements)
+                        // TODO: Change
+                        //let measurements = Measurements.parseMeasurements(data: data, for: station)
+                        //completion(measurements)
                     } else {
                         completion(nil)
                     }
@@ -90,8 +91,9 @@ class NetworkManager: NSObject {
                 switch response.result {
                 case .success:
                     if let data = response.data {
-                        let measurements = Measurements.parseMeasurements(data: data, for: station)
-                        completion(measurements)
+                        // TODO: Change
+                        //let measurements = Measurements.parseMeasurements(data: data, for: station)
+                        //completion(measurements)
                     } else {
                         completion(nil)
                     }

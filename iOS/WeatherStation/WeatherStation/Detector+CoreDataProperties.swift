@@ -4,7 +4,6 @@
 //
 //  Created by Kostiantyn Dovbush on 23/01/2017.
 //  Copyright © 2017 Kostiantyn Dovbush. All rights reserved.
-//  This file was automatically generated and should not be edited.
 //
 
 import Foundation
@@ -12,13 +11,13 @@ import CoreData
 
 
 extension Detector {
-
-    @NSManaged public var id: Int16
-    @NSManaged public var name: String?
+    
     @NSManaged public var address: String?
     @NSManaged public var detectorId: Int16
-    @NSManaged public var station: Station?
+    @NSManaged public var id: Int16
+    @NSManaged public var name: String?
     @NSManaged public var measurements: NSSet?
+    @NSManaged public var station: Station
 
 }
 

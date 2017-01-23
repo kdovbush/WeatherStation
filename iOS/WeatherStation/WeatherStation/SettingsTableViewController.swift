@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import CoreData
+
+enum SettingsType {
+    case station
+    case detector
+}
 
 class SettingsTableViewController: UITableViewController {
 
     // MARK: - Public properties
     
-    var station: Station?
+    var type: SettingsType = .station
+    var object: NSManagedObject?
     
     // MARK: - Private properties
     
@@ -28,11 +35,21 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let station = station {
+        switch object {
+        case let detector as Detector:
+            nameTextField.text = detector.name
+            addressTextField.text = detector.address
+            addressTextField.isEnabled = false
+            navigationItem.title = "Detector Settings"
+            break
+        case let station as Station:
             nameTextField.text = station.name
             addressTextField.text = station.address
+            navigationItem.title = "Station Settings"
+            break
+        default:
+            break
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,7 +64,7 @@ class SettingsTableViewController: UITableViewController {
         if isEmptyFields() {
             presentRequiredFieldsAlert()
         } else {
-            editStation()
+            editObject()
             dismiss(animated: true, completion: nil)
         }
     }
@@ -57,28 +74,58 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func actionClearData(_ sender: UIBarButtonItem) {
-        if let station = station {
-            NetworkManager.shared.clean(for: station, completion: { (completed) in
-                if completed {
-                    station.measurements = nil
-                }
-            })
-        }
+//        if let station = station {
+//            NetworkManager.shared.clean(for: station, completion: { (completed) in
+//                if completed {
+//                    station.measurements = nil
+//                }
+//            })
+//        }
     }
     
     // MARK: - Helper methods
     
-    func editStation() {
-        if let station = station {
+    func editObject() {
+        switch object {
+        case let detector as Detector:
+            detector.name = nameTextField.text
+            detector.address = addressTextField.text
+        case let station as Station:
             station.name = nameTextField.text
             station.address = addressTextField.text
-            station.save()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil, userInfo: ["station":station])
+        default:
+            break
         }
+        // TODO: Change
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil, userInfo: ["object":object])
     }
     
     func isEmptyFields() -> Bool {
         return nameTextField.text == "" || addressTextField.text == ""
     }
     
+    // MARK: - UITableViewDataSource
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        // If section with `Clear button`
+        if section == numberOfSections(in: tableView) - 1 {
+            let text = "This option will clear all stored measurements for"
+            switch object {
+            case let detector as Detector:
+                return "\(text) '\(detector.name ?? "")' detector"
+            case let station as Station:
+                return "\(text) '\(station.name ?? "")' station"
+            default:
+                break
+            }
+        }
+        return nil
+    }
+    
 }
+
+
+
+
+
+

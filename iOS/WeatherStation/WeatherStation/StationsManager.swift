@@ -61,14 +61,15 @@ class StationsManager: NSObject {
         }
     }
     
+    // TODO: Change
     func updateMeasurements(for station: Station) {
-        let lastTimestamp = station.allMeasurements.last?.createdAt.timeIntervalSince1970 ?? 0.0
-        
-        NetworkManager.shared.getMeasurements(for: station, after: lastTimestamp) { (measurements) in
-            if let measurements = measurements {
-                print("\(station.address!) measurements updated \(measurements.count)")
-            }
-        }
+//        let lastTimestamp = station.allMeasurements.last?.createdAt.timeIntervalSince1970 ?? 0.0
+//        
+//        NetworkManager.shared.getMeasurements(for: station, after: lastTimestamp) { (measurements) in
+//            if let measurements = measurements {
+//                print("\(station.address!) measurements updated \(measurements.count)")
+//            }
+//        }
     }
     
     fileprivate func hideNetworkActivityStatusWithDelay() {

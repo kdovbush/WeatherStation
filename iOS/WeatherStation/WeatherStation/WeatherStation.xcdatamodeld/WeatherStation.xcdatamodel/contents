@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Detector" representedClassName="Detector" syncable="YES" codeGenerationType="class">
+    <entity name="Detector" representedClassName=".Detector" syncable="YES">
         <attribute name="address" attributeType="String" syncable="YES"/>
         <attribute name="detectorId" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
@@ -24,11 +24,11 @@
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="detectors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Detector" inverseName="station" inverseEntity="Detector" syncable="YES"/>
+        <relationship name="detectors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Detector" inverseName="station" inverseEntity="Detector" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Detector" positionX="-27" positionY="63" width="128" height="135"/>
         <element name="Measurements" positionX="-45" positionY="0" width="128" height="165"/>
         <element name="Station" positionX="-18" positionY="27" width="128" height="135"/>
-        <element name="Detector" positionX="-27" positionY="63" width="128" height="135"/>
     </elements>
 </model>

@@ -16,12 +16,12 @@ class HistoryViewController: UIViewController {
     
     // MARK: - Public properties
     
-    var station: Station?
+    var detector: Detector?
     
     // MARK: - Private properties
     
     var measurements: [Measurements]? {
-        return station?.allMeasurements.reversed()
+        return detector?.allMeasurements.reversed()
     }
     
     override func viewDidLoad() {
@@ -73,7 +73,7 @@ extension HistoryViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let indicatorsViewController = UIStoryboard.indicatorsViewController {
-            indicatorsViewController.station = station
+            indicatorsViewController.detector = detector
             indicatorsViewController.measurement = measurements?[indexPath.row]
             navigationController?.pushViewController(indicatorsViewController, animated: true)
         }

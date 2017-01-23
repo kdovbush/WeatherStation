@@ -34,7 +34,7 @@ class IndicatorsViewController: UITableViewController {
     
     // MARK: - Public properties
     
-    var station: Station?
+    var detector: Detector?
     var measurement: Measurements? // If going from history screen
     
     // MARK: - ViewController lifecycle
@@ -47,7 +47,7 @@ class IndicatorsViewController: UITableViewController {
             configureView(for: measurement)
         } else {
             tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
-            configureView(for: station)
+            configureView(for: detector)
         }
     }
     
@@ -63,52 +63,52 @@ class IndicatorsViewController: UITableViewController {
     
     func configureView(for object: NSManagedObject?) {
         switch object {
-        case let object as Station:
-            navigationItem.title = station?.name
+        case let detector as Detector:
+            navigationItem.title = detector.name
             
-            guard let lastMeasurement = object.allMeasurements.last else { return }
+            guard let lastMeasurement = detector.allMeasurements.last else { return }
             temperatureLabel.text = String(lastMeasurement.temperature) + "°C"
             humidityLabel.text = String(lastMeasurement.humidity) + "%"
             moistureLevelLabel.text = String(lastMeasurement.rainAnalog)
             rainImageView.image = lastMeasurement.rainDigital ? UIImage(named: "rain") : UIImage(named: "noRain")
             configureHeatIndexLabels(for: lastMeasurement.heatIndex)
 
-            if let minTemperature = object.temperatures.min(), let maxTemperature = object.temperatures.max() {
+            if let minTemperature = detector.temperatures.min(), let maxTemperature = detector.temperatures.max() {
                 temperatureMinLabel.text = String(minTemperature) + "°C"
                 temperatureMaxLabel.text = String(maxTemperature) + "°C"
             }
             
-            if let minHumidity = object.humidities.min(), let maxHumidity = object.humidities.max() {
+            if let minHumidity = detector.humidities.min(), let maxHumidity = detector.humidities.max() {
                 humidityMinLabel.text = String(Int(minHumidity)) + "%"
                 humidityMaxLabel.text = String(Int(maxHumidity)) + "%"
             }
             
-        case let object as Measurements:
+        case let measurements as Measurements:
             let formatter = DateFormatter()
             if let navigationView = SelectedHistoryNavigationTitleView.instanceFromNib() as? SelectedHistoryNavigationTitleView {
                 formatter.dateFormat = "HH:mm"
-                navigationView.timeLabel.text = formatter.string(from: object.createdAt as Date)
+                navigationView.timeLabel.text = formatter.string(from: measurements.createdAt as Date)
                 formatter.dateFormat = "dd.MM.yyyy"
-                navigationView.dateLabel.text = formatter.string(from: object.createdAt as Date)
+                navigationView.dateLabel.text = formatter.string(from: measurements.createdAt as Date)
                 navigationItem.titleView = navigationView
             } else {
                 formatter.dateFormat = "HH:mm dd.MM.yyy"
-                navigationItem.title = formatter.string(from: object.createdAt as Date)
+                navigationItem.title = formatter.string(from: measurements.createdAt as Date)
             }
             
-            if let station = station {
-                temperatureLabel.text = String(object.temperature)
-                humidityLabel.text = String(object.humidity)
-                moistureLevelLabel.text = String(object.rainAnalog)
-                rainImageView.image = object.rainDigital ? UIImage(named: "noRain") : UIImage(named: "rain")
-                configureHeatIndexLabels(for: object.heatIndex)
+            if let detector = detector {
+                temperatureLabel.text = String(measurements.temperature)
+                humidityLabel.text = String(measurements.humidity)
+                moistureLevelLabel.text = String(measurements.rainAnalog)
+                rainImageView.image = measurements.rainDigital ? UIImage(named: "noRain") : UIImage(named: "rain")
+                configureHeatIndexLabels(for: measurements.heatIndex)
                 
-                if let minTemperature = station.temperatures.min(), let maxTemperature = station.temperatures.max() {
+                if let minTemperature = detector.temperatures.min(), let maxTemperature = detector.temperatures.max() {
                     temperatureMinLabel.text = String(minTemperature)
                     temperatureMaxLabel.text = String(maxTemperature)
                 }
                 
-                if let minHumidity = station.humidities.min(), let maxHumidity = station.humidities.max() {
+                if let minHumidity = detector.humidities.min(), let maxHumidity = detector.humidities.max() {
                     humidityMinLabel.text = String(Int(minHumidity))
                     humidityMaxLabel.text = String(Int(maxHumidity))
                 }

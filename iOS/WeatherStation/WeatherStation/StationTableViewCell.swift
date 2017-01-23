@@ -12,8 +12,8 @@ class StationTableViewCell: UITableViewCell {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var stationNameLabel: UILabel!
-    @IBOutlet weak var stationAddressLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var onlineIconImageView: UIImageView!
     
     // MARK: - Properties
@@ -21,8 +21,8 @@ class StationTableViewCell: UITableViewCell {
     var station: Station? {
         didSet {
             if let station = station {
-                stationNameLabel.text = station.name
-                stationAddressLabel.text = station.address
+                nameLabel.text = station.name
+                addressLabel.text = station.address
                 onlineIconImageView.image = station.available ? UIImage(named: "online") : UIImage(named: "offline")
             }
         }

@@ -12,7 +12,7 @@ class WrapperViewController: UIViewController {
 
     // MARK: - Public properties
     
-    var station: Station?
+    var detector: Detector?
     var pageMenu: CAPSPageMenu?
     
     // MARK: - Outlets
@@ -27,7 +27,7 @@ class WrapperViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(stationDidChange(_:)), name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil)
         
-        navigationItem.title = station?.name
+        navigationItem.title = detector?.name
         configurePageMenu()
         automaticallyAdjustsScrollViewInsets = false
     }
@@ -38,6 +38,7 @@ class WrapperViewController: UIViewController {
     
     // MARK: - Notifications
     
+    // TODO: TODO: Change
     func stationDidChange(_ notification: Notification) {
         if let station = notification.userInfo?["station"] as? Station {
             navigationItem.title = station.name
@@ -54,19 +55,19 @@ class WrapperViewController: UIViewController {
         
         if let chartsViewController = UIStoryboard.chartsViewController {
             chartsViewController.title = "CHARTS"
-            chartsViewController.station = station
+            chartsViewController.detector = detector
             controllerArray.append(chartsViewController)
         }
         
         if let indicatorsViewController = UIStoryboard.indicatorsViewController {
             indicatorsViewController.title = "INDICATORS"
-            indicatorsViewController.station = station
+            indicatorsViewController.detector = detector
             controllerArray.append(indicatorsViewController)
         }
         
         if let historyViewController = UIStoryboard.historyViewController {
             historyViewController.title = "HISTORY"
-            historyViewController.station = station
+            historyViewController.detector = detector
             controllerArray.append(historyViewController)
         }
         
@@ -105,9 +106,9 @@ class WrapperViewController: UIViewController {
     // MARK: - User interactions
     
     @IBAction func actionShowSettings(_ sender: UIBarButtonItem) {
-        if let navigationController = UIStoryboard.stationSettingsNavigationController {
+        if let navigationController = UIStoryboard.settingsNavigationController {
             if let stationSettingsTableViewController = navigationController.topViewController as? SettingsTableViewController {
-                stationSettingsTableViewController.station = station
+                stationSettingsTableViewController.object = detector
                 present(navigationController, animated: true, completion: nil)
             }
         }

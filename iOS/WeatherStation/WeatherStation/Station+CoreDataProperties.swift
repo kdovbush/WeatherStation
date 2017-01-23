@@ -13,7 +13,7 @@ import CoreData
 extension Station {
 
     @NSManaged public var id: Int16
-    @NSManaged public var createdAt: NSDate?
+    @NSManaged public var createdAt: NSDate
     @NSManaged public var name: String?
     @NSManaged public var address: String?
     @NSManaged public var available: Bool
