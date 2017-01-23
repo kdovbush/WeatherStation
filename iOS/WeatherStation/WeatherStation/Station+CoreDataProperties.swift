@@ -2,7 +2,7 @@
 //  Station+CoreDataProperties.swift
 //  WeatherStation
 //
-//  Created by Kostiantyn Dovbush on 12/01/2017.
+//  Created by Kostiantyn Dovbush on 23/01/2017.
 //  Copyright © 2017 Kostiantyn Dovbush. All rights reserved.
 //
 
@@ -12,32 +12,28 @@ import CoreData
 
 extension Station {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Station> {
-        return NSFetchRequest<Station>(entityName: "Station");
-    }
-
-    @NSManaged public var address: String?
-    @NSManaged public var available: Bool
+    @NSManaged public var id: Int16
     @NSManaged public var createdAt: NSDate?
     @NSManaged public var name: String?
-    @NSManaged public var temperatureUnits: Int16
-    @NSManaged public var measurements: NSSet?
+    @NSManaged public var address: String?
+    @NSManaged public var available: Bool
+    @NSManaged public var detectors: NSSet?
 
 }
 
-// MARK: Generated accessors for measurements
+// MARK: Generated accessors for detectors
 extension Station {
 
-    @objc(addMeasurementsObject:)
-    @NSManaged public func addToMeasurements(_ value: Measurements)
+    @objc(addDetectorsObject:)
+    @NSManaged public func addToDetectors(_ value: Detector)
 
-    @objc(removeMeasurementsObject:)
-    @NSManaged public func removeFromMeasurements(_ value: Measurements)
+    @objc(removeDetectorsObject:)
+    @NSManaged public func removeFromDetectors(_ value: Detector)
 
-    @objc(addMeasurements:)
-    @NSManaged public func addToMeasurements(_ values: NSSet)
+    @objc(addDetectors:)
+    @NSManaged public func addToDetectors(_ values: NSSet)
 
-    @objc(removeMeasurements:)
-    @NSManaged public func removeFromMeasurements(_ values: NSSet)
+    @objc(removeDetectors:)
+    @NSManaged public func removeFromDetectors(_ values: NSSet)
 
 }
