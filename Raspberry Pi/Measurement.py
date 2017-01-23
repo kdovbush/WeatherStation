@@ -3,21 +3,27 @@
 from datetime import datetime
 from meteocalc import Temp, dew_point, heat_index
 
+# This class contains information about measurements retrieved from detector
 class Measurement:
+      id = 0
       createdAt = 0.0
-      temperature = 27.0
-      humidity = 70.0
-      heatIndex = 50
-      rainAnalog = 800.0
-      rainDigital = 1.0
+      temperature = 0.0
+      humidity = 0.0
+      heatIndex = 0.0
+      rainAnalog = 0.0
+      rainDigital = 0
+      detectorId = 0
 
       def __init__(self,
                    temperature,
                    humidity,
                    rainAnalog,
                    rainDigital,
+                   detectorId,
                    heatIndex=0.0,
-                   createdAt=None):
+                   createdAt=None,
+                   id=None):
+            self.id = id
             if createdAt is None:
                   self.createdAt = (datetime.now() - datetime(1970, 1, 1)).total_seconds()
             else:
@@ -28,7 +34,9 @@ class Measurement:
             self.heatIndex = float("%.2f" % round(heatIndex, 2))
             self.rainAnalog = rainAnalog
             self.rainDigital = rainDigital
+            self.detectorId = detectorId
 
+      #Probably should be replaced or removed later
       def calcHeatIndex(self):
             #convert temperature to Fahrenheit
             T = (self.temperature * 1.8) + 32

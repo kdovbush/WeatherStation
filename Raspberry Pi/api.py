@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 import datetime
 from DatabaseManager import DatabaseManager
 from JSONParser import JSONParser
@@ -7,31 +7,44 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/api/v1.0/check', methods=['GET'])
+@app.route('/api/v1.0/checkStatus', methods=['GET'])
 def check():
     data = {}
     data["status"] = "true"
-    return json.dumps(data)
+    return Response(json.dumps(data), status=200, mimetype="application/json")
 
-@app.route('/api/v1.0/measurements', methods=['GET'])
-def get_measurements():
-    measurements = DatabaseManager().getAll()
+@app.route('/api/v1.0/detectors', methods=['GET'])
+def getDetectors():
+    detectors = DatabaseManager().getDetectors()
     data = {}
-    data["measurements"] = JSONParser.encodeArray(measurements)
-    return json.dumps(data)
+    data["detectors"] = JSONParser.encodeArrayOfDetectors(detectors)
+    return Response(json.dumps(data), status=200, mimetype="application/json")
 
-@app.route('/api/v1.0/measurementsAfter/<timestamp>', methods=['GET'])
-def get_measurementsAfter(timestamp):
-    measurements = DatabaseManager().getAllAfter(timestamp)
+@app.route('/api/v1.0/detectors/<int:identifier>/measurements', methods=['GET'])
+def getMeasurementsByDetectorId(identifier):
+    measurements = DatabaseManager().getMeasurementsForDetectorId(identifier)
     data = {}
-    data["measurements"] = JSONParser.encodeArray(measurements)
-    return json.dumps(data)
+    data["measurements"] = JSONParser.encodeArrayOfMeasurements(measurements)
+    return Response(json.dumps(data), status=200, mimetype="application/json")
 
-@app.route('/api/v1.0/clean', methods=['GET'])
+@app.route('/api/v1.0/detectors/<int:identifier>/measurementsAfter/<float:timestamp>', methods=['GET'])
+def getMeasurementsByDetectorIdAfter(identifier, timestamp):
+    measurements = DatabaseManager().getMeasurementsForDetectorIdAfter(identifier, timestamp)
+    data = {}
+    data["measurements"] = JSONParser.encodeArrayOfMeasurements(measurements)
+    return Response(json.dumps(data), status=200, mimetype="application/json")
+
+@app.route('/api/v1.0/cleanMeasurements', methods=['GET'])
 def clean():
     data = {}
-    data["status"] = DatabaseManager().clean()
-    return json.dumps(data)
+    data["status"] = DatabaseManager().cleanAllMeasurements()
+    return Response(json.dumps(data), status=200, mimetype="application/json")
+
+@app.route('/api/v1.0/cleanMeasurementsOfDetector/<int:identifier>', methods=['GET'])
+def cleanDetector(identifier):
+    data = {}
+    data["status"] = DatabaseManager().cleanMeasurementsForDetectorId(identifier)
+    return Response(json.dumps(data), status=200, mimetype="application/json")
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

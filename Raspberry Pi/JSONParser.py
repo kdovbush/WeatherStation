@@ -5,8 +5,41 @@ from Measurement import Measurement
 
 class JSONParser:
 
+      # --- DETECTOR ---
+
       @staticmethod
-      def decode(json):
+      def decodeDetector(json):
+            name = json["name"]
+            address = json["address"]
+            detector = Detector(name, address)
+            return detector
+
+      @staticmethod
+      def decodeArrayOfDetectors(json):
+            detectors = []
+            for item in json:
+                  detectors.append(JSONParser.decodeDetector(item))
+            return detectors
+
+      @staticmethod
+      def encodeDetector(detector):
+            json = {}
+            json["id"] = detector.id
+            json["name"] = detector.name
+            json["address"] = detector.address
+            return json
+
+      @staticmethod
+      def encodeArrayOfDetectors(detectors):
+            data = []
+            for detector in detectors:
+                 data.append(JSONParser.encodeDetector(detector))
+            return data
+
+      # --- MEASUREMENT ---
+      
+      @staticmethod
+      def decodeMeasurement(json):
             temperature = json["dallasTemp"]
             humidity = json["dhtHumidity"]
             rainAnalog = json["ylAnalog"]
@@ -19,15 +52,16 @@ class JSONParser:
             return measurement
 
       @staticmethod
-      def decodeArray(json):
-            result = []
+      def decodeArrayOfMeasurements(json):
+            measurements = []
             for item in json:
-                  result.append(JSONParser.decode(item))
-            return result
+                  measurements.append(JSONParser.decodeMeasurement(item))
+            return measurements
 
       @staticmethod
-      def encode(measurement):
+      def encodeMeasurement(measurement):
             data = {}
+            data["id"] = measurement.id
             data["createdAt"] = measurement.createdAt if not None else 0.0
             data["temperature"] = measurement.temperature
             data["humidity"] = measurement.humidity
@@ -37,10 +71,10 @@ class JSONParser:
             return data
 
       @staticmethod
-      def encodeArray(measurements):
+      def encodeArrayOfMeasurements(measurements):
             data = []
             for measurement in measurements: 
-                  data.append(JSONParser.encode(measurement))
+                  data.append(JSONParser.encodeMeasurement(measurement))
 
             return data
       
