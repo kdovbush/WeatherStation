@@ -2,6 +2,7 @@
 
 import json
 from Measurement import Measurement
+from Detector import Detector
 
 class JSONParser:
 
@@ -11,7 +12,8 @@ class JSONParser:
       def decodeDetector(json):
             name = json["name"]
             address = json["address"]
-            detector = Detector(name, address)
+            port = json["port"]
+            detector = Detector(name, address, None, port)
             return detector
 
       @staticmethod
@@ -44,11 +46,13 @@ class JSONParser:
             humidity = json["dhtHumidity"]
             rainAnalog = json["ylAnalog"]
             rainDigital = json["ylDigital"]
+            detectorId = json["detectorId"]
             
             measurement = Measurement(temperature,
                                       humidity,
                                       rainAnalog,
-                                      rainDigital)
+                                      rainDigital,
+                                      detectorId)
             return measurement
 
       @staticmethod

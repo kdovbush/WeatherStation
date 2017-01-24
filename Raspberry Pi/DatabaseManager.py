@@ -18,19 +18,24 @@ class DatabaseManager:
             
       # Returns list of available detectors
       def getDetectors(self):
-            self.cursor.execute("""SELECT id, name, address FROM Detector""")
+            self.cursor.execute("""SELECT id, name, address, port FROM Detector""")
             detectors = []
             for item in self.cursor.fetchall():
-                  detector = Detector(item[1], item[2], item[0])
+                  detector = Detector(item[1], item[2], item[0], item[3])
                   detectors.append(detector)
             
             return detectors
 
+      def saveDetectors(self, detectors):
+            for detector in detectors:
+                  self.saveDetector(detector)
+
       def saveDetector(self, detector):
             with self.db:
-                  self.cursor.execute("""INSERT INTO Detector (name, address) VALUES(%s, %s)""",
+                  self.cursor.execute("""INSERT IGNORE INTO Detector (name, address, port) VALUES(%s, %s, %s)""",
                                       (detector.name,
-                                       detector.address))
+                                       detector.address,
+                                       detector.port))
 
 
       # --- MEASUREMENTS ---
