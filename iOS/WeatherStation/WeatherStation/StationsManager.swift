@@ -48,7 +48,7 @@ class StationsManager: NSObject {
                     
                     if available {
                         station.available = true
-                        self.updateMeasurements(for: station)
+                        self.updateDetectors(for: station)
                     } else {
                         station.available = false
                     }
@@ -61,15 +61,24 @@ class StationsManager: NSObject {
         }
     }
     
-    // TODO: Change
-    func updateMeasurements(for station: Station) {
-//        let lastTimestamp = station.allMeasurements.last?.createdAt.timeIntervalSince1970 ?? 0.0
-//        
-//        NetworkManager.shared.getMeasurements(for: station, after: lastTimestamp) { (measurements) in
-//            if let measurements = measurements {
-//                print("\(station.address!) measurements updated \(measurements.count)")
-//            }
-//        }
+    func updateDetectors(for station: Station) {
+        NetworkManager.shared.getDetectors(for: station) { (detectors) in
+            if let detectors = detectors {
+                for detector in detectors {
+                    self.updateMeasurements(for: detector, of: station)
+                }
+            }
+        }
+    }
+    
+    func updateMeasurements(for detector: Detector, of station: Station) {
+        let lastTimestamp = detector.allMeasurements.last?.createdAt.timeIntervalSince1970 ?? 0.0
+        
+        NetworkManager.shared.getMeasurements(for: station, detector: detector, after: lastTimestamp) { (measurements) in
+            if let measurements = measurements {
+                print("\(detector.address) detector - updated measurements \(measurements.count)")
+            }
+        }
     }
     
     fileprivate func hideNetworkActivityStatusWithDelay() {

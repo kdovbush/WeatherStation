@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import MagicalRecord
+import SwiftyJSON
 
 extension Detector {
     
@@ -58,6 +59,44 @@ extension Detector {
         })
     }
     
+    // MARK: - Parser
+    
+    class func parseDetectors(data: Data, for station: Station) -> [Detector] {
+        let json = JSON(data: data)
+        
+        var result: [Detector] = []
+        
+        if let detectors = json["detectors"].array {
+            for detector in detectors {
+                if let detector = parseDetector(json: detector, for: station) {
+                    result.append(detector)
+                }
+            }
+        }
+        return result
+    }
+    
+    class func parseDetector(json: JSON, for station: Station) -> Detector? {
+        if let id = json["id"].int, let name = json["name"].string, let address = json["address"].string {
+            
+            var detector = Detector.mr_findFirst(byAttribute: "detectorId", withValue: id, in: NSManagedObject.context)
+            
+            if detector == nil {
+                detector = Detector.mr_createEntity()
+            }
+            
+            detector?.detectorId = Int16(id)
+            detector?.name = name
+            detector?.address = address
+            detector?.station = station
+            
+            detector?.save()
+            
+            return detector
+        }
+        
+        return nil
+    }
     
 }
 

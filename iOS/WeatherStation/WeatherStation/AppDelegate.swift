@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureDataStorage()
         
         // Starts updating stations
-        // TODO: Change
-        //StationsManager.shared.start()
+        StationsManager.shared.start()
         
         return true
     }

@@ -36,7 +36,6 @@ class DetectorsViewController: UIViewController {
     // MARK: - Configuration methods
     
     func configureTableView() {
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "DetectorTableViewCell", bundle: nil), forCellReuseIdentifier: "DetectorTableViewCell")
@@ -74,6 +73,7 @@ extension DetectorsViewController: UITableViewDataSource {
             if let detectors = station?.allDetectors {
                 cell.detector = detectors[indexPath.row]
             }
+            return cell
         }
         return UITableViewCell()
     }

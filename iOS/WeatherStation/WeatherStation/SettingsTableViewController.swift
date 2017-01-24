@@ -74,13 +74,23 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func actionClearData(_ sender: UIBarButtonItem) {
-//        if let station = station {
-//            NetworkManager.shared.clean(for: station, completion: { (completed) in
-//                if completed {
-//                    station.measurements = nil
-//                }
-//            })
-//        }
+        switch object {
+        case let detector as Detector:
+            NetworkManager.shared.cleanMeasurements(for: detector.station, detector: detector, completion: { (completion) in
+                if completion {
+                    print("Cleaned data for detector: \(detector.name) in station \(detector.station.name)")
+                }
+            })
+            break
+        case let station as Station:
+            NetworkManager.shared.cleanMeasurements(for: station, completion: { (completion) in
+                if completion {
+                    print("Cleaned data for station: \(station.name)")
+                }
+            })
+        default:
+            break
+        }
     }
     
     // MARK: - Helper methods

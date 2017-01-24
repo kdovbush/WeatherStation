@@ -93,7 +93,7 @@ class NewStationViewController: UITableViewController {
             station.available = available
             station.save()
             
-            //NetworkManager.shared.getMeasurements(for: station, completion: { result in })
+            StationsManager.shared.updateDetectors(for: station)
             
             self.delegate?.stationAdded(station: station)
             self.dismiss(animated: true, completion: nil)
@@ -108,6 +108,7 @@ class NewStationViewController: UITableViewController {
             station.createdAt = NSDate()
             
             // TODO: REMOVE
+            /*
             for _ in 0...5 {
                 let detector = Detector.mr_createEntity()!
                 detector.name = "Home \(Int16(arc4random_uniform(100)))"
@@ -134,6 +135,7 @@ class NewStationViewController: UITableViewController {
                 
                 station.addToDetectors(detector)
             }
+             */
             return station
         }
         return nil
