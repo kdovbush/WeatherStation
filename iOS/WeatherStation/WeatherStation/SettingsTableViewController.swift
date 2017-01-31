@@ -106,8 +106,7 @@ class SettingsTableViewController: UITableViewController {
         default:
             break
         }
-        // TODO: Change
-        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil, userInfo: ["object":object])
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SettingsDidChangeNotification"), object: nil, userInfo: ["object":object])
     }
     
     func isEmptyFields() -> Bool {

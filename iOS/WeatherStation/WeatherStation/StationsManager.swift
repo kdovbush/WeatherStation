@@ -64,8 +64,6 @@ class StationsManager: NSObject {
     func updateDetectors(for station: Station) {
         NetworkManager.shared.getDetectors(for: station) { (detectors) in
             if let detectors = detectors {
-                Detector.removeInvalidDetectors(detectorsJson: detectors)
-                
                 for detector in detectors {
                     self.updateMeasurements(for: detector, of: station)
                 }

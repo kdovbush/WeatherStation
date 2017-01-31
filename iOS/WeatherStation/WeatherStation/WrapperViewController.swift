@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class WrapperViewController: UIViewController {
 
@@ -25,7 +26,7 @@ class WrapperViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(stationDidChange(_:)), name: NSNotification.Name(rawValue: "StationSettingsDidChangeNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(settingsDidChange(_:)), name: NSNotification.Name(rawValue: "SettingsDidChangeNotification"), object: nil)
         
         navigationItem.title = detector?.name
         configurePageMenu()
@@ -38,10 +39,16 @@ class WrapperViewController: UIViewController {
     
     // MARK: - Notifications
     
-    // TODO: TODO: Change
-    func stationDidChange(_ notification: Notification) {
-        if let station = notification.userInfo?["station"] as? Station {
-            navigationItem.title = station.name
+    func settingsDidChange(_ notification: Notification) {
+        if let object = notification.userInfo?["object"] as? NSManagedObject {
+            switch object {
+            case let detector as Detector:
+                navigationItem.title = detector.name
+            case let station as Station:
+                navigationItem.title = station.name
+            default:
+                break
+            }
         }
     }
    

@@ -67,6 +67,8 @@ extension Detector {
         var result: [Detector] = []
         
         if let detectors = json["detectors"].array {
+            removeInvalidDetectors(detectorsJSON: detectors)
+
             for detector in detectors {
                 if let detector = parseDetector(json: detector, for: station) {
                     result.append(detector)
@@ -86,7 +88,9 @@ extension Detector {
             }
             
             detector?.detectorId = Int16(id)
-            detector?.name = name
+            if detector?.name == nil {
+                detector?.name = name
+            }
             detector?.address = address
             detector?.station = station
             
@@ -98,13 +102,13 @@ extension Detector {
         return nil
     }
     
-    class func removeInvalidDetectors(detectorsJson: [Detector]) {
+    class func removeInvalidDetectors(detectorsJSON: [JSON]) {
         guard let localDetectors = Detector.mr_findAll(in: NSManagedObject.context) as? [Detector] else { return }
         let localDetectorsIds = localDetectors.map({$0.detectorId as Int16})
         
-        let validDetectors = detectorsJson.map({$0.detectorId as Int16})
+        let validDetectors = detectorsJSON.map({$0["id"].intValue})
         
-        let invalidDetectorsIds = localDetectorsIds.filter({!validDetectors.contains($0)})
+        let invalidDetectorsIds = localDetectorsIds.filter({!validDetectors.contains(Int($0))})
         
         Detector.mr_deleteAll(matching: NSPredicate(format: "detectorId in %@", invalidDetectorsIds), in: NSManagedObject.context)
     }

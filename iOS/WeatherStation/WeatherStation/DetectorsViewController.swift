@@ -29,8 +29,7 @@ class DetectorsViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(detectorsDidChange(notification:)), name: NSNotification.Name(rawValue: "DetectorsDidChangeNotification"), object: nil)
-        
-        print(station?.allDetectors.count)
+        NotificationCenter.default.addObserver(self, selector: #selector(settingsDidChange(notification:)), name: NSNotification.Name(rawValue: "SettingsDidChangeNotification"), object: nil)
     }
     
     deinit {
@@ -58,6 +57,10 @@ class DetectorsViewController: UIViewController {
     
     // MARK: - Notification methods
     
+    func settingsDidChange(notification: Notification) {
+        tableView.reloadData()
+    }
+    
     func detectorsDidChange(notification: Notification) {
         tableView.reloadData()
     }
@@ -79,7 +82,7 @@ extension DetectorsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "DetectorTableViewCell", for: indexPath) as? DetectorTableViewCell {
-            if let detectors = station?.allDetectors {
+            if let detectors = station?.allDetectors, indexPath.row < detectors.count {
                 cell.detector = detectors[indexPath.row]
             }
             return cell
