@@ -34,9 +34,9 @@ class BluetoothReceiver():
         except Exception as e:
             print detector.address + " - Failed to connect"
             print e.args[0]
-            print detector.address + " - Reconnecting..."
-            time.sleep(5)
-            self.connect(detector)
+            #print detector.address + " - Reconnecting..."
+            #time.sleep(5)
+            #self.connect(detector)
     
     def startReceiving(self, socket, detector):
         data = ""
@@ -58,8 +58,8 @@ class BluetoothReceiver():
                 DatabaseManager().saveMeasurement(measurement)
 
     def __init__(self):
-        #self.detectors = DetectorsFileParser.parseFromFile("Detectors.json")
-        #DatabaseManager().saveDetectors(self.detectors)
+        self.detectors = DetectorsFileParser.parseFromFile("Detectors.json")
+        DatabaseManager().saveDetectors(self.detectors)
 
         for detector in DatabaseManager().getDetectors():
             Thread(target=self.connect, args=[detector]).start()

@@ -26,9 +26,19 @@ class DatabaseManager:
             
             return detectors
 
+      def existsDetector(self, detector):
+            for localDetector in self.getDetectors():
+                  if localDetector.address == detector.address:
+                        return True
+                        break
+            return False
+
       def saveDetectors(self, detectors):
             for detector in detectors:
-                  self.saveDetector(detector)
+                  #Save only if not exists with the same address
+                  if not self.existsDetector(detector):
+                        print "Save"
+                        self.saveDetector(detector)
 
       def saveDetector(self, detector):
             with self.db:

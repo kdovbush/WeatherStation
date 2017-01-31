@@ -5,10 +5,10 @@
 	        "address": "20:16:02:31:06:40",
 		"port": 1
 	    	},
-	    	{
-	        "name": "Detector 2",
+		{
+	        "name": "Invalid",
 	        "address": "00:00:00:00:00:00",
 		"port": 666
-    		}
+	    	}
 	]
 }
