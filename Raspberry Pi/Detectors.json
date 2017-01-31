@@ -1,0 +1,14 @@
+{
+	"detectors": [
+	    	{
+	        "name": "Detector 1",
+	        "address": "20:16:02:31:06:40",
+		"port": 1
+	    	},
+		{
+	        "name": "Invalid",
+	        "address": "00:00:00:00:00:00",
+		"port": 666
+	    	}
+	]
+}

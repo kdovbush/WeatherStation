@@ -1,24 +1,78 @@
-#Working example of retrieving bluetooth data from arduino
+#! /usr/bin/env python
 
 import bluetooth
+import time
+import os
+import json
 
-bd_addr = "20:16:02:31:06:40"
-port = 1
+import threading
+from threading import Thread
 
-print("Connecting")
-sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-sock.connect((bd_addr, port))
+from DatabaseManager import DatabaseManager
+from JSONParser import JSONParser
+from DetectorsFileParser import DetectorsFileParser
 
-data = ""
+class BluetoothReceiver():
+    detectors = []
 
-while 1:
-    try:
+    # Method receive all data from socket
+    def receiveAll(self, socket, size):
         data = ""
-        #print("Try get data")
-        data = sock.recv(4000)
-        print(data)
-    except:
-        print("error")
+        while (len(data) < size):
+            packet = socket.recv(size - len(data))
+            if not packet:
+                return None
+            data += packet
+        return data
+    
+    def connect(self, detector):
+        try:
+            socket = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+            socket.connect((detector.address, detector.port))
+            print detector.address + " - Connected"
+            self.startReceiving(socket, detector)
+        except Exception as e:
+            print detector.address + " - Failed to connect"
+            print e.args[0]
+            #print detector.address + " - Reconnecting..."
+            #time.sleep(5)
+            #self.connect(detector)
+    
+    def startReceiving(self, socket, detector):
+        data = ""
+        while 1:
+            try:
+                data = self.receiveAll(socket, 71)
+                time.sleep(0.5)
+            except Exception as e:
+                print e.args[0]
+                socket.close()
+                print detectr.address + " - Socket closed"
+                print detectr.address + " - Reconnecting..."
+                connect(host, port)
+            else:
+                print detector.address + " - " + data
+                jsonObject = json.loads(data.replace("'", '"'))
+                jsonObject["detectorId"] = detector.id
+                measurement = JSONParser().decodeMeasurement(jsonObject)
+                DatabaseManager().saveMeasurement(measurement)
 
-        print("Socket closed") 
-        sock.close()
+    def __init__(self):
+        self.detectors = DetectorsFileParser.parseFromFile("Detectors.json")
+        DatabaseManager().saveDetectors(self.detectors)
+
+        for detector in DatabaseManager().getDetectors():
+            Thread(target=self.connect, args=[detector]).start()
+            #self.connect(detector, agrs=detector)
+
+if __name__ == '__main__':
+    BluetoothReceiver()
+
+
+
+
+
+
+
+
+
