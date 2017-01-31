@@ -17,6 +17,12 @@ class ChartsViewController: UITableViewController {
     @IBOutlet weak var rainCell: UITableViewCell!
     @IBOutlet weak var heatIndexCell: UITableViewCell!
 
+    
+    var temperatureChart: LineChart!
+    var humidityChart: LineChart!
+    var rainChart: BarChart!
+    var heatIndexChart: BarChart!
+    
     // MARK: - Public properties
     
     var detector: Detector?
@@ -32,6 +38,12 @@ class ChartsViewController: UITableViewController {
         
         configureTableView()
         populateWithData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(detectorDidChange(notification:)), name: NSNotification.Name(rawValue: "DetectorDidChangeNotification"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Configuration methods
@@ -45,7 +57,7 @@ class ChartsViewController: UITableViewController {
         // Temperature
         
         let temperatureChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 7, height: temperatureCell.bounds.height - 12)
-        let temperatureChart = LineChart(frame: temperatureChartFrame)
+        temperatureChart = LineChart(frame: temperatureChartFrame)
         if let temperatures = detector?.temperatures, temperatures.isEmpty == false {
             temperatureChart.xAxisLabels = labels
             temperatureChart.values = temperatures
@@ -60,7 +72,7 @@ class ChartsViewController: UITableViewController {
         // Humidity
         
         let humidityChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 8, height: temperatureCell.bounds.height - 12)
-        let humidityChart = LineChart(frame: humidityChartFrame)
+        humidityChart = LineChart(frame: humidityChartFrame)
         if let humidities = detector?.humidities, humidities.isEmpty == false {
             humidityChart.xAxisLabels = labels
             humidityChart.values = humidities
@@ -74,7 +86,7 @@ class ChartsViewController: UITableViewController {
         // Rain
         
         let rainChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 10, height: temperatureCell.bounds.height - 12)
-        let rainChart = BarChart(frame: rainChartFrame)
+        rainChart = BarChart(frame: rainChartFrame)
         if let rainAnalogs = detector?.rainAnalogs, rainAnalogs.isEmpty == false {
             rainChart.xAxisLabels = labels
             rainChart.values = rainAnalogs
@@ -91,7 +103,7 @@ class ChartsViewController: UITableViewController {
         // Heat index
         
         let heatIndexChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 10, height: temperatureCell.bounds.height - 12)
-        let heatIndexChart = BarChart(frame: heatIndexChartFrame)
+        heatIndexChart = BarChart(frame: heatIndexChartFrame)
         if let heatIndexes = detector?.heatIndexes, heatIndexes.isEmpty == false {
             heatIndexChart.xAxisLabels = labels
             heatIndexChart.values = heatIndexes
@@ -104,4 +116,31 @@ class ChartsViewController: UITableViewController {
         heatIndexCell.contentView.addSubview(heatIndexChart)
     }
 
+    // MARK: - Notifications
+    
+    func detectorDidChange(notification: Notification) {
+        // Reload charts
+        
+        if let temperatures = detector?.temperatures, temperatures.isEmpty == false {
+            temperatureChart.xAxisLabels = labels
+            temperatureChart.values = temperatures
+        }
+        
+        if let humidities = detector?.humidities, humidities.isEmpty == false {
+            humidityChart.xAxisLabels = labels
+            humidityChart.values = humidities
+        }
+        
+        if let rainAnalogs = detector?.rainAnalogs, rainAnalogs.isEmpty == false {
+            rainChart.xAxisLabels = labels
+            rainChart.values = rainAnalogs
+        }
+        
+        if let heatIndexes = detector?.heatIndexes, heatIndexes.isEmpty == false {
+            heatIndexChart.xAxisLabels = labels
+            heatIndexChart.values = heatIndexes
+        }
+        
+    }
+    
 }

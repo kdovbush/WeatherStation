@@ -30,7 +30,12 @@ extension UIViewController {
     
     func presentCantCreateStation() {
         let okAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        presentAlert(with: "Can't create station", message: "Something went wrong", style: .alert, actions: [okAction])
+        presentAlert(with: "Can't add station", message: "Something went wrong", style: .alert, actions: [okAction])
+    }
+    
+    func presentAlreadyPresentStation() {
+        let okAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        presentAlert(with: "Can't add station", message: "Station with this address already exists", style: .alert, actions: [okAction])
     }
     
     

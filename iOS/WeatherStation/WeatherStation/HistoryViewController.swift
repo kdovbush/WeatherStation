@@ -24,10 +24,18 @@ class HistoryViewController: UIViewController {
         return detector?.allMeasurements.reversed()
     }
     
+    // MARK: - ViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
         configureTableView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(detectorDidChange(notification:)), name: NSNotification.Name(rawValue: "DetectorDidChangeNotification"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Configuration methods
@@ -37,6 +45,12 @@ class HistoryViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "HistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "HistoryTableViewCell")
+    }
+    
+    // MARK: - Notifications
+    
+    func detectorDidChange(notification: Notification) {
+        tableView.reloadData()
     }
 
 }

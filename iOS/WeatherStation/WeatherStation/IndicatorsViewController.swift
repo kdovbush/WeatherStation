@@ -49,6 +49,12 @@ class IndicatorsViewController: UITableViewController {
             tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
             configureView(for: detector)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(detectorDidChange(notification:)), name: NSNotification.Name(rawValue: "DetectorDidChangeNotification"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - User interactions
@@ -70,7 +76,7 @@ class IndicatorsViewController: UITableViewController {
             temperatureLabel.text = String(lastMeasurement.temperature) + "°C"
             humidityLabel.text = String(lastMeasurement.humidity) + "%"
             moistureLevelLabel.text = String(lastMeasurement.rainAnalog)
-            rainImageView.image = lastMeasurement.rainDigital ? UIImage(named: "rain") : UIImage(named: "noRain")
+            rainImageView.image = lastMeasurement.rainDigital ? UIImage(named: "noRain") : UIImage(named: "rain")
             configureHeatIndexLabels(for: lastMeasurement.heatIndex)
 
             if let minTemperature = detector.temperatures.min(), let maxTemperature = detector.temperatures.max() {
@@ -97,20 +103,20 @@ class IndicatorsViewController: UITableViewController {
             }
             
             if let detector = detector {
-                temperatureLabel.text = String(measurements.temperature)
-                humidityLabel.text = String(measurements.humidity)
+                temperatureLabel.text = String(measurements.temperature) + "°C"
+                humidityLabel.text = String(measurements.humidity) + "%"
                 moistureLevelLabel.text = String(measurements.rainAnalog)
                 rainImageView.image = measurements.rainDigital ? UIImage(named: "noRain") : UIImage(named: "rain")
                 configureHeatIndexLabels(for: measurements.heatIndex)
                 
                 if let minTemperature = detector.temperatures.min(), let maxTemperature = detector.temperatures.max() {
-                    temperatureMinLabel.text = String(minTemperature)
-                    temperatureMaxLabel.text = String(maxTemperature)
+                    temperatureMinLabel.text = String(minTemperature) + "°C"
+                    temperatureMaxLabel.text = String(maxTemperature) + "°C"
                 }
                 
                 if let minHumidity = detector.humidities.min(), let maxHumidity = detector.humidities.max() {
-                    humidityMinLabel.text = String(Int(minHumidity))
-                    humidityMaxLabel.text = String(Int(maxHumidity))
+                    humidityMinLabel.text = String(Int(minHumidity)) + "%"
+                    humidityMaxLabel.text = String(Int(maxHumidity)) + "%"
                 }
             }
         default:
@@ -144,6 +150,15 @@ class IndicatorsViewController: UITableViewController {
             heatIndexInfoLabel.text = "Heat stroke highly likely."
         default:
             break
+        }
+    }
+    
+    // MARK: - Notifications
+    
+    func detectorDidChange(notification: Notification) {
+        // Reload indicatorsData
+        if detector != nil, measurement == nil {
+            configureView(for: detector)
         }
     }
 

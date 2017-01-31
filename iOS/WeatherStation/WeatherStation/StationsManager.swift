@@ -64,9 +64,13 @@ class StationsManager: NSObject {
     func updateDetectors(for station: Station) {
         NetworkManager.shared.getDetectors(for: station) { (detectors) in
             if let detectors = detectors {
+                Detector.removeInvalidDetectors(detectorsJson: detectors)
+                
                 for detector in detectors {
                     self.updateMeasurements(for: detector, of: station)
                 }
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DetectorsDidChangeNotification"), object: nil, userInfo: ["detectors": detectors])
             }
         }
     }
@@ -76,7 +80,7 @@ class StationsManager: NSObject {
         
         NetworkManager.shared.getMeasurements(for: station, detector: detector, after: lastTimestamp) { (measurements) in
             if let measurements = measurements {
-                print("\(detector.address) detector - updated measurements \(measurements.count)")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DetectorDidChangeNotification"), object: nil, userInfo: ["detector":detector])
             }
         }
     }

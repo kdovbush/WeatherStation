@@ -53,10 +53,15 @@ class NewStationViewController: UITableViewController {
         if isEmptyFields() {
             presentRequiredFieldsAlert()
         } else {
-            view.endEditing(true)
             
             guard let stationAddress = stationAddressTextField.text else { return }
+            guard Station.getStation(with: stationAddress) == nil else {
+                presentAlreadyPresentStation()
+                return
+            }
 
+            view.endEditing(true)
+            
             LoadingIndicator.present()
             
             NetworkManager.shared.check(address: stationAddress, completion: { (connected) in

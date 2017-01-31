@@ -27,4 +27,12 @@ extension Station {
         return Station.mr_findAll(in: context) as! [Station]
     }
     
+    class func removeAll() -> Bool {
+        return Station.mr_truncateAll()
+    }
+    
+    class func getStation(with address: String) -> Station? {
+        return getAll().filter({$0.address == address}).first
+    }
+    
 }

@@ -27,6 +27,10 @@ class DetectorsViewController: UIViewController {
     
         navigationItem.title = station?.name
         automaticallyAdjustsScrollViewInsets = false
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(detectorsDidChange(notification:)), name: NSNotification.Name(rawValue: "DetectorsDidChangeNotification"), object: nil)
+        
+        print(station?.allDetectors.count)
     }
     
     deinit {
@@ -51,7 +55,12 @@ class DetectorsViewController: UIViewController {
             }
         }
     }
-
+    
+    // MARK: - Notification methods
+    
+    func detectorsDidChange(notification: Notification) {
+        tableView.reloadData()
+    }
 }
 
 
