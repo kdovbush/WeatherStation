@@ -12,19 +12,15 @@
 #include <DHT_U.h>
 
 // Used pins
-//#define RED_LED_PIN         8
-//#define GREEN_LED_PIN       9
-
+#define GREEN_LED_PIN       9
 #define DALLAS_SENSOR_PIN   10
-
 #define DHT_SENSOR_PIN      3         // Pin which is connected to the DHT sensor.
-
 #define YL_DIGITAL_PIN      2
 #define YL_ANALOG_PIN       A7
 
 #define DHT_TYPE            DHT11     // DHT 11
 
-// NOTE: Use BT(1,0) is old board.
+// NOTE: Use BT(1,0) if old board.
 SoftwareSerial BT(0,1); // RX, TX
 // Dallas temperature
 OneWire oneWire(DALLAS_SENSOR_PIN);   // Setup a oneWire instance to communicate with any OneWire devices
@@ -38,25 +34,24 @@ uint32_t delayMS = 60000;             // 1 minute
 void setup()
 {
     BT.begin(9600);
-    setupDallasDevice();
     setupDHTDevice();
-
     pinMode(YL_DIGITAL_PIN, INPUT);
 
-    pinMode(9, OUTPUT);
-  }
+    // LEDs
+    pinMode(GREEN_LED_PIN, OUTPUT);
+}
 
 void loop()
 {
-  char printBuffer[80];
+  char printBuffer[90];
 
-  char dallasTempBuffer[50];
-  char dhtHumidityBuffer[50];
+  char dallasTempBuffer[20];
+  char dhtHumidityBuffer[10];
 
   char ylPrecipitationAnalogBuffer[10];
   char ylPrecipitationDigitalBuffer[10];
 
-  dtostrf(getDallasTemperature(), 3+3, 3, dallasTempBuffer);
+  dtostrf(getDallasTemperature(), 5+2, 2, dallasTempBuffer);
   dtostrf(getDHTHumidity(), 3, 0, dhtHumidityBuffer);
 
   dtostrf(analogRead(YL_ANALOG_PIN), 4, 0, ylPrecipitationAnalogBuffer);
@@ -65,50 +60,24 @@ void loop()
   sprintf(printBuffer, "{\"dallasTemp\":%s,\"dhtHumidity\":%s,\"ylAnalog\":%s,\"ylDigital\":%s}", dallasTempBuffer, dhtHumidityBuffer, ylPrecipitationAnalogBuffer, ylPrecipitationDigitalBuffer);
   BT.println(printBuffer);
 
-  digitalWrite(9, LOW);
-  delay(1000);
-  digitalWrite(9, HIGH);
+  digitalWrite(GREEN_LED_PIN, LOW);
+  delay(500);
+  digitalWrite(GREEN_LED_PIN, HIGH);
 
   delay(delayMS);
-}
-
-
-void setupDallasDevice() {
-    // locate devices on the bus
-    //sensors.begin();
-    // set the resolution to 9 bit (Each Dallas/Maxim device is capable of several different resolutions)
-    //sensors.setResolution(insideThermometer, 9);
 }
 
 // function to print the temperature for a device
 float getDallasTemperature()
 {
     sensors.requestTemperatures(); // Send the command to get temperatures
-
     float tempC = sensors.getTempCByIndex(0);
     return tempC;
-    //Serial.println(DallasTemperature::toFahrenheit(tempC)); // Converts tempC to Fahrenheit
 }
-
-
 
 void setupDHTDevice() {
     // Initialize device.
     dht.begin();
-
-    sensor_t sensor;
-    // Set delay between sensor readings based on sensor details.
-    //delayMS = sensor.min_delay / 1000;
-}
-
-float getDHTTemperature() {
-  sensors_event_t event;
-  dht.temperature().getEvent(&event);
-  if (isnan(event.temperature)) {
-    Serial.println("Error reading temperature!");
-    return 0.0;
-  }
-  return event.temperature;
 }
 
 float getDHTHumidity() {
