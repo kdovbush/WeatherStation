@@ -73,25 +73,37 @@ class SettingsTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func actionClearData(_ sender: UIBarButtonItem) {
-        switch object {
-        case let detector as Detector:
-            NetworkManager.shared.cleanMeasurements(for: detector.station, detector: detector, completion: { (completion) in
-                if completion {
-                    print("Cleaned data for detector: \(detector.name) in station \(detector.station.name)")
-                }
-            })
-            break
-        case let station as Station:
-            NetworkManager.shared.cleanMeasurements(for: station, completion: { (completion) in
-                if completion {
-                    print("Cleaned data for station: \(station.name)")
-                }
-            })
-        default:
-            break
-        }
-    }
+//    @IBAction func actionClearData(_ sender: UIBarButtonItem) {
+//        switch object {
+//        case let detector as Detector:
+//            NetworkManager.shared.cleanMeasurements(for: detector.station, detector: detector, completion: { (completion) in
+//                
+//                if completion {
+//                    _ = Measurements.removeMeasurements(for: detector)
+//                }
+//                
+//                self.presentAlert(with: "\(completion)",
+//                    message: "Cleaned data for detector: \(detector.name) in station \(detector.station.name)",
+//                    style: .alert,
+//                    actions: [UIAlertAction(title: "Ok", style: .cancel, handler: nil)])
+//            })
+//            break
+//        case let station as Station:
+//            NetworkManager.shared.cleanMeasurements(for: station, completion: { (completion) in
+//                
+//                if completion {
+//                    _ = Measurements.removeAllMeasurements()
+//                }
+//                
+//                self.presentAlert(with: "\(completion)",
+//                    message: "Cleaned data in station \(station.name)",
+//                    style: .alert,
+//                    actions: [UIAlertAction(title: "Ok", style: .cancel, handler: nil)])
+//            })
+//        default:
+//            break
+//        }
+//    }
     
     // MARK: - Helper methods
     
@@ -115,21 +127,21 @@ class SettingsTableViewController: UITableViewController {
     
     // MARK: - UITableViewDataSource
     
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        // If section with `Clear button`
-        if section == numberOfSections(in: tableView) - 1 {
-            let text = "This option will clear all stored measurements for"
-            switch object {
-            case let detector as Detector:
-                return "\(text) '\(detector.name ?? "")' detector"
-            case let station as Station:
-                return "\(text) '\(station.name ?? "")' station"
-            default:
-                break
-            }
-        }
-        return nil
-    }
+//    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+//        // If section with `Clear button`
+//        if section == numberOfSections(in: tableView) - 1 {
+//            let text = "This option will clear all stored measurements for"
+//            switch object {
+//            case let detector as Detector:
+//                return "\(text) '\(detector.name ?? "")' detector"
+//            case let station as Station:
+//                return "\(text) '\(station.name ?? "")' station"
+//            default:
+//                break
+//            }
+//        }
+//        return nil
+//    }
     
 }
 

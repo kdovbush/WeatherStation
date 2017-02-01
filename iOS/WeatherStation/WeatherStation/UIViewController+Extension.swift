@@ -39,7 +39,7 @@ extension UIViewController {
     }
     
     
-    private func presentAlert(with title: String, message: String, style: UIAlertControllerStyle, actions: [UIAlertAction]) {
+    func presentAlert(with title: String, message: String, style: UIAlertControllerStyle, actions: [UIAlertAction]) {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: style)
         for action in actions {
             alertView.addAction(action)
