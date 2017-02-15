@@ -4,7 +4,6 @@ import bluetooth
 import time
 import os
 import json
-
 import threading
 from threading import Thread
 
