@@ -36,7 +36,6 @@ class Measurement:
             self.rainDigital = rainDigital
             self.detectorId = detectorId
 
-      #Probably should be replaced or removed later
       def calcHeatIndex(self):
             #convert temperature to Fahrenheit
             T = (self.temperature * 1.8) + 32

@@ -77,19 +77,20 @@ class DatabaseManager:
       # Saves passed as parameter measurement
       def saveMeasurement(self, measurement):
             # Return if invalid value
-            if measurement.temperature < -120 and measurement.temperature >= 85 :
+            if measurement.temperature >= 80:
                   return
-            with self.db:
-                  time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                  self.cursor.execute("""INSERT INTO Measurement (createdAt, temperature, humidity, heatIndex,
-                                      rainAnalog, rainDigital, detectorId) VALUES(%s, %s, %s, %s, %s, %s, %s)""",
-                                      (measurement.createdAt,
-                                       measurement.temperature,
-                                       measurement.humidity,
-                                       measurement.heatIndex,
-                                       measurement.rainAnalog,
-                                       measurement.rainDigital,
-                                       measurement.detectorId))
+            else:
+                  with self.db:
+                        time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        self.cursor.execute("""INSERT INTO Measurement (createdAt, temperature, humidity, heatIndex,
+                                            rainAnalog, rainDigital, detectorId) VALUES(%s, %s, %s, %s, %s, %s, %s)""",
+                                            (measurement.createdAt,
+                                             measurement.temperature,
+                                             measurement.humidity,
+                                             measurement.heatIndex,
+                                             measurement.rainAnalog,
+                                             measurement.rainDigital,
+                                             measurement.detectorId))
 
       # Removes all measurements of all detectors
       def cleanAllMeasurements(self):
