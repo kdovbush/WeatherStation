@@ -108,17 +108,21 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Helper methods
     
     func editObject() {
-        switch object {
-        case let detector as Detector:
-            detector.name = nameTextField.text
-            detector.address = addressTextField.text
-        case let station as Station:
-            station.name = nameTextField.text
-            station.address = addressTextField.text
-        default:
-            break
+        if let object = object {
+            switch object {
+            case let detector as Detector:
+                detector.name = nameTextField.text
+                detector.address = addressTextField.text
+            case let station as Station:
+                station.name = nameTextField.text
+                station.address = addressTextField.text
+            default:
+                break
+            }
+            object.save()
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SettingsDidChangeNotification"), object: nil, userInfo: ["object":object])
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SettingsDidChangeNotification"), object: nil, userInfo: ["object":object])
     }
     
     func isEmptyFields() -> Bool {
