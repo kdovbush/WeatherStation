@@ -86,10 +86,6 @@ class StationsViewController: UIViewController {
         }
     }
     
-    @IBAction func actionRefreshStations(_ sender: UIBarButtonItem) {
-        reloadStations()
-        tableView.reloadData()
-    }
 }
 
 extension StationsViewController: UITableViewDataSource {

@@ -77,7 +77,7 @@ class StationsManager: NSObject {
         let lastTimestamp = detector.allMeasurements.last?.createdAt.timeIntervalSince1970 ?? 0.0
         
         NetworkManager.shared.getMeasurements(for: station, detector: detector, after: lastTimestamp) { (measurements) in
-            if let measurements = measurements {
+            if measurements != nil {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DetectorDidChangeNotification"), object: nil, userInfo: ["detector":detector])
             }
         }
