@@ -76,33 +76,39 @@ class DatabaseManager:
 
       # Saves passed as parameter measurement
       def saveMeasurement(self, measurement):
-            with self.db:
-                  time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                  self.cursor.execute("""INSERT INTO Measurement (createdAt, temperature, humidity, heatIndex,
-                                      rainAnalog, rainDigital, detectorId) VALUES(%s, %s, %s, %s, %s, %s, %s)""",
-                                      (measurement.createdAt,
-                                       measurement.temperature,
-                                       measurement.humidity,
-                                       measurement.heatIndex,
-                                       measurement.rainAnalog,
-                                       measurement.rainDigital,
-                                       measurement.detectorId))
+            # Return if invalid value
+            if measurement.temperature >= 80:
+                  return
+            else:
+                  with self.db:
+                        time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        self.cursor.execute("""INSERT INTO Measurement (createdAt, temperature, humidity, heatIndex,
+                                            rainAnalog, rainDigital, detectorId) VALUES(%s, %s, %s, %s, %s, %s, %s)""",
+                                            (measurement.createdAt,
+                                             measurement.temperature,
+                                             measurement.humidity,
+                                             measurement.heatIndex,
+                                             measurement.rainAnalog,
+                                             measurement.rainDigital,
+                                             measurement.detectorId))
 
       # Removes all measurements of all detectors
       def cleanAllMeasurements(self):
             try:
+                  self.cursor.execute("""SET FOREIGN_KEY_CHECKS = 0""");
                   self.cursor.execute("""TRUNCATE TABLE Measurement""")
-                  return "true"
+                  self.cursor.execute("""SET FOREIGN_KEY_CHECKS = 1""");
+                  return True
             except:
-                  return "false"
+                  return False
 
       # Removes all measurements for passed detector
       def cleanMeasurementsForDetectorId(self, detectorId):
             try:
                   self.cursor.execute("""DELETE FROM Measurement WHERE detectorId = %s""", (detectorId))
-                  return "true"
+                  return True
             except:
-                  return "false"
+                  return False
       
 
 

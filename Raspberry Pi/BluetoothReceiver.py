@@ -4,7 +4,6 @@ import bluetooth
 import time
 import os
 import json
-
 import threading
 from threading import Thread
 
@@ -34,28 +33,27 @@ class BluetoothReceiver():
         except Exception as e:
             print detector.address + " - Failed to connect"
             print e.args[0]
-            #print detector.address + " - Reconnecting..."
-            #time.sleep(5)
-            #self.connect(detector)
+            time.sleep(80)
+            print detector.address + " - Reconnecting..."
+            self.connect(detector)
     
     def startReceiving(self, socket, detector):
         data = ""
         while 1:
             try:
-                data = self.receiveAll(socket, 71)
+                data = self.receiveAll(socket, 72)
                 time.sleep(0.5)
-            except Exception as e:
-                print e.args[0]
-                socket.close()
-                print detectr.address + " - Socket closed"
-                print detectr.address + " - Reconnecting..."
-                connect(host, port)
-            else:
                 print detector.address + " - " + data
                 jsonObject = json.loads(data.replace("'", '"'))
                 jsonObject["detectorId"] = detector.id
                 measurement = JSONParser().decodeMeasurement(jsonObject)
                 DatabaseManager().saveMeasurement(measurement)
+            except Exception as e:
+                print e.args[0]
+                socket.close()
+                print detector.address + " - Socket closed"
+                print detector.address + " - Reconnecting..."
+                self.connect(detector)
 
     def __init__(self):
         self.detectors = DetectorsFileParser.parseFromFile("Detectors.json")
@@ -63,13 +61,9 @@ class BluetoothReceiver():
 
         for detector in DatabaseManager().getDetectors():
             Thread(target=self.connect, args=[detector]).start()
-            #self.connect(detector, agrs=detector)
 
 if __name__ == '__main__':
     BluetoothReceiver()
-
-
-
 
 
 
