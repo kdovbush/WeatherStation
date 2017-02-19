@@ -206,27 +206,26 @@ enum APIConnections {
         case .check(let address):
             return Constants.http + address + Constants.check
         case .getDetectors(let address):
-            return Constants.http + address + Constants.detectors
+            return Constants.http + address + Constants.path + Constants.detectors
         case .getMeasurementsFor(let address, let detectorId):
-            return Constants.http + address + Constants.detectors + "/\(detectorId)" + Constants.measurements
+            return Constants.http + address + Constants.path + Constants.detectors + "/\(detectorId)" + Constants.measurements
         case .getMeasurementsAfter(let address, let detectorId, let after):
-            return Constants.http + address + Constants.detectors + "/\(detectorId)" + Constants.measurementsAfter + "/\(after)"
+            return Constants.http + address + Constants.path + Constants.detectors + "/\(detectorId)" + Constants.measurementsAfter + "/\(after)"
         case .cleanMeasurements(let address):
-            return Constants.http + address + Constants.cleanMeasurements
+            return Constants.http + address + Constants.path + Constants.measurements + Constants.clean
         case .cleanMeasurementsOf(let address, let detectorId):
-            return Constants.http + address + Constants.cleanMeasurementsOf + "/\(detectorId)"
+            return Constants.http + address + Constants.path + Constants.detectors + "/\(detectorId)" + Constants.clean
         }
     }
 }
 
 struct Constants {
     static let http = "http://"
-    static let path = ":5000/api/v1.0"
+    static let path = ":5000/weatherStation/api/v1.0"
     
     static let check = path + "/checkStatus"
-    static let detectors = path + "/detectors"
+    static let detectors = "/detectors"
     static let measurements = "/measurements"
     static let measurementsAfter = "/measurementsAfter"
-    static let cleanMeasurements = path + "/cleanMeasurements"
-    static let cleanMeasurementsOf = path + "/cleanMeasurementsOfDetector"
+    static let clean = "/clean"
 }

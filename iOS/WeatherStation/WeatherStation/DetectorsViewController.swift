@@ -58,6 +58,10 @@ class DetectorsViewController: UIViewController {
     // MARK: - Notification methods
     
     func settingsDidChange(notification: Notification) {
+        if let station = notification.userInfo?["object"] as? Station {
+            navigationItem.title = station.name
+        }
+        
         tableView.reloadData()
     }
     

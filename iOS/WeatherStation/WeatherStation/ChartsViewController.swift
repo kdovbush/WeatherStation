@@ -58,6 +58,8 @@ class ChartsViewController: UITableViewController {
         
         let temperatureChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 7, height: temperatureCell.bounds.height - 12)
         temperatureChart = LineChart(frame: temperatureChartFrame)
+
+        
         if let temperatures = detector?.temperatures, temperatures.isEmpty == false {
             temperatureChart.xAxisLabels = labels
             temperatureChart.values = temperatures
@@ -73,6 +75,8 @@ class ChartsViewController: UITableViewController {
         
         let humidityChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 8, height: temperatureCell.bounds.height - 12)
         humidityChart = LineChart(frame: humidityChartFrame)
+
+        
         if let humidities = detector?.humidities, humidities.isEmpty == false {
             humidityChart.xAxisLabels = labels
             humidityChart.values = humidities
@@ -87,6 +91,8 @@ class ChartsViewController: UITableViewController {
         
         let rainChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 10, height: temperatureCell.bounds.height - 12)
         rainChart = BarChart(frame: rainChartFrame)
+
+        
         if let rainAnalogs = detector?.rainAnalogs, rainAnalogs.isEmpty == false {
             rainChart.xAxisLabels = labels
             rainChart.values = rainAnalogs
@@ -104,6 +110,8 @@ class ChartsViewController: UITableViewController {
         
         let heatIndexChartFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 10, height: temperatureCell.bounds.height - 12)
         heatIndexChart = BarChart(frame: heatIndexChartFrame)
+
+        
         if let heatIndexes = detector?.heatIndexes, heatIndexes.isEmpty == false {
             heatIndexChart.xAxisLabels = labels
             heatIndexChart.values = heatIndexes

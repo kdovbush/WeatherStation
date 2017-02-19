@@ -57,4 +57,12 @@ extension Measurements {
         return nil
     }
     
+    class func removeAllMeasurements() -> Bool {
+        return Detector.mr_truncateAll()
+    }
+    
+    class func removeMeasurements(for detector: Detector) -> Bool {
+        return Measurements.mr_deleteAll(matching: NSPredicate(format: "detector == %@", detector), in: NSManagedObject.context)
+    }
+    
 }

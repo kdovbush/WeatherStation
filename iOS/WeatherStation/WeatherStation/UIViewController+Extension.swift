@@ -14,7 +14,7 @@ extension UIViewController {
 
     func presentRequiredFieldsAlert() {
         let okAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        presentAlert(with: "Required Fields Missing", message: "Name and Address can't be empty", style: .alert, actions: [okAction])
+        presentAlert(with: "Required Fields Are Missing", message: "Name and Address can't be empty", style: .alert, actions: [okAction])
     }
     
     func presentConnectionErrorAlert(addAnywayAction: @escaping ActionClosure, cancelAction: @escaping ActionClosure) {
@@ -35,11 +35,11 @@ extension UIViewController {
     
     func presentAlreadyPresentStation() {
         let okAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        presentAlert(with: "Can't add station", message: "Station with this address already exists", style: .alert, actions: [okAction])
+        presentAlert(with: "Station can't be added", message: "Station with this address already exists", style: .alert, actions: [okAction])
     }
     
     
-    private func presentAlert(with title: String, message: String, style: UIAlertControllerStyle, actions: [UIAlertAction]) {
+    func presentAlert(with title: String, message: String, style: UIAlertControllerStyle, actions: [UIAlertAction]) {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: style)
         for action in actions {
             alertView.addAction(action)

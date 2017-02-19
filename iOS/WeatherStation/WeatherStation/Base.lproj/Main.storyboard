@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dg2-19-MY2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dg2-19-MY2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,28 +24,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qKd-2G-nAK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cL6-cr-E0S">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem systemItem="refresh" id="M9S-nm-SHK">
-                                        <connections>
-                                            <action selector="actionRefreshStations:" destination="BYZ-38-t0r" id="jtB-QN-95b"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cL6-cr-E0S" firstAttribute="top" secondItem="qKd-2G-nAK" secondAttribute="bottom" id="Kxu-xg-O7L"/>
-                            <constraint firstItem="cL6-cr-E0S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LGH-RX-NXP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qKd-2G-nAK" secondAttribute="bottom" id="RvN-Gx-NYz"/>
                             <constraint firstAttribute="trailing" secondItem="qKd-2G-nAK" secondAttribute="trailing" id="hQV-uo-ZTn"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cL6-cr-E0S" secondAttribute="bottom" id="hUI-IM-cvU"/>
                             <constraint firstItem="qKd-2G-nAK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lg7-Jk-EOE"/>
-                            <constraint firstAttribute="trailing" secondItem="cL6-cr-E0S" secondAttribute="trailing" id="sbO-eu-xw3"/>
                             <constraint firstItem="qKd-2G-nAK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vFn-D7-Tnz"/>
                         </constraints>
                     </view>
@@ -121,36 +108,6 @@
                                                 <constraint firstItem="8gN-Ap-3vp" firstAttribute="leading" secondItem="8K9-6W-IvZ" secondAttribute="leading" constant="16" id="Lbr-75-r7j"/>
                                                 <constraint firstItem="8gN-Ap-3vp" firstAttribute="top" secondItem="8K9-6W-IvZ" secondAttribute="top" constant="6" id="Pqa-Zk-qCb"/>
                                                 <constraint firstAttribute="trailing" secondItem="8gN-Ap-3vp" secondAttribute="trailing" constant="16" id="We9-2o-aAt"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection footerTitle="This option will clear all stored data for this station" id="OKX-wB-dTU">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="LYt-af-XpY">
-                                        <rect key="frame" x="0.0" y="237" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LYt-af-XpY" id="XD1-q1-JFd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLg-WS-8ou">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                                    <color key="backgroundColor" red="0.75294117647058822" green="0.22352941176470587" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="Clear data">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="actionClearData:" destination="c15-ch-yrV" eventType="touchUpInside" id="1AU-ox-lkQ"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="sLg-WS-8ou" secondAttribute="bottom" id="jgN-Re-QIy"/>
-                                                <constraint firstItem="sLg-WS-8ou" firstAttribute="top" secondItem="XD1-q1-JFd" secondAttribute="top" id="s2d-vO-KC5"/>
-                                                <constraint firstItem="sLg-WS-8ou" firstAttribute="leading" secondItem="XD1-q1-JFd" secondAttribute="leading" id="sJR-Ha-gyc"/>
-                                                <constraint firstAttribute="trailing" secondItem="sLg-WS-8ou" secondAttribute="trailing" id="wpD-M9-on6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
